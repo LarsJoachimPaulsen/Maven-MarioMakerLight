@@ -6,7 +6,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -19,7 +21,7 @@ public class MainController {
     public TextField txtField;
 
     @FXML
-    public ImageView characterImage;
+    public ImageView playableCharacterSprite;
 
 
     public void testAction(){
@@ -29,8 +31,9 @@ public class MainController {
     }
 
 
-    public void initialize(URL location, ResourceBundle resources) {
-        characterImage.setImage(new Image("src/main/resources/Pictures/enemy.png"));
+
+    public void initialize() {
+        playableCharacterSprite.setImage(new Image("/Pictures/playerCharacter.png"));
     }
 
 
