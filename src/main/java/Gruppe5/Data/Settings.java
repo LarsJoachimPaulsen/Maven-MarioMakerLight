@@ -10,7 +10,5 @@ public class Settings {
         // will change the orientation of the toolbar. (default will be to the left)
     }
 
-    //trying
-
 
 }
