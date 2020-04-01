@@ -5,6 +5,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 
 
+import javafx.scene.image.Image;
 import javafx.scene.shape.Path;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
@@ -19,8 +20,10 @@ public class MainJavaFX extends Application {
         public void start(Stage primaryStage) {
             try {
                 Parent root = FXMLLoader.load(getClass().getResource("/Main.fxml"));
+                primaryStage.getIcons().add(new Image("/Pictures/enemy.png"));
                 primaryStage.setTitle("Mario Maker Light");
                 primaryStage.setScene(new Scene(root, 600, 400));
+
 
                 primaryStage.show();
             }
