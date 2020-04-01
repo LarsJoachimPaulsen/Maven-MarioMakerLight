@@ -3,6 +3,8 @@ package Gruppe5;
 import Gruppe5.Data.*;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+
 public class MainConsole {
 
     public static void main(String[] args){
@@ -17,7 +19,10 @@ public class MainConsole {
 
         mariu.getInformation();
         System.out.println(mariu.toString());
-        mariu.writeCharacterToGameFile();
+
+        Writer_Reader writer = new Writer_Reader();
+
+        writer.writeCharacterToFil(mariu);
 
 
         //System.out.println(mariu.isScoreEneabled());
@@ -30,6 +35,7 @@ public class MainConsole {
         Enemy goomber = enemy.createEnemy();
 
         System.out.println(goomber.getName());
+        writer.writeCharacterToFil(goomber);
 
         CarBuilder c = new CarBuilder()
                 .name("subaru")
@@ -40,6 +46,9 @@ public class MainConsole {
         System.out.println(subaru);
         System.out.println(subaru.getName());
         subaru.getInformation();
+        writer.writeCharacterToFil(subaru);
+
+        System.out.println(writer.lesFraFil());
 
     }
 }

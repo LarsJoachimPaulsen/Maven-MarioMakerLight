@@ -1,0 +1,10 @@
+{
+  "name": "mariu",
+  "maxHealth": 30,
+  "currentHeath": 30,
+  "damage": 20,
+  "size": 10,
+  "scoreEneabled": true,
+  "points": 0,
+  "photo": "/Pictures/playerCharacter.png"
+}

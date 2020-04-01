@@ -1,5 +1,7 @@
 package Gruppe5.Data;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import javafx.scene.image.Image;
 
 import java.io.*;
@@ -13,7 +15,7 @@ public final class PlayerCharacter {
     int size = 10;
     boolean scoreEneabled = true;
     long points = 0;
-    Image photo = new Image("/Pictures/playerCharacter.png");
+    String photo = "/Pictures/playerCharacter.png";
 
     public String getName() {
         return name;
@@ -48,25 +50,8 @@ public final class PlayerCharacter {
         return points;
     }
 
-    public Image getPhoto() {
+    public String getPhoto() {
         return photo;
-    }
-
-
-    public void writeCharacterToGameFile(){
-
-        try{
-           BufferedWriter bw = new BufferedWriter(new FileWriter("src/main/resources/Files/PlayableCharacter.txt"));
-           bw.write(name);
-           bw.close();
-        }
-        catch (FileNotFoundException FNFE){
-            System.out.println("The file could not be found");
-        }
-        catch (IOException IOE){
-            IOE.printStackTrace();
-        }
-
     }
 
 
