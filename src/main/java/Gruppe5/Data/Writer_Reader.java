@@ -44,6 +44,7 @@ public class Writer_Reader {
 
     }
 
+    /*
     public ArrayList<Object> lesFraFil(String nameOfCharacterClass){
 
         File file = null;
@@ -106,5 +107,7 @@ public class Writer_Reader {
         return characterList;
 
     }
+
+     */
 }
 
