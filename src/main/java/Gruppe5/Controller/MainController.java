@@ -1,5 +1,7 @@
 package Gruppe5.Controller;
 
+import Gruppe5.Data.PlayerCharacter;
+import Gruppe5.Data.PlayerCharacterBuilder;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -30,10 +32,14 @@ public class MainController {
         System.out.println("123");
     }
 
+    PlayerCharacterBuilder m = new PlayerCharacterBuilder();
+
+    PlayerCharacter mario = m.createPlayerCharacter();
+
 
 
     public void initialize() {
-        playableCharacterSprite.setImage(new Image("/Pictures/playerCharacter.png"));
+        playableCharacterSprite.setImage(mario.getPhoto());
     }
 
 
