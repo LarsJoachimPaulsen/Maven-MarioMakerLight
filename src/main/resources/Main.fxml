@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe5.Controller.MainController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe5.Controller.MainController">
    <children>
       <ImageView fitHeight="400.0" fitWidth="600.0">
          <image>
-            <Image url="@../../../../../../../Users/pauls/OneDrive/Bilder/vegard.jpg" />
          </image>
       </ImageView>
+      <Ellipse fill="DODGERBLUE" layoutX="261.0" layoutY="226.0" radiusX="100.0" radiusY="80.0" stroke="BLACK" strokeType="INSIDE" />
    </children>
 
 </AnchorPane>
