@@ -34,4 +34,8 @@ public final class Enemy {
     public Image getPhoto() {
         return photo;
     }
+
+    public void getInformation(){
+        System.out.println();
+    }
 }
