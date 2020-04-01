@@ -29,13 +29,14 @@ public class MainConsole {
         System.out.println(goomber.getName());
 
         CarBuilder c = new CarBuilder()
-                .name("subsub")
+                .name("subaru")
                 .damage(100)
                 .health(300);
-        Car subsub = c.createCar();
+        Car subaru = c.createCar();
 
-        System.out.println(subsub);
-        System.out.println(subsub.getName());
-        subsub.getInformation();
+        System.out.println(subaru);
+        System.out.println(subaru.getName());
+        subaru.getInformation();
+
     }
 }
