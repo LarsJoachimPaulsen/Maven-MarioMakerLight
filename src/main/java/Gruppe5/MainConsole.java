@@ -15,9 +15,11 @@ public class MainConsole {
                 .size(10);
         PlayerCharacter mariu = p.createPlayerCharacter();
 
+        mariu.getInformation();
+        System.out.println(mariu.toString());
 
 
-        System.out.println(mariu.isScoreEneabled());
+        //System.out.println(mariu.isScoreEneabled());
 
         EnemyBuilder enemy = new EnemyBuilder()
                 .name("goomber")

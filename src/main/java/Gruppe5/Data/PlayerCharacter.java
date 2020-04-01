@@ -5,7 +5,8 @@ import javafx.scene.image.Image;
 public final class PlayerCharacter {
 
     String name;
-    int health;
+    int maxHealth;
+    int currentHeath;
     int damage;
     int size;
     boolean scoreEneabled;
@@ -17,7 +18,11 @@ public final class PlayerCharacter {
     }
 
     public int getHealth() {
-        return health;
+        return maxHealth;
+    }
+
+    public int getCurrentHeath(){
+        return currentHeath;
     }
 
     public int getDamage() {
@@ -44,4 +49,18 @@ public final class PlayerCharacter {
     public Image getPhoto() {
         return photo;
     }
+
+    public void getInformation(){
+        System.out.println("Name of character: " + name + " Character's max health: " + maxHealth +
+                " Characters current Health: " + currentHeath + " Characters damage: " + damage + " Characters size: " + size +
+                " " +isScoreEneabled());
+    }
+
+    @Override
+    public String toString(){
+        return "Name of character: " + name + " Character's max health: " + maxHealth +
+                " Characters current Health: " + currentHeath + " Characters damage: " + damage + " Characters size: " + size +
+                " " +isScoreEneabled();
+    }
 }
+

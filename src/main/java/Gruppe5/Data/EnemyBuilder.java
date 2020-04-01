@@ -12,7 +12,8 @@ public class EnemyBuilder {
     }
 
     public EnemyBuilder maxHealth(int health){
-        enemy.health = health;
+        enemy.maxHealth = health;
+        enemy.currentHealth = health;
         return this;
     }
 
