@@ -15,10 +15,12 @@ public class Writer_Reader {
     public void writeCharacterToFil(Object character){
 
         File file = null;
-
-
-
+        ArrayList<Object> characterList;
             if (character instanceof PlayerCharacter ){
+                // lese fra fil. Legge inn i en array.
+                // legg sjekk om character er i Array
+                // legg til character i Array.
+                // skriv hele array.
                 file = new File("src/main/resources/Files/PlayableCharacter.json");
             }
             else if(character instanceof  Enemy){
@@ -46,6 +48,13 @@ public class Writer_Reader {
 
     }
 
+    public ArrayList<PlayerCharacter> readPlayerCharacters(){
+        ArrayList<PlayerCharacter> characterList  characterList = new ArrayList<>(); ;
+
+
+        return characterList;
+
+    }
     /*
     public ArrayList<Object> lesFraFil(String nameOfCharacterClass){
 

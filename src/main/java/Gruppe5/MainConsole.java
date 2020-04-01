@@ -48,7 +48,7 @@ public class MainConsole {
         subaru.getInformation();
         writer.writeCharacterToFil(subaru);
 
-        System.out.println(writer.lesFraFil());
+        //System.out.println(writer.lesFraFil());
 
     }
 }
