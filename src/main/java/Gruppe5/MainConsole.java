@@ -17,6 +17,7 @@ public class MainConsole {
 
         mariu.getInformation();
         System.out.println(mariu.toString());
+        mariu.writeCharacterToGameFile();
 
 
         //System.out.println(mariu.isScoreEneabled());
