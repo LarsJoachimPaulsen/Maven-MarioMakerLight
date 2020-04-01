@@ -5,18 +5,23 @@ import javafx.scene.image.Image;
 public final class Enemy {
 
     String name;
-    int health;
-    int damage;
-    int pointValue;
-    int size;
+    int maxHealth = 15;
+    int currentHealth = 15;
+    int damage = 2;
+    int pointValue = 4;
+    int size = 3;
     Image photo;
 
     public String getName() {
         return name;
     }
 
-    public int getHealth() {
-        return health;
+    public int getMaxHealth() {
+        return maxHealth;
+    }
+
+    public int getCurrentHealth(){
+        return currentHealth;
     }
 
     public int getDamage() {
@@ -33,5 +38,18 @@ public final class Enemy {
 
     public Image getPhoto() {
         return photo;
+    }
+
+    public void getInformation(){
+        System.out.println("Enemy name " + name + " Enemy's max health: " + maxHealth + "Enemey's current health: "
+                + currentHealth + " Enemy's damage: " + damage + " point value when killed: " + pointValue +
+                " Enemy's size: " + size);
+    }
+
+    @Override
+    public String toString(){
+        return "Enemy name " + name + " Enemy's max health: " + maxHealth + "Enemey's current health: "
+                + currentHealth + " Enemy's damage: " + damage + " point value when killed: " + pointValue +
+                " Enemy's size: " + size;
     }
 }

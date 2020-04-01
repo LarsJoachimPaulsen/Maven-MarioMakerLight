@@ -16,12 +16,18 @@ import java.nio.file.Paths;
 public class MainJavaFX extends Application {
 
         @Override
-        public void start(Stage primaryStage) throws Exception{
-            Parent root = FXMLLoader.load(getClass().getResource("/Main.fxml"));
-            primaryStage.setTitle("Mario Maker Light");
-            primaryStage.setScene(new Scene(root, 600, 400));
+        public void start(Stage primaryStage) {
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("/Main.fxml"));
+                primaryStage.setTitle("Mario Maker Light");
+                primaryStage.setScene(new Scene(root, 600, 400));
 
-            primaryStage.show();
+                primaryStage.show();
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+
 
         }
 

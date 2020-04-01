@@ -12,7 +12,8 @@ public class PlayerCharacterBuilder {
     }
 
     public PlayerCharacterBuilder maxHealth(int health){
-        pc.health = health;
+        pc.maxHealth = health;
+        pc.currentHeath = health;
         return this;
     }
 

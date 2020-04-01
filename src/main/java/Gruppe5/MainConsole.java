@@ -1,9 +1,7 @@
 package Gruppe5;
 
-import Gruppe5.Data.Enemy;
-import Gruppe5.Data.EnemyBuilder;
-import Gruppe5.Data.PlayerCharacter;
-import Gruppe5.Data.PlayerCharacterBuilder;
+import Gruppe5.Data.*;
+import javafx.stage.Stage;
 
 public class MainConsole {
 
@@ -17,7 +15,11 @@ public class MainConsole {
                 .size(10);
         PlayerCharacter mariu = p.createPlayerCharacter();
 
-        System.out.println(mariu.isScoreEneabled());
+        mariu.getInformation();
+        System.out.println(mariu.toString());
+
+
+        //System.out.println(mariu.isScoreEneabled());
 
         EnemyBuilder enemy = new EnemyBuilder()
                 .name("goomber")
@@ -28,6 +30,15 @@ public class MainConsole {
 
         System.out.println(goomber.getName());
 
+        CarBuilder c = new CarBuilder()
+                .name("subaru")
+                .damage(100)
+                .health(300);
+        Car subaru = c.createCar();
+
+        System.out.println(subaru);
+        System.out.println(subaru.getName());
+        subaru.getInformation();
 
     }
 }
