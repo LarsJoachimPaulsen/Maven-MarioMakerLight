@@ -57,6 +57,20 @@ public class MainConsole {
            playerList.get(i).getInformation();
        }
 
+       ArrayList<Enemy> enemyList = reader.getEnemyCharacters();
+
+       for(int i = 0; i<enemyList.size(); i++){
+           enemyList.get(i).getInformation();
+       }
+
+       ArrayList<Car> carList = reader.getCarCharacters();
+
+       for(int i = 0; i<carList.size(); i++){
+           carList.get(i).getInformation();
+       }
+
+
+
 /*        for(PlayerCharacter player : playerList){
             player.getInformation();
         } */

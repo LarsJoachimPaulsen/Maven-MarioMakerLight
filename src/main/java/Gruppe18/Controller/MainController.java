@@ -2,14 +2,17 @@ package Gruppe18.Controller;
 
 import Gruppe18.Data.PlayerCharacter;
 import Gruppe18.Data.PlayerCharacterBuilder;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 
-public class MainController {
+public class MainController implements EventHandler<KeyEvent> {
 
     @FXML
     public Button btnTest;
@@ -35,6 +38,10 @@ public class MainController {
         System.out.println("123");
     }
 
+    @Override
+    public void handle(KeyEvent keyEvent){
+
+    }
 
 
 
@@ -44,6 +51,13 @@ public class MainController {
 
         PlayerCharacter mario = m.createPlayerCharacter();
        playableCharacterSprite.setImage(new Image(mario.getPhoto()));
+
+       playableCharacterSprite.setOnMouseClicked(new EventHandler<MouseEvent>() {
+           @Override
+           public void handle(MouseEvent mouseEvent) {
+               playableCharacterSprite.setX(playableCharacterSprite.getX()+10);
+           }
+       });
 
         toolSelect.getItems().add("Pointer");
         toolSelect.getItems().add("Objects");

@@ -18,7 +18,11 @@ public class MainJavaFX extends Application {
                 Parent root = FXMLLoader.load(getClass().getResource("/Main.fxml"));
                 primaryStage.getIcons().add(new Image("Pictures/enemy.png"));
                 primaryStage.setTitle("Mario Maker Light");
-                primaryStage.setScene(new Scene(root, 600, 400));
+                Scene scene = new Scene(root, 600, 400);
+
+                primaryStage.setScene(scene);
+
+
 
 
                 primaryStage.show();

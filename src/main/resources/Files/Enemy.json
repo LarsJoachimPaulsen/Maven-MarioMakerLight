@@ -1,1 +1,10 @@
-[]
+[
+  {
+    "name": "goomber",
+    "maxHealth": 40,
+    "currentHealth": 40,
+    "damage": 10,
+    "pointValue": 30,
+    "size": 3
+  }
+]
