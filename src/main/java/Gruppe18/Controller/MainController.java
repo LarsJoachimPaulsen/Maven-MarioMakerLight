@@ -1,7 +1,6 @@
 package Gruppe18.Controller;
 
-import Gruppe18.Data.PlayerCharacter;
-import Gruppe18.Data.PlayerCharacterBuilder;
+import Gruppe18.Data.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -16,6 +15,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+
+import java.util.ArrayList;
 
 public class MainController implements EventHandler<KeyEvent> {
 
@@ -32,8 +33,14 @@ public class MainController implements EventHandler<KeyEvent> {
     @FXML
     private ListView<String> underObjectToolSelect = new ListView<>();
 
+    Writer_Reader reader = new Writer_Reader();
+    Writer_Reader reader2 = new Writer_Reader();
+
     private ObservableList<String> toolList = FXCollections.observableArrayList("Pointer","Objects","PlayerCharacters","Enemies","Cars","Backgrounds");
     private ObservableList<String> underObjectToolList = FXCollections.observableArrayList("Square","Circle","Triangle");
+    private ArrayList<PlayerCharacter> playerCharacters = reader.getPlayableCharacters();
+    private ArrayList<Enemy> enemies = reader2.getEnemyCharacters();
+    //private ArrayList<Car> cars = reader.getCarCharacters();
 
 
 
@@ -49,6 +56,10 @@ public class MainController implements EventHandler<KeyEvent> {
     }
 
     public void initialize() {
+
+        for (int i = 0; i<playerCharacters.size(); i++){
+            playerCharacters.get(i).getInformation();
+        }
         PlayerCharacterBuilder m = new PlayerCharacterBuilder();
 
         PlayerCharacter mario = m.createPlayerCharacter();
@@ -62,6 +73,7 @@ public class MainController implements EventHandler<KeyEvent> {
 
                 switch (keyEvent.getCode()){
                     case D:
+                        playableCharacterSprite.requestFocus();
                         playableCharacterSprite.setX(playableCharacterSprite.getX()+10);
                         keyEvent.consume();
                         break;
