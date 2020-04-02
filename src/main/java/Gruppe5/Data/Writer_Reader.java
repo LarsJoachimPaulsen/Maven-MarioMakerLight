@@ -1,8 +1,5 @@
 package Gruppe5.Data;
 
-import Gruppe5.Model.Car;
-import Gruppe5.Model.Enemy;
-import Gruppe5.Model.PlayerCharacter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

@@ -1,17 +1,13 @@
 package Gruppe5.Controller;
 
-import Gruppe5.Model.PlayerCharacter;
-import Gruppe5.Model.PlayerCharacterBuilder;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import Gruppe5.Data.PlayerCharacter;
+import Gruppe5.Data.PlayerCharacterBuilder;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
-import java.awt.event.ActionEvent;
 
 public class MainController {
 

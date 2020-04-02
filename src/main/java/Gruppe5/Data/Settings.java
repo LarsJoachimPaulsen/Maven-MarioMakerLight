@@ -1,4 +1,4 @@
-package Gruppe5.Model;
+package Gruppe5.Data;
 
 public class Settings {
 

@@ -1,12 +1,7 @@
 package Gruppe5;
 
 import Gruppe5.Data.*;
-import Gruppe5.Model.Enemy;
-import Gruppe5.Model.EnemyBuilder;
-import Gruppe5.Model.PlayerCharacterBuilder;
-import Gruppe5.Model.PlayerCharacter;
-import Gruppe5.Model.Car;
-import Gruppe5.Model.CarBuilder;
+import Gruppe5.Model.*;
 
 public class MainConsole {
 

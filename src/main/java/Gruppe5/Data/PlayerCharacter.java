@@ -1,4 +1,4 @@
-package Gruppe5.Model;
+package Gruppe5.Data;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
