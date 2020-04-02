@@ -29,11 +29,12 @@ public class MainController implements EventHandler<KeyEvent> {
     private ListView<String> toolSelect = new ListView<>();
     @FXML
     private Label toolSelectedLabel;
+    @FXML
+    private ListView<String> underObjectToolSelect = new ListView<>();
 
-    private ObservableList<String> toolList = FXCollections.observableArrayList("Pointer", "Objects","PlayerCharacters","Enemies","Cars","Backgrounds");
+    private ObservableList<String> toolList = FXCollections.observableArrayList("Pointer","Objects","PlayerCharacters","Enemies","Cars","Backgrounds");
+    private ObservableList<String> underObjectToolList = FXCollections.observableArrayList("Square","Circle","Triangle");
 
-    //@FXML
-    //private ListView<ActionEvent> underToolSelect = new ListView<>();
 
 
     public void testAction(){
@@ -46,9 +47,6 @@ public class MainController implements EventHandler<KeyEvent> {
     public void handle(KeyEvent keyEvent){
 
     }
-
-
-
 
     public void initialize() {
         PlayerCharacterBuilder m = new PlayerCharacterBuilder();
@@ -85,21 +83,20 @@ public class MainController implements EventHandler<KeyEvent> {
         });
 
 
-        /*
-        toolSelect.getItems().add("Pointer");
-        toolSelect.getItems().add("Objects");
-        toolSelect.getItems().add("PlayerCharacters");
-        toolSelect.getItems().add("Enemies");
-        toolSelect.getItems().add("Cars");
-        toolSelect.getItems().add("Backgrounds");
-        */
         toolSelect.setItems(toolList);
 
         toolSelect.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue ) {
                 toolSelectedLabel.setText(newValue);
+                if(newValue == "Objects") {
+                    underObjectToolSelect.setItems(underObjectToolList);
+                }
+                else {
+                    underObjectToolSelect.setItems(null);
+                }
             }
+
         });
 
     }
