@@ -54,14 +54,36 @@ public class MainController implements EventHandler<KeyEvent> {
         PlayerCharacterBuilder m = new PlayerCharacterBuilder();
 
         PlayerCharacter mario = m.createPlayerCharacter();
+
+        playableCharacterSprite.setFocusTraversable(true);
         playableCharacterSprite.setImage(new Image(mario.getPhoto()));
 
-        playableCharacterSprite.setOnMouseClicked(new EventHandler<MouseEvent>() {
+        playableCharacterSprite.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
-            public void handle(MouseEvent mouseEvent) {
-               playableCharacterSprite.setX(playableCharacterSprite.getX()+10);
+            public void handle(KeyEvent keyEvent) {
+
+                switch (keyEvent.getCode()){
+                    case D:
+                        playableCharacterSprite.setX(playableCharacterSprite.getX()+10);
+                        keyEvent.consume();
+                        break;
+                    case A :
+                        playableCharacterSprite.setX(playableCharacterSprite.getX()-10);
+                        keyEvent.consume();
+                        break;
+                    case W :
+                        playableCharacterSprite.setY(playableCharacterSprite.getY()-10);
+                        keyEvent.consume();
+                        break;
+                    case S :
+                        playableCharacterSprite.setY(playableCharacterSprite.getY()+10);
+                        keyEvent.consume();
+                        break;
+                }
+
             }
         });
+
 
         /*
         toolSelect.getItems().add("Pointer");
