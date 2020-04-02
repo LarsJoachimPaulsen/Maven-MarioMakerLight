@@ -4,6 +4,7 @@ import Gruppe18.Data.PlayerCharacter;
 import Gruppe18.Data.PlayerCharacterBuilder;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -32,6 +33,9 @@ public class MainController implements EventHandler<KeyEvent> {
     //private ListView<ActionEvent> underToolSelect = new ListView<>();
 
 
+    public void flyttImage(){
+
+    }
     public void testAction(){
 
         txtField.setText("Vegard er homo");
@@ -47,15 +51,35 @@ public class MainController implements EventHandler<KeyEvent> {
 
 
     public void initialize() {
+        playableCharacterSprite.requestFocus();
         PlayerCharacterBuilder m = new PlayerCharacterBuilder();
 
         PlayerCharacter mario = m.createPlayerCharacter();
        playableCharacterSprite.setImage(new Image(mario.getPhoto()));
 
-       playableCharacterSprite.setOnMouseClicked(new EventHandler<MouseEvent>() {
+       playableCharacterSprite.setOnKeyPressed(new EventHandler<KeyEvent>() {
            @Override
-           public void handle(MouseEvent mouseEvent) {
-               playableCharacterSprite.setX(playableCharacterSprite.getX()+10);
+           public void handle(KeyEvent keyEvent) {
+
+               switch (keyEvent.getCode()){
+                   case D:
+                       playableCharacterSprite.setX(playableCharacterSprite.getX()+10);
+                       keyEvent.consume();
+                       break;
+                   case A :
+                       playableCharacterSprite.setX(playableCharacterSprite.getX()-10);
+                       keyEvent.consume();
+                       break;
+                   case W :
+                       playableCharacterSprite.setY(playableCharacterSprite.getY()-10);
+                       keyEvent.consume();
+                       break;
+                   case S :
+                       playableCharacterSprite.setY(playableCharacterSprite.getY()+10);
+                       keyEvent.consume();
+                       break;
+               }
+
            }
        });
 
