@@ -25,9 +25,9 @@ public class MainController {
     public ImageView playableCharacterSprite;
 
     @FXML
-    private ListView<ActionEvent> toolSelect = new ListView<>();
+    private ListView<String> toolSelect = new ListView<>();
 
-    private ObservableList<ActionEvent> toolList = FXCollections.observableArrayList();
+    //private ObservableList<ActionEvent> toolList = FXCollections.observableArrayList();
 
     //@FXML
     //private ListView<ActionEvent> underToolSelect = new ListView<>();
@@ -41,8 +41,12 @@ public class MainController {
         PlayerCharacter mario = m.createPlayerCharacter();
         playableCharacterSprite.setImage(new Image(mario.getPhoto()));
 
-        toolSelect.setItems(toolList);
-
+        toolSelect.getItems().add("Pointer");
+        toolSelect.getItems().add("Objects");
+        toolSelect.getItems().add("PlayerCharacters");
+        toolSelect.getItems().add("Enemies");
+        toolSelect.getItems().add("Cars");
+        toolSelect.getItems().add("Backgrounds");
 
     }
 
