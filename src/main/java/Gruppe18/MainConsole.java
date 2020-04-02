@@ -1,9 +1,7 @@
-package Gruppe5;
+package Gruppe18;
 
-import Gruppe5.Data.*;
-import javafx.stage.Stage;
-
-import java.util.ArrayList;
+import Gruppe18.Data.*;
+import javafx.collections.ObservableList;
 
 public class MainConsole {
 
@@ -48,7 +46,14 @@ public class MainConsole {
         subaru.getInformation();
         writer.writeCharacterToFil(subaru);
 
-        System.out.println(writer.lesFraFil());
+        Writer_Reader reader = new Writer_Reader();
+       ObservableList<PlayerCharacter> playerList = reader.getPlayableCharacters();
+
+        for(PlayerCharacter player : playerList){
+            player.getInformation();
+        }
+
+       // System.out.println(writer.lesFraFil());
 
     }
 }

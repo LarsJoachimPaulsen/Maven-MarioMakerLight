@@ -1,30 +1,74 @@
-package Gruppe5.Data;
+package Gruppe18.Data;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.io.*;
-import java.lang.invoke.SwitchPoint;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 
 public class Writer_Reader {
 
+    private ArrayList<PlayerCharacter> playableCharacters = new ArrayList<>();
+    private ArrayList<Enemy> enemyCharacters = new ArrayList<>();
+    private ArrayList<Car> carCharacters = new ArrayList<>();
+
+    private ObservableList<PlayerCharacter> obsPlayableCharacter = FXCollections.observableArrayList();
+
     //This method will write a character to the correct file, if it does not already exist.
     public void writeCharacterToFil(Object character){
 
+        boolean characterExists = false;
         File file = null;
-
-
-
             if (character instanceof PlayerCharacter ){
+
+                //getPlayableCharacters();
+                for (int i = 0; i < playableCharacters.size(); i++){
+                        if(playableCharacters.get(i).getName().equals(((PlayerCharacter) character).getName())){
+                            characterExists = true;
+                            break;
+                        }
+                }
+                if (characterExists){
+                    System.out.println("Character exist");
+                    return;
+                }
+                // legg sjekk om character er i Array
+                // legg til character i Array.
+                // skriv hele array.
                 file = new File("src/main/resources/Files/PlayableCharacter.json");
             }
             else if(character instanceof  Enemy){
+                for(int i = 0; i < enemyCharacters.size(); i++){
+                    if (enemyCharacters.get(i).getName().equals(((Enemy) character).getName())){
+                        characterExists = true;
+                        break;
+                    }
+                }
+
+                if (characterExists){
+                    System.out.println("Character already exists");
+                    return;
+                }
                 file = new File("src/main/resources/Files/Enemy.json");
             }
             else if(character instanceof Car){
+
+                for (int i = 0; i < carCharacters.size(); i++){
+                    if (carCharacters.get(i).getName().equals(((Car) character).getName())){
+                        characterExists = true;
+                        break;
+                    }
+                }
+
+                if(characterExists){
+                    System.out.println("The Character already exist");
+                    return;
+                }
+
                 file = new File("src/main/resources/Files/Car.json");
             }
 
@@ -45,6 +89,41 @@ public class Writer_Reader {
         }
 
     }
+
+
+    // HVORFOR KRÆSJER DENNE???????????
+
+    public ObservableList<PlayerCharacter> getPlayableCharacters() {
+
+
+        File file = new File("src/main/resources/Files/PlayableCharacter.json");
+
+        GsonBuilder gsonBuilder = new GsonBuilder().setPrettyPrinting();
+        Gson gson = gsonBuilder.create();
+        String line = "";
+
+        StringBuilder jsonTextFromFile = new StringBuilder();
+
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+
+            while ((line = br.readLine()) != null) {
+                jsonTextFromFile.append(line);
+            }
+
+            PlayerCharacter[] playerList = gson.fromJson(jsonTextFromFile.toString(), PlayerCharacter[].class);
+
+            obsPlayableCharacter.addAll(Arrays.asList(playerList));
+
+            return obsPlayableCharacter;
+
+        } catch (IOException IOE) {
+            IOE.printStackTrace();
+
+            return null;
+        }
+
+    }
+
 
     /*
     public ArrayList<Object> lesFraFil(String nameOfCharacterClass){
