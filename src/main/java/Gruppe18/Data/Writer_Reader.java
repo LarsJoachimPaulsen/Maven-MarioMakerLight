@@ -1,4 +1,4 @@
-package Gruppe5.Data;
+package Gruppe18.Data;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

@@ -1,10 +1,4 @@
-package Gruppe5.Data;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import javafx.scene.image.Image;
-
-import java.io.*;
+package Gruppe18.Data;
 
 public final class PlayerCharacter {
 

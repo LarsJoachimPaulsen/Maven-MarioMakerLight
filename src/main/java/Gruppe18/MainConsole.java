@@ -1,7 +1,6 @@
-package Gruppe5;
+package Gruppe18;
 
-import Gruppe5.Data.*;
-import Gruppe5.Model.*;
+import Gruppe18.Data.*;
 
 public class MainConsole {
 

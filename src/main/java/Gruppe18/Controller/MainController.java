@@ -1,7 +1,7 @@
-package Gruppe5.Controller;
+package Gruppe18.Controller;
 
-import Gruppe5.Data.PlayerCharacter;
-import Gruppe5.Data.PlayerCharacterBuilder;
+import Gruppe18.Data.PlayerCharacter;
+import Gruppe18.Data.PlayerCharacterBuilder;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;

@@ -1,4 +1,4 @@
-package Gruppe5.Data;
+package Gruppe18.Data;
 
 import javafx.scene.image.Image;
 

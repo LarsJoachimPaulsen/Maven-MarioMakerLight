@@ -1,4 +1,4 @@
-package Gruppe5;
+package Gruppe18;
 
 import javafx.application.Application;
 import javafx.scene.Parent;
