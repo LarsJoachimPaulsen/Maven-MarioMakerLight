@@ -1,6 +1,4 @@
-package Gruppe5.Data;
-
-import javafx.scene.image.Image;
+package Gruppe5.Model;
 
 public class PlayerCharacterBuilder {
 

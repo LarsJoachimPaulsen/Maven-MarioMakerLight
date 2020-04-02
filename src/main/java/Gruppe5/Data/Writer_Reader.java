@@ -1,12 +1,12 @@
 package Gruppe5.Data;
 
+import Gruppe5.Model.Car;
+import Gruppe5.Model.Enemy;
+import Gruppe5.Model.PlayerCharacter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.*;
-import java.lang.invoke.SwitchPoint;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 
 public class Writer_Reader {
@@ -18,10 +18,10 @@ public class Writer_Reader {
 
 
 
-            if (character instanceof PlayerCharacter ){
+            if (character instanceof PlayerCharacter){
                 file = new File("src/main/resources/Files/PlayableCharacter.json");
             }
-            else if(character instanceof  Enemy){
+            else if(character instanceof Enemy){
                 file = new File("src/main/resources/Files/Enemy.json");
             }
             else if(character instanceof Car){

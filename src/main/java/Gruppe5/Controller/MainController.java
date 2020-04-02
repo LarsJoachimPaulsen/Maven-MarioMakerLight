@@ -1,18 +1,17 @@
 package Gruppe5.Controller;
 
-import Gruppe5.Data.PlayerCharacter;
-import Gruppe5.Data.PlayerCharacterBuilder;
+import Gruppe5.Model.PlayerCharacter;
+import Gruppe5.Model.PlayerCharacterBuilder;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.net.URL;
-import java.util.ResourceBundle;
+import java.awt.event.ActionEvent;
 
 public class MainController {
 
@@ -25,13 +24,13 @@ public class MainController {
     @FXML
     public ImageView playableCharacterSprite;
 
+    @FXML
+    private ListView<ActionEvent> toolSelect = new ListView<>();
 
-    public void testAction(){
+    private ObservableList<ActionEvent> toolList = FXCollections.observableArrayList();
 
-        txtField.setText("Vegard er homo");
-        System.out.println("123");
-    }
-
+    //@FXML
+    //private ListView<ActionEvent> underToolSelect = new ListView<>();
 
 
 
@@ -40,7 +39,17 @@ public class MainController {
         PlayerCharacterBuilder m = new PlayerCharacterBuilder();
 
         PlayerCharacter mario = m.createPlayerCharacter();
-       playableCharacterSprite.setImage(new Image(mario.getPhoto()));
+        playableCharacterSprite.setImage(new Image(mario.getPhoto()));
+
+        toolSelect.setItems(toolList);
+
+
+    }
+
+    public void testAction(){
+
+        txtField.setText("Vegard er homo");
+        System.out.println("123");
     }
 
 

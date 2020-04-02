@@ -1,9 +1,7 @@
 package Gruppe5;
 
 import Gruppe5.Data.*;
-import javafx.stage.Stage;
-
-import java.util.ArrayList;
+import Gruppe5.Model.*;
 
 public class MainConsole {
 
