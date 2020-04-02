@@ -2,9 +2,6 @@ package Gruppe18.Data;
 
 import com.google.gson.*;
 import com.google.gson.internal.Streams;
-import com.google.gson.reflect.TypeToken;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 
 import java.io.*;
 import java.lang.reflect.Type;
@@ -19,7 +16,6 @@ public class Writer_Reader {
     private ArrayList<Enemy> enemyCharacters = new ArrayList<>();
     private ArrayList<Car> carCharacters = new ArrayList<>();
 
-    private ObservableList<PlayerCharacter> obsPlayableCharacter = FXCollections.observableArrayList();
 
     //This method will write a character to the correct file, if it does not already exist.
 
