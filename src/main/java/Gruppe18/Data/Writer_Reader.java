@@ -115,11 +115,11 @@ public class Writer_Reader {
     }
 
 
-    public ArrayList<Car> getCarCharacters() {
+    /*public ArrayList<Car> getCarCharacters() {
     }
 
     public ArrayList<Enemy> getEnemyCharacters() {
-    }
+    }*/
 
 
     public ArrayList<PlayerCharacter> getPlayableCharacters() {
