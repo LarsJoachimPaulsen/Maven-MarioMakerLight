@@ -1,10 +1,13 @@
 package Gruppe18.Data;
 
-public final class PlayerCharacter {
+import java.io.*;
+
+public final class PlayerCharacter implements java.io.Serializable {
 
     String name;
     int maxHealth = 50;
     int currentHeath = 50;
+    int movementSpeed = 10;
     int damage = 5;
     int size = 10;
     boolean scoreEneabled = true;
@@ -61,5 +64,30 @@ public final class PlayerCharacter {
                 " Characters current Health: " + currentHeath + " Characters damage: " + damage + " Characters size: " + size +
                 " " +isScoreEneabled();
     }
+
+    public void saveCharacterToFile(){
+        File file = new File("src/main/resources/Files/PlayableCharacter.txt");
+
+        try {
+            FileWriter fr = new FileWriter(file, true);
+            BufferedWriter br = new BufferedWriter(fr);
+            br.write(name);
+            br.write(maxHealth);
+            br.write(currentHeath);
+            br.write(movementSpeed);
+            br.write(damage);
+            br.write(size);
+            br.write(String.valueOf(scoreEneabled));
+            br.write(String.valueOf(points));
+            br.write(photo);
+        }
+        catch (IOException IOE){
+            IOE.printStackTrace();
+        }
+
+
+    }
+
+
 }
 

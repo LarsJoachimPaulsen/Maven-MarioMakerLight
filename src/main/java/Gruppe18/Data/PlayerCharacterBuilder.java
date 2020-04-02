@@ -15,6 +15,11 @@ public class PlayerCharacterBuilder {
         return this;
     }
 
+    public PlayerCharacterBuilder movementSpeed(int movementSpeed){
+        pc.movementSpeed = movementSpeed;
+        return this;
+    }
+
     public PlayerCharacterBuilder damage(int damage){
         pc.damage = damage;
         return this;

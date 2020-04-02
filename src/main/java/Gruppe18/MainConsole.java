@@ -1,26 +1,30 @@
 package Gruppe18;
 
 import Gruppe18.Data.*;
+import Gruppe18.Data.Writer_Reader;
 import javafx.collections.ObservableList;
+
+import java.util.ArrayList;
 
 public class MainConsole {
 
     public static void main(String[] args){
 
         PlayerCharacterBuilder p = new PlayerCharacterBuilder()
-                .name("mariu")
-                .damage(20)
-                .enableScore()
-                .maxHealth(30)
+                .name("mario")
+                .damage(30)
+                .disableScore()
+                .movementSpeed(10)
+                .maxHealth(100)
                 .size(10);
-        PlayerCharacter mariu = p.createPlayerCharacter();
+        PlayerCharacter mario = p.createPlayerCharacter();
 
-        mariu.getInformation();
-        System.out.println(mariu.toString());
+        mario.getInformation();
+        System.out.println(mario.toString());
 
         Writer_Reader writer = new Writer_Reader();
 
-        writer.writeCharacterToFil(mariu);
+       writer.writeCharacterToFil(mario);
 
 
         //System.out.println(mariu.isScoreEneabled());
@@ -47,11 +51,17 @@ public class MainConsole {
         writer.writeCharacterToFil(subaru);
 
         Writer_Reader reader = new Writer_Reader();
-       ObservableList<PlayerCharacter> playerList = reader.getPlayableCharacters();
+       ArrayList<PlayerCharacter> playerList = reader.getPlayableCharacters();
 
-        for(PlayerCharacter player : playerList){
+       for (int i = 0; i<playerList.size(); i++){
+           playerList.get(i).getInformation();
+       }
+
+/*        for(PlayerCharacter player : playerList){
             player.getInformation();
-        }
+        } */
+
+
 
        // System.out.println(writer.lesFraFil());
 
