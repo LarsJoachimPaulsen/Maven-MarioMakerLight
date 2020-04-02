@@ -39,7 +39,7 @@ public class MainController implements EventHandler<KeyEvent> {
     private ObservableList<String> toolList = FXCollections.observableArrayList("Pointer","Objects","PlayerCharacters","Enemies","Cars","Backgrounds");
     private ObservableList<String> underObjectToolList = FXCollections.observableArrayList("Square","Circle","Triangle");
     private ArrayList<PlayerCharacter> playerCharacters = reader.getPlayableCharacters();
-    private ArrayList<Enemy> enemies = reader2.getEnemyCharacters();
+    //private ArrayList<Enemy> enemies = reader2.getEnemyCharacters();
     //private ArrayList<Car> cars = reader.getCarCharacters();
 
 
