@@ -11,3 +11,6 @@ For å starte builds og dependencies i Maven:
   Trykk på edit configuration -> + (øverst i venstre hjørne) -> maven -> finn before launch(helt nederst i det store vinduet) -> trykk + 
   -> maven goal -> i commandline skriv javafx:compile -> OK -> gå øverst i skjermvinduet velg command line -> skriv javafx:run -> gi navn 
   -> apply -> OK 
+
+
+Dokumentasjon for dyn4j: http://www.dyn4j.org/documentation/getting-started/#Maven

@@ -37,7 +37,7 @@ public class PlayerCharacterBuilder {
         return this;
     }
 
-    public PlayerCharacterBuilder photo(Image photo){
+    public PlayerCharacterBuilder photo(String photo){
         pc.photo = photo;
         return this;
     }
