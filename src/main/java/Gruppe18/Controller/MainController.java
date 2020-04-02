@@ -2,6 +2,10 @@ package Gruppe18.Controller;
 
 import Gruppe18.Data.PlayerCharacter;
 import Gruppe18.Data.PlayerCharacterBuilder;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -26,7 +30,7 @@ public class MainController implements EventHandler<KeyEvent> {
     @FXML
     private ListView<String> toolSelect = new ListView<>();
 
-    //private ObservableList<ActionEvent> toolList = FXCollections.observableArrayList();
+    private ObservableList<String> toolList = FXCollections.observableArrayList("Pointer", "Objects","PlayerCharacters","Enemies","Cars","Backgrounds");
 
     //@FXML
     //private ListView<ActionEvent> underToolSelect = new ListView<>();
@@ -50,21 +54,32 @@ public class MainController implements EventHandler<KeyEvent> {
         PlayerCharacterBuilder m = new PlayerCharacterBuilder();
 
         PlayerCharacter mario = m.createPlayerCharacter();
-       playableCharacterSprite.setImage(new Image(mario.getPhoto()));
+        playableCharacterSprite.setImage(new Image(mario.getPhoto()));
 
-       playableCharacterSprite.setOnMouseClicked(new EventHandler<MouseEvent>() {
-           @Override
-           public void handle(MouseEvent mouseEvent) {
+        playableCharacterSprite.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
                playableCharacterSprite.setX(playableCharacterSprite.getX()+10);
-           }
-       });
+            }
+        });
 
+        /*
         toolSelect.getItems().add("Pointer");
         toolSelect.getItems().add("Objects");
         toolSelect.getItems().add("PlayerCharacters");
         toolSelect.getItems().add("Enemies");
         toolSelect.getItems().add("Cars");
         toolSelect.getItems().add("Backgrounds");
+        */
+        toolSelect.setItems(toolList);
+
+        toolSelect.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue ) {
+                System.out.println("Selected item: " + newValue);
+            }
+        });
+
     }
 
 
