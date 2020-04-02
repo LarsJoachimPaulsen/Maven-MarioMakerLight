@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe18.Controller.MainController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe18.Controller.MainController">
    <ImageView fx:id="playableCharacterSprite" fitHeight="103.0" fitWidth="149.0" layoutX="14.0" layoutY="266.0" pickOnBounds="true" preserveRatio="true" />
    <ListView fx:id="toolSelect" prefHeight="400.0" prefWidth="70.0" />
    <ListView fx:id="underToolSelect" layoutX="69.0" layoutY="333.0" prefHeight="67.0" prefWidth="531.0" />
+   <Label fx:id="toolSelectedLabel" layoutX="75.0" layoutY="14.0" prefHeight="37.0" prefWidth="135.0" text="Tool selected: " />
 </AnchorPane>
