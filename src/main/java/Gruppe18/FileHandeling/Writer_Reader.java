@@ -1,15 +1,12 @@
-package Gruppe18.Data;
+package Gruppe18.FileHandeling;
 
+import Gruppe18.Data.Car;
+import Gruppe18.Data.Enemy;
+import Gruppe18.Data.PlayerCharacter;
 import com.google.gson.*;
-import com.google.gson.internal.Streams;
-
-
 import java.io.*;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-
 
 public class Writer_Reader {
 

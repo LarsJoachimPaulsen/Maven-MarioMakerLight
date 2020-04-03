@@ -2,7 +2,7 @@ package Gruppe18.Data;
 
 import java.io.*;
 
-public final class PlayerCharacter implements java.io.Serializable {
+public final class PlayerCharacter {
 
     String name;
     int maxHealth = 50;
