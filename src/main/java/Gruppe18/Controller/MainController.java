@@ -34,6 +34,8 @@ public class MainController implements EventHandler<KeyEvent> {
     private ListView<String> underObjectToolSelect = new ListView<>();
     @FXML
     private Label txtPoints;
+    @FXML
+    private Button btnExitGame;
 
     Writer_Reader reader = new Writer_Reader();
     Writer_Reader reader2 = new Writer_Reader();
@@ -51,45 +53,66 @@ public class MainController implements EventHandler<KeyEvent> {
 
     public void confirm(){
       btnConfirm.setVisible(false);
+      btnExitGame.setVisible(true);
       toolSelect.setVisible(false);
       toolSelectedLabel.setVisible(false);
       underObjectToolSelect.setVisible(false);
+      txtPoints.setVisible(true);
+      txtPoints.setText("");
       playableCharacterSprite.requestFocus();
+      enableWalking();
 
     }
 
-    public void initialize() {
-
-        playableCharacterSprite.setFocusTraversable(true);
-        playableCharacterSprite.setImage(new Image(playerCharacters.get(0).getPhoto()));
-        playableCharacterSprite.setFitHeight(playerCharacters.get(0).getSize()*10);
-
+    private void enableWalking() {
         playableCharacterSprite.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent keyEvent) {
 
-                switch (keyEvent.getCode()){
-                    case D :
+                switch (keyEvent.getCode()) {
+                    case D:
                         playableCharacterSprite.requestFocus();
-                        playableCharacterSprite.setX(playableCharacterSprite.getX()+10);
+                        playableCharacterSprite.setX(playableCharacterSprite.getX() + 10);
                         keyEvent.consume();
                         break;
-                    case A :
-                        playableCharacterSprite.setX(playableCharacterSprite.getX()-10);
+                    case A:
+                        playableCharacterSprite.setX(playableCharacterSprite.getX() - 10);
                         keyEvent.consume();
                         break;
-                    case W :
-                        playableCharacterSprite.setY(playableCharacterSprite.getY()-10);
+                    case W:
+                        playableCharacterSprite.setY(playableCharacterSprite.getY() - 10);
                         keyEvent.consume();
                         break;
-                    case S :
-                        playableCharacterSprite.setY(playableCharacterSprite.getY()+10);
+                    case S:
+                        playableCharacterSprite.setY(playableCharacterSprite.getY() + 10);
                         keyEvent.consume();
                         break;
                 }
 
             }
         });
+
+    }
+
+    public void exitGame(){
+        btnConfirm.setVisible(true);
+        btnExitGame.setVisible(false);
+        toolSelect.setVisible(true);
+        toolSelectedLabel.setVisible(true);
+        underObjectToolSelect.setVisible(true);
+        txtPoints.setVisible(false);
+        removeWalking();
+    }
+
+    private void removeWalking() {
+
+    }
+
+    public void initialize() {
+
+        playableCharacterSprite.setFocusTraversable(true);
+        playableCharacterSprite.setImage(new Image("/Pictures/PlayableCharacters/aleksander.png"));
+        playableCharacterSprite.setFitHeight(playerCharacters.get(0).getSize()*10);
 
 
         toolSelect.setItems(toolList);

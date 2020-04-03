@@ -2,6 +2,7 @@ package Gruppe18;
 
 import Gruppe18.Data.*;
 import Gruppe18.FileHandeling.Writer_Reader;
+import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
@@ -67,6 +68,10 @@ public class MainConsole {
        for(int i = 0; i<carList.size(); i++){
            carList.get(i).getInformation();
        }
+
+       MainJavaFX newGame = new MainJavaFX();
+
+
 
 
 

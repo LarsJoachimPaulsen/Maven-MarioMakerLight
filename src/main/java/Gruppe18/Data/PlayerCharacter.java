@@ -12,7 +12,7 @@ public final class PlayerCharacter {
     int size = 10;
     boolean scoreEneabled = true;
     long points = 0;
-    String photo = "/Pictures/playerCharacter.png";
+    String photo = "/Pictures/PlayableCharacters/playerCharacter.png";
 
     public String getName() {
         return name;

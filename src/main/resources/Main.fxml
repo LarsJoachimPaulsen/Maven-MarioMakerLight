@@ -13,4 +13,5 @@
    <Label fx:id="toolSelectedLabel" layoutX="75.0" layoutY="14.0" prefHeight="37.0" prefWidth="135.0" text="Tool selected: " />
    <Button fx:id="btnConfirm" layoutX="274.0" layoutY="160.0" mnemonicParsing="false" onAction="#confirm" prefHeight="37.0" prefWidth="79.0" text="Confirm" />
    <Label fx:id="txtPoints" focusTraversable="false" layoutX="347.0" layoutY="23.0" prefHeight="19.0" prefWidth="87.0" text="Label" visible="false" />
+   <Button fx:id="btnExitGame" layoutX="560.0" layoutY="10.0" mnemonicParsing="false" onAction="#exitGame" prefHeight="25.0" prefWidth="25.0" text="x" visible="false" />
 </AnchorPane>
