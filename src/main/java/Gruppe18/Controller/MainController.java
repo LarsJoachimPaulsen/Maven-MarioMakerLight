@@ -41,6 +41,8 @@ public class MainController implements EventHandler<KeyEvent> {
     private ObservableList<String> toolList = FXCollections.observableArrayList("Pointer","Objects","PlayerCharacters","Enemies","Cars","Backgrounds");
     private ObservableList<String> underObjectToolList = FXCollections.observableArrayList("Square","Circle","Triangle");
     private ObservableList<PlayerCharacter> playerCharacters = FXCollections.observableArrayList(reader.getPlayableCharacters());
+    private ObservableList<String> playerCharacterList = FXCollections.observableArrayList();
+
     //private ArrayList<Enemy> enemies = reader2.getEnemyCharacters();
     //private ArrayList<Car> cars = reader.getCarCharacters();
 
@@ -91,8 +93,10 @@ public class MainController implements EventHandler<KeyEvent> {
             }
         });
 
-
         toolSelect.setItems(toolList);
+        for(int i = 0; i < playerCharacters.size(); i++) {
+            playerCharacterList.add(playerCharacters.get(i).getName());
+        }
 
         toolSelect.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -102,7 +106,7 @@ public class MainController implements EventHandler<KeyEvent> {
                     underObjectToolSelect.setItems(underObjectToolList);
                 }
                 else if(newValue.equals("PlayerCharacters")){
-                    //underObjectToolSelect.setItems(playerCharacters);
+                    underObjectToolSelect.setItems(playerCharacterList);
                 }
                 else {
                     underObjectToolSelect.setItems(null);
