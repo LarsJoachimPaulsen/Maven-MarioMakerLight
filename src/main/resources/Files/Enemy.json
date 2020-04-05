@@ -6,5 +6,13 @@
     "damage": 10,
     "pointValue": 30,
     "size": 3
+  },
+  {
+    "name": "kopra",
+    "maxHealth": 50,
+    "currentHealth": 50,
+    "damage": 20,
+    "pointValue": 20,
+    "size": 3
   }
 ]

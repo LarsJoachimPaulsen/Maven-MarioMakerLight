@@ -11,6 +11,17 @@
     "photo": "/Pictures/playerCharacter.png"
   },
   {
+    "name": "lubigi",
+    "maxHealth": 100,
+    "currentHeath": 100,
+    "movementSpeed": 10,
+    "damage": 30,
+    "size": 10,
+    "scoreEneabled": false,
+    "points": 0,
+    "photo": "/Pictures/playerCharacter.png"
+  },
+  {
     "name": "mario",
     "maxHealth": 100,
     "currentHeath": 100,

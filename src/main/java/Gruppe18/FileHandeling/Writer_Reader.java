@@ -154,7 +154,9 @@ public class Writer_Reader {
                     jsonTextFromFile.append(line);
                 }
 
-                Enemy[] enemyList = gson.fromJson(jsonTextFromFile.toString(), Enemy[].class);
+                Enemy[] enemyList = gson.fromJson(jsonTextFromFile.toString(
+
+                ), Enemy[].class);
 
                 enemies.addAll(Arrays.asList(enemyList));
 

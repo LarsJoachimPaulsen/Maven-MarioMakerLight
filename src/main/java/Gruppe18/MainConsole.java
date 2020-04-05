@@ -39,6 +39,14 @@ public class MainConsole {
         System.out.println(goomber.getName());
         writer.writeCharacterToFil(goomber);
 
+        EnemyBuilder enemy2 = new EnemyBuilder()
+                .name("kopra")
+                .maxHealth(50)
+                .damage(20)
+                .pointValue(20);
+        Enemy kopra = enemy2.createEnemy();
+        writer.writeCharacterToFil(kopra);
+
         CarBuilder c = new CarBuilder()
                 .name("subaru")
                 .damage(100)
