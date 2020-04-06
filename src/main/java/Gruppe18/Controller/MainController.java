@@ -71,7 +71,6 @@ public class MainController implements EventHandler<KeyEvent> {
     //private ArrayList<Car> cars = reader.getCarCharacters();
     private double screenWidth = Screen.getPrimary().getBounds().getWidth();
     private double screenHeigth =  Screen.getPrimary().getBounds().getHeight();
-    private boolean collision = false;
     @Override
     public void handle(KeyEvent keyEvent){
 
