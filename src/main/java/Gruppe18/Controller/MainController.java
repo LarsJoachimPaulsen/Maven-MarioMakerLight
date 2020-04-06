@@ -55,8 +55,8 @@ public class MainController implements EventHandler<KeyEvent> {
     //private ArrayList<Enemy> enemies = reader2.getEnemyCharacters();
     //private ArrayList<Car> cars = reader.getCarCharacters();
 
-    private int screenWidth = (int) Screen.getPrimary().getBounds().getWidth();
-    private int screenHeigth = (int) Screen.getPrimary().getBounds().getHeight();
+    private double screenWidth = Screen.getPrimary().getBounds().getWidth();
+    private double screenHeigth =  Screen.getPrimary().getBounds().getHeight();
 
     @Override
     public void handle(KeyEvent keyEvent){
@@ -102,7 +102,7 @@ public class MainController implements EventHandler<KeyEvent> {
                         break;
                     case W:
                         if (playableCharacterSprite.getY() < -(toolSelect.getHeight())){
-                            playableCharacterSprite.setY(scene.getHeight() - toolSelect.getHeight());
+                            playableCharacterSprite.setY(scene.getHeight());
                         }
                         else {
                             playableCharacterSprite.setY(playableCharacterSprite.getY() - characterMovementSpeed);
@@ -111,8 +111,8 @@ public class MainController implements EventHandler<KeyEvent> {
                         keyEvent.consume();
                         break;
                     case S:
-                        if (playableCharacterSprite.getY() > scene.getHeight() - toolSelect.getHeight()){
-                            playableCharacterSprite.setY(-(toolSelect.getHeight()));
+                        if (playableCharacterSprite.getY() > scene.getHeight()){
+                            playableCharacterSprite.setY(0);
                         }
                         else {
                         playableCharacterSprite.setY(playableCharacterSprite.getY() + characterMovementSpeed);
@@ -143,13 +143,9 @@ public class MainController implements EventHandler<KeyEvent> {
     }
 
     public void initialize() {
-
-        System.out.println( Window.getWindows().size());
-
-
-
         playableCharacterSprite.setFocusTraversable(true);
-        playableCharacterSprite.setImage(new Image("/Pictures/PlayableCharacters/aleksander.png"));
+        playableCharacterSprite.setImage(new Image(playerCharacters.get(0).getPhoto()));
+       // playableCharacterSprite.setImage(new Image("/Pictures/PlayableCharacters/aleksander.png"));
         playableCharacterSprite.setFitHeight(playerCharacters.get(0).getSize()*10);
         characterMovementSpeed = playerCharacters.get(0).getMovementSpeed();
 
@@ -171,10 +167,14 @@ public class MainController implements EventHandler<KeyEvent> {
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue ) {
                 toolSelectedLabel.setText(newValue);
                 if(newValue.equals("Objects")) {
+                    hideToolbars();
+                    underObjectToolSelect.setVisible(true);
                     underObjectToolSelect.setItems(underObjectToolList);
                 }
                 else if(newValue.equals("PlayerCharacters")){
-                    underObjectToolSelect.setItems(playerCharacterList);
+                    hideToolbars();
+                    addPlayerCharactersToToolbar();
+                   // underObjectToolSelect.setItems(playerCharacterList);
                 }
                 /*
                 else if(newValue.equals("Enemies")) {
@@ -192,6 +192,25 @@ public class MainController implements EventHandler<KeyEvent> {
 
 
 
+
+    }
+
+    private void hideToolbars() {
+        underObjectToolSelect.setVisible(false);
+
+    }
+
+    private void addPlayerCharactersToToolbar() {
+
+        for (int i = 0; i<playerCharacters.size(); i++){
+           // String name = String.valueOf(i);
+            ImageView name  = new ImageView();
+            name.setImage(new Image(playerCharacters.get(i).getPhoto()));
+           // name.setX((screenWidth/2)/(double)playerCharacters.size());
+            name.setLayoutY(screenHeigth/2);
+            name.setLayoutX(screenWidth/2);
+           // name.setLayoutX(screenWidth*.05 + screenWidth/(double)playerCharacters.size());
+        }
 
     }
 
