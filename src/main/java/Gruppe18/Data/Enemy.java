@@ -10,7 +10,7 @@ public final class Enemy {
     int damage = 2;
     int pointValue = 4;
     int size = 3;
-    Image photo;
+    String photo = "/Pictures/EnemyCharacters/enemy.png";
 
     public String getName() {
         return name;
@@ -36,7 +36,7 @@ public final class Enemy {
         return size;
     }
 
-    public Image getPhoto() {
+    public String getPhoto() {
         return photo;
     }
 

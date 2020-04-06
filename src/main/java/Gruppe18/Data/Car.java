@@ -11,7 +11,7 @@ public class Car {
     int height = 10;
     int width = 10;
     int speed = 5;
-    Image photo;
+    String photo = "/Pictures/CarCharacters/test.jpg";
 
 
     public String getName() {
@@ -38,7 +38,7 @@ public class Car {
         return speed;
     }
 
-    public Image getPhoto() {
+    public String getPhoto() {
         return photo;
     }
 

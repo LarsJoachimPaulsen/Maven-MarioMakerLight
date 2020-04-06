@@ -31,7 +31,7 @@ public class CarBuilder {
         return this;
     }
 
-    public CarBuilder photo(Image photo){
+    public CarBuilder photo(String photo){
         car.photo = photo;
         return this;
     }

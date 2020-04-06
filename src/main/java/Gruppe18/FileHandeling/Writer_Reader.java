@@ -23,7 +23,10 @@ public class Writer_Reader {
         File file = null;
         if (character instanceof PlayerCharacter) {
 
-            playableCharacters = getPlayableCharacters();
+            file = new File("src/main/resources/Files/PlayableCharacter.json");
+            if (file.length() != 0) {
+                playableCharacters = getPlayableCharacters();
+            }
             for (int i = 0; i < playableCharacters.size(); i++) {
                 if (playableCharacters.get(i).getName().equals(((PlayerCharacter) character).getName())) {
                     characterExists = true;
@@ -40,10 +43,13 @@ public class Writer_Reader {
 
             // legg til character i Array.
             // skriv hele array.
-            file = new File("src/main/resources/Files/PlayableCharacter.json");
+
         } else if (character instanceof Enemy) {
 
-            enemyCharacters = getEnemyCharacters();
+            file = new File("src/main/resources/Files/Enemy.json");
+            if(file.length() != 0) {
+                enemyCharacters = getEnemyCharacters();
+            }
             for (int i = 0; i < enemyCharacters.size(); i++) {
                 if (enemyCharacters.get(i).getName().equals(((Enemy) character).getName())) {
                     characterExists = true;
@@ -58,10 +64,13 @@ public class Writer_Reader {
                 enemyCharacters.add((Enemy) character);
             }
 
-            file = new File("src/main/resources/Files/Enemy.json");
         } else if (character instanceof Car) {
 
-            carCharacters = getCarCharacters();
+            file = new File("src/main/resources/Files/Car.json");
+
+            if(file.length() != 0) {
+                carCharacters = getCarCharacters();
+            }
             for (int i = 0; i < carCharacters.size(); i++) {
                 if (carCharacters.get(i).getName().equals(((Car) character).getName())) {
                     characterExists = true;
@@ -76,7 +85,7 @@ public class Writer_Reader {
                 carCharacters.add((Car) character);
             }
 
-            file = new File("src/main/resources/Files/Car.json");
+
         }
 
         GsonBuilder gsonBuilder = new GsonBuilder().setPrettyPrinting();
@@ -123,9 +132,9 @@ public class Writer_Reader {
                     jsonTextFromFile.append(line);
                 }
 
-                Car[] carArray = gson.fromJson(jsonTextFromFile.toString(), Car[].class);
+                Car[] arrayCar = gson.fromJson(jsonTextFromFile.toString(), Car[].class);
 
-                cars.addAll(Arrays.asList(carArray));
+                cars.addAll(Arrays.asList(arrayCar));
 
                 return cars;
             } catch (IOException IOE) {
@@ -154,9 +163,7 @@ public class Writer_Reader {
                     jsonTextFromFile.append(line);
                 }
 
-                Enemy[] enemyList = gson.fromJson(jsonTextFromFile.toString(
-
-                ), Enemy[].class);
+                Enemy[] enemyList = gson.fromJson(jsonTextFromFile.toString(), Enemy[].class);
 
                 enemies.addAll(Arrays.asList(enemyList));
 

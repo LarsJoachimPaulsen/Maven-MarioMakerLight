@@ -1,27 +1,5 @@
 [
   {
-    "name": "mariu",
-    "maxHealth": 30,
-    "currentHeath": 30,
-    "movementSpeed": 10,
-    "damage": 20,
-    "size": 10,
-    "scoreEneabled": true,
-    "points": 0,
-    "photo": "/Pictures/playerCharacter.png"
-  },
-  {
-    "name": "lubigi",
-    "maxHealth": 100,
-    "currentHeath": 100,
-    "movementSpeed": 10,
-    "damage": 30,
-    "size": 10,
-    "scoreEneabled": false,
-    "points": 0,
-    "photo": "/Pictures/playerCharacter.png"
-  },
-  {
     "name": "mario",
     "maxHealth": 100,
     "currentHeath": 100,
@@ -30,6 +8,6 @@
     "size": 10,
     "scoreEneabled": false,
     "points": 0,
-    "photo": "/Pictures/playerCharacter.png"
+    "photo": "/Pictures/PlayableCharacters/playerCharacter.png"
   }
 ]

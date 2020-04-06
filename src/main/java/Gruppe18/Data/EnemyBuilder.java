@@ -27,7 +27,7 @@ public class EnemyBuilder {
         return this;
     }
 
-    public EnemyBuilder photo(Image photo){
+    public EnemyBuilder photo(String photo){
         enemy.photo = photo;
         return this;
     }

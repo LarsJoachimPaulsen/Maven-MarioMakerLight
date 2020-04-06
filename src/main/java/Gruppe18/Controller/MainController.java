@@ -30,6 +30,10 @@ public class MainController implements EventHandler<KeyEvent> {
     @FXML
     public ImageView playableCharacterSprite;
     @FXML
+    private ImageView enemySprite;
+    @FXML
+    private ImageView carSprite;
+    @FXML
     private ListView<String> toolSelect = new ListView<>();
     @FXML
     private Label toolSelectedLabel;
@@ -49,8 +53,10 @@ public class MainController implements EventHandler<KeyEvent> {
     private ObservableList<String> underObjectToolList = FXCollections.observableArrayList("Square","Circle","Triangle");
     private ObservableList<PlayerCharacter> playerCharacters = FXCollections.observableArrayList(reader.getPlayableCharacters());
     private ObservableList<String> playerCharacterList = FXCollections.observableArrayList();
-   // private ObservableList<Enemy> enemies = FXCollections.observableArrayList(reader.getEnemyCharacters());
+    private ObservableList<Enemy> enemyCharacters = FXCollections.observableArrayList(reader2.getEnemyCharacters());
+    private ObservableList<Car> carCharacters = FXCollections.observableArrayList(reader.getCarCharacters());
    // private ObservableList<String> enemyList = FXCollections.observableArrayList();
+
 
     //private ArrayList<Enemy> enemies = reader2.getEnemyCharacters();
     //private ArrayList<Car> cars = reader.getCarCharacters();
@@ -144,17 +150,27 @@ public class MainController implements EventHandler<KeyEvent> {
 
     public void initialize() {
         playableCharacterSprite.setFocusTraversable(true);
+
         playableCharacterSprite.setImage(new Image(playerCharacters.get(0).getPhoto()));
        // playableCharacterSprite.setImage(new Image("/Pictures/PlayableCharacters/aleksander.png"));
         playableCharacterSprite.setFitHeight(playerCharacters.get(0).getSize()*10);
         characterMovementSpeed = playerCharacters.get(0).getMovementSpeed();
 
+        enemySprite.setImage(new Image(enemyCharacters.get(0).getPhoto()));
+        enemySprite.setFitHeight(enemyCharacters.get(0).getSize()*10);
+
+        carSprite.setImage(new Image(carCharacters.get(0).getPhoto()));
+        carSprite.setFitHeight(carCharacters.get(0).getHeight()*10);
+
         setUpButtons();
+
 
         toolSelect.setItems(toolList);
         for(int i = 0; i < playerCharacters.size(); i++) {
             playerCharacterList.add(playerCharacters.get(i).getName());
         }
+
+
         /*
         for(int i = 0; i < enemies.size(); i++) {
             enemyList.add(enemies.get(i).getName());
