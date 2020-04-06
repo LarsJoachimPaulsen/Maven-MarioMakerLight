@@ -1,11 +1,11 @@
 package Gruppe18.Data;
 
-public final class Stage {
+public final class StageCreator {
 
     int stageWidth;
     int stageHeight;
 
-    public Stage(){}
+    public StageCreator(){}
 
     public int getStageWidth(){return stageWidth;}
 

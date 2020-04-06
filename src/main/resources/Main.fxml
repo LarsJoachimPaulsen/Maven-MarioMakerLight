@@ -7,14 +7,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe18.Controller.MainController">
-   <ImageView fx:id="playableCharacterSprite" fitHeight="103.0" fitWidth="87.0" focusTraversable="true" layoutX="70.0" layoutY="119.0" pickOnBounds="true" preserveRatio="true" />
+
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gruppe18.Controller.MainController">
    <ImageView fx:id="playableCharacterSprite" fitHeight="103.0" fitWidth="149.0" focusTraversable="true" layoutX="14.0" layoutY="266.0" pickOnBounds="true" preserveRatio="true" />
    <ListView fx:id="toolSelect" prefHeight="400.0" prefWidth="70.0" />
    <ListView fx:id="underObjectToolSelect" layoutX="69.0" layoutY="333.0" prefHeight="67.0" prefWidth="531.0" visible="false" />
    <ListView fx:id="underCharacterToolSelect" layoutX="70.0" layoutY="333.0" prefHeight="67.0" prefWidth="531.0" />
-   <ListView fx:id="underObjectToolSelect" layoutX="69.0" layoutY="333.0" prefHeight="67.0" prefWidth="531.0" />
+
    <Label fx:id="toolSelectedLabel" layoutX="75.0" layoutY="14.0" prefHeight="37.0" prefWidth="135.0" text="Tool selected: " />
    <Button fx:id="btnConfirm" layoutX="274.0" layoutY="160.0" mnemonicParsing="false" onAction="#confirm" prefHeight="37.0" prefWidth="79.0" text="Confirm" />
    <Label fx:id="txtPoints" focusTraversable="false" layoutX="347.0" layoutY="23.0" prefHeight="19.0" prefWidth="87.0" text="Label" visible="false" />
