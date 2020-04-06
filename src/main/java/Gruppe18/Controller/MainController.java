@@ -16,6 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Pane;
 import javafx.stage.Screen;
 import javafx.stage.Window;
 
@@ -29,7 +30,8 @@ public class MainController implements EventHandler<KeyEvent> {
     public TextField txtField;
     @FXML
     public ImageView playableCharacterSprite;
-    @FXML
+
+   @FXML
     private ImageView enemySprite;
     @FXML
     private ImageView carSprite;
@@ -45,6 +47,8 @@ public class MainController implements EventHandler<KeyEvent> {
     private Label txtPoints;
     @FXML
     private Button btnExitGame;
+    @FXML
+    private Label collisionTestText;
 
     private int characterMovementSpeed = 10;
 
@@ -62,12 +66,12 @@ public class MainController implements EventHandler<KeyEvent> {
     // private ObservableList<String> enemyList = FXCollections.observableArrayList();
 
 
+
     //private ArrayList<Enemy> enemies = reader2.getEnemyCharacters();
     //private ArrayList<Car> cars = reader.getCarCharacters();
-
     private double screenWidth = Screen.getPrimary().getBounds().getWidth();
     private double screenHeigth =  Screen.getPrimary().getBounds().getHeight();
-
+    private boolean collision = false;
     @Override
     public void handle(KeyEvent keyEvent){
 
@@ -99,6 +103,7 @@ public class MainController implements EventHandler<KeyEvent> {
                         else {
                         playableCharacterSprite.setX(playableCharacterSprite.getX() + characterMovementSpeed);
                         }
+                        checkCollision(1);
                         keyEvent.consume();
                         break;
                     case A:
@@ -109,6 +114,7 @@ public class MainController implements EventHandler<KeyEvent> {
                             playableCharacterSprite.setX(playableCharacterSprite.getX() - characterMovementSpeed);
                         }
                         keyEvent.consume();
+                        checkCollision(2);
                         break;
                     case W:
                         if (playableCharacterSprite.getY() < -(toolSelect.getHeight())){
@@ -119,6 +125,7 @@ public class MainController implements EventHandler<KeyEvent> {
                         }
 
                         keyEvent.consume();
+                        checkCollision(3);
                         break;
                     case S:
                         if (playableCharacterSprite.getY() > scene.getHeight()){
@@ -128,6 +135,7 @@ public class MainController implements EventHandler<KeyEvent> {
                         playableCharacterSprite.setY(playableCharacterSprite.getY() + characterMovementSpeed);
                         }
                         keyEvent.consume();
+                        checkCollision(4);
                         break;
                 }
 
@@ -155,8 +163,8 @@ public class MainController implements EventHandler<KeyEvent> {
     public void initialize() {
         //testkode - karakteren på skjermen
         playableCharacterSprite.setFocusTraversable(true);
-
         playableCharacterSprite.setImage(new Image(playerCharacters.get(0).getPhoto()));
+
        // playableCharacterSprite.setImage(new Image("/Pictures/PlayableCharacters/aleksander.png"));
         playableCharacterSprite.setFitHeight(playerCharacters.get(0).getSize()*10);
         characterMovementSpeed = playerCharacters.get(0).getMovementSpeed();
@@ -191,6 +199,7 @@ public class MainController implements EventHandler<KeyEvent> {
                     hideToolbars();
                     underObjectToolSelect.setVisible(true);
                     underObjectToolSelect.setItems(underObjectToolList);
+                    playableCharacterSprite.setImage(new Image("/Pictures/PlayableCharacters/aleksander.png"));
                 }
                 else if(newValue.equals("PlayerCharacters")){
                     hideToolbars();
@@ -251,6 +260,25 @@ public class MainController implements EventHandler<KeyEvent> {
             underObjectToolSelect.setMinWidth(screenWidth*.95);
 
 
+    }
+
+    public void checkCollision(int direction){
+
+        if (playableCharacterSprite.getBoundsInParent().intersects(enemySprite.getBoundsInParent())){
+            if (direction == 1){
+                collisionTestText.setText("Collision From rigth");
+            }
+            else if(direction == 2){
+                collisionTestText.setText("Collision from Left");
+            }
+            else if (direction == 3){
+                collisionTestText.setText("Collision from top");
+            }
+            else if(direction == 4){
+                collisionTestText.setText("Collision from bottom");
+            }
+
+        }
     }
 
 

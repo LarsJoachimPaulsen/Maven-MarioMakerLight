@@ -31,12 +31,12 @@ public class PlayerCharacterBuilder {
     }
 
     public PlayerCharacterBuilder enableScore(){
-        pc.scoreEneabled = true;
+        pc.scoreEnabled = true;
         return this;
     }
 
     public PlayerCharacterBuilder disableScore(){
-        pc.scoreEneabled = false;
+        pc.scoreEnabled = false;
         return this;
     }
 

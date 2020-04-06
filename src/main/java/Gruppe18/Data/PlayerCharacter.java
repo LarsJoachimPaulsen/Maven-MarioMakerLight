@@ -1,7 +1,5 @@
 package Gruppe18.Data;
 
-import java.io.*;
-
 public final class PlayerCharacter {
 
     String name;
@@ -10,7 +8,7 @@ public final class PlayerCharacter {
     int movementSpeed = 10;
     int damage = 5;
     int size = 10;
-    boolean scoreEneabled = true;
+    boolean scoreEnabled = true;
     long points = 0;
     String photo = "/Pictures/PlayableCharacters/playerCharacter.png";
 
@@ -42,8 +40,8 @@ public final class PlayerCharacter {
         return movementSpeed;
     }
 
-    public String isScoreEneabled() {
-        if (scoreEneabled){
+    public String isScoreEnabled() {
+        if (scoreEnabled){
             return "points are enabled for this Character";
         }
         else {
@@ -63,14 +61,14 @@ public final class PlayerCharacter {
     public void getInformation(){
         System.out.println("Name of character: " + name + " Character's max health: " + maxHealth +
                 " Characters current Health: " + currentHeath + " Characters damage: " + damage + " Characters size: " + size +
-                " " +isScoreEneabled());
+                " " + isScoreEnabled());
     }
 
     @Override
     public String toString(){
         return "Name of character: " + name + " Character's max health: " + maxHealth +
                 " Characters current Health: " + currentHeath + " Characters damage: " + damage + " Characters size: " + size +
-                " " +isScoreEneabled();
+                " " + isScoreEnabled();
     }
 
 
