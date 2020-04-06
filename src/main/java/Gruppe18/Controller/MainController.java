@@ -200,6 +200,15 @@ public class MainController implements EventHandler<KeyEvent> {
             btnExitGame.setLayoutY(30);
             btnExitGame.setLayoutX(screenWidth-50);
 
+            toolSelect.setMinHeight(screenHeigth);
+            toolSelect.setMinWidth(screenWidth*.05);
+            toolSelectedLabel.setLayoutX(screenWidth*.05);
+
+            underObjectToolSelect.setLayoutX(screenWidth*.05);
+            underObjectToolSelect.setLayoutY(screenHeigth*.916);
+            underObjectToolSelect.setMinWidth(screenWidth*.95);
+
+
     }
 
 
