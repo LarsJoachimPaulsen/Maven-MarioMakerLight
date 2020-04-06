@@ -133,8 +133,8 @@ public class MainController implements EventHandler<KeyEvent> {
                         if (playableCharacterSprite.getY() > scene.getHeight()){
                             playableCharacterSprite.setY(0);
                         }
-                        else if (playableCharacterSprite.getY() > 0) {
-                            playableCharacterSprite.setY(0);
+                        else if (playableCharacterSprite.getY() > 665) {
+                            playableCharacterSprite.setY(665);
                         }
                         else {
                         playableCharacterSprite.setY(playableCharacterSprite.getY() + characterMovementSpeed);
