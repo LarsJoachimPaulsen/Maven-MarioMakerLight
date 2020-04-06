@@ -120,6 +120,9 @@ public class MainController implements EventHandler<KeyEvent> {
                         if (playableCharacterSprite.getY() < -(toolSelect.getHeight())){
                             playableCharacterSprite.setY(scene.getHeight());
                         }
+                        else if (playableCharacterSprite.getY() < -260) {
+                            playableCharacterSprite.setY(-260);
+                        }
                         else {
                             playableCharacterSprite.setY(playableCharacterSprite.getY() - characterMovementSpeed);
                         }
@@ -129,6 +132,9 @@ public class MainController implements EventHandler<KeyEvent> {
                         break;
                     case S:
                         if (playableCharacterSprite.getY() > scene.getHeight()){
+                            playableCharacterSprite.setY(0);
+                        }
+                        else if (playableCharacterSprite.getY() > 0) {
                             playableCharacterSprite.setY(0);
                         }
                         else {
