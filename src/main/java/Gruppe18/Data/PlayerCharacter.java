@@ -34,6 +34,14 @@ public final class PlayerCharacter {
         return size;
     }
 
+    public int getMaxHealth() {
+        return maxHealth;
+    }
+
+    public int getMovementSpeed() {
+        return movementSpeed;
+    }
+
     public String isScoreEneabled() {
         if (scoreEneabled){
             return "points are enabled for this Character";
