@@ -40,6 +40,8 @@ public class MainController implements EventHandler<KeyEvent> {
     @FXML
     private ListView<String> underObjectToolSelect = new ListView<>();
     @FXML
+    private ListView<Image> underCharacterToolSelect = new ListView<>();
+    @FXML
     private Label txtPoints;
     @FXML
     private Button btnExitGame;
@@ -52,10 +54,12 @@ public class MainController implements EventHandler<KeyEvent> {
     private ObservableList<String> toolList = FXCollections.observableArrayList("Pointer","Objects","PlayerCharacters","Enemies","Cars","Backgrounds");
     private ObservableList<String> underObjectToolList = FXCollections.observableArrayList("Square","Circle","Triangle");
     private ObservableList<PlayerCharacter> playerCharacters = FXCollections.observableArrayList(reader.getPlayableCharacters());
-    private ObservableList<String> playerCharacterList = FXCollections.observableArrayList();
+    private ObservableList<Image> playerCharacterList = FXCollections.observableArrayList();
+    // private ObservableList<Enemy> enemies = FXCollections.observableArrayList(reader.getEnemyCharacters());
+    //private ObservableList<String> playerCharacterList = FXCollections.observableArrayList();
     private ObservableList<Enemy> enemyCharacters = FXCollections.observableArrayList(reader2.getEnemyCharacters());
     private ObservableList<Car> carCharacters = FXCollections.observableArrayList(reader.getCarCharacters());
-   // private ObservableList<String> enemyList = FXCollections.observableArrayList();
+    // private ObservableList<String> enemyList = FXCollections.observableArrayList();
 
 
     //private ArrayList<Enemy> enemies = reader2.getEnemyCharacters();
@@ -149,6 +153,7 @@ public class MainController implements EventHandler<KeyEvent> {
     }
 
     public void initialize() {
+        //testkode - karakteren på skjermen
         playableCharacterSprite.setFocusTraversable(true);
 
         playableCharacterSprite.setImage(new Image(playerCharacters.get(0).getPhoto()));
@@ -167,7 +172,7 @@ public class MainController implements EventHandler<KeyEvent> {
 
         toolSelect.setItems(toolList);
         for(int i = 0; i < playerCharacters.size(); i++) {
-            playerCharacterList.add(playerCharacters.get(i).getName());
+            playerCharacterList.add(new Image(playerCharacters.get(i).getPhoto()));
         }
 
 
@@ -189,8 +194,8 @@ public class MainController implements EventHandler<KeyEvent> {
                 }
                 else if(newValue.equals("PlayerCharacters")){
                     hideToolbars();
-                    addPlayerCharactersToToolbar();
-                   // underObjectToolSelect.setItems(playerCharacterList);
+                    //addPlayerCharactersToToolbar();
+                    underCharacterToolSelect.setItems(playerCharacterList);
                 }
                 /*
                 else if(newValue.equals("Enemies")) {
