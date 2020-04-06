@@ -55,6 +55,9 @@ public class MainController implements EventHandler<KeyEvent> {
     //private ArrayList<Enemy> enemies = reader2.getEnemyCharacters();
     //private ArrayList<Car> cars = reader.getCarCharacters();
 
+    private int screenWidth = (int) Screen.getPrimary().getBounds().getWidth();
+    private int screenHeigth = (int) Screen.getPrimary().getBounds().getHeight();
+
     @Override
     public void handle(KeyEvent keyEvent){
 
@@ -135,19 +138,20 @@ public class MainController implements EventHandler<KeyEvent> {
 
     private void removeWalking() {
 
+
+
     }
 
     public void initialize() {
 
         System.out.println( Window.getWindows().size());
 
-
-
         playableCharacterSprite.setFocusTraversable(true);
         playableCharacterSprite.setImage(new Image("/Pictures/PlayableCharacters/aleksander.png"));
         playableCharacterSprite.setFitHeight(playerCharacters.get(0).getSize()*10);
         characterMovementSpeed = playerCharacters.get(0).getMovementSpeed();
 
+        setUpButtons();
 
         toolSelect.setItems(toolList);
         for(int i = 0; i < playerCharacters.size(); i++) {
@@ -183,9 +187,20 @@ public class MainController implements EventHandler<KeyEvent> {
 
         });
 
+
+
+
+
     }
 
+    private void setUpButtons() {
+            btnConfirm.setLayoutY(screenHeigth/2);
+            btnConfirm.setLayoutX(screenWidth/2);
 
+            btnExitGame.setLayoutY(30);
+            btnExitGame.setLayoutX(screenWidth-50);
+
+    }
 
 
 }
