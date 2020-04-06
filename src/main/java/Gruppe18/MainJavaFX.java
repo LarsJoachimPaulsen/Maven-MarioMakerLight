@@ -17,7 +17,7 @@ public class MainJavaFX extends Application {
         public void start(Stage primaryStage) {
             try {
                 Parent root = FXMLLoader.load(getClass().getResource("/Main.fxml"));
-                primaryStage.getIcons().add(new Image("Pictures/logo.png"));
+                primaryStage.getIcons().add(new Image("Pictures/Icons/logo.png"));
                 primaryStage.setTitle("Mario Maker Light");
 
                 double maxX = Screen.getPrimary().getVisualBounds().getMaxX();
