@@ -146,6 +146,8 @@ public class MainController implements EventHandler<KeyEvent> {
 
         System.out.println( Window.getWindows().size());
 
+
+
         playableCharacterSprite.setFocusTraversable(true);
         playableCharacterSprite.setImage(new Image("/Pictures/PlayableCharacters/aleksander.png"));
         playableCharacterSprite.setFitHeight(playerCharacters.get(0).getSize()*10);
