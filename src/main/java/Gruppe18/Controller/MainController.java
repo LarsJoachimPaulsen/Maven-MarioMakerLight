@@ -2,7 +2,7 @@ package Gruppe18.Controller;
 
 import Gruppe18.Data.*;
 import Gruppe18.FileHandeling.Writer_Reader;
-import Gruppe18.Settings.Settings;
+import Gruppe18.Settings.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -274,7 +274,7 @@ public class MainController implements EventHandler<KeyEvent> {
             //setOriontationOfSecondaryToolBar("left");
 
         // må fikses noe bugs
-            Settings.setOriontationOfSecondaryToolBar(underObjectToolSelect, "left");
+            Settings.setOriontationOfSecondaryToolBar(underObjectToolSelect, "bottom");
 
 
 
