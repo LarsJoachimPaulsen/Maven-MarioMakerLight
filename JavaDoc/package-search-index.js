@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"Gruppe18"},{"l":"Gruppe18.Controller"},{"l":"Gruppe18.Data"},{"l":"Gruppe18.FileHandeling"},{"l":"Gruppe18.Settings"}]

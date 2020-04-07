@@ -2,6 +2,7 @@ package Gruppe18.Controller;
 
 import Gruppe18.Data.*;
 import Gruppe18.FileHandeling.Writer_Reader;
+import Gruppe18.Settings.Settings;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -16,10 +17,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
 import javafx.stage.Screen;
-import javafx.stage.Window;
+
 
 public class MainController implements EventHandler<KeyEvent> {
 
@@ -33,47 +32,116 @@ public class MainController implements EventHandler<KeyEvent> {
     public ImageView playableCharacterSprite;
 
    @FXML
-    private ImageView enemySprite;
+    protected ImageView enemySprite;
     @FXML
-    private ImageView carSprite;
+    protected ImageView carSprite;
     @FXML
-    private ListView<String> toolSelect = new ListView<>();
+    protected ListView<String> toolSelect = new ListView<>();
     @FXML
-    private Label toolSelectedLabel;
+    protected Label toolSelectedLabel;
     @FXML
-    private ListView<String> underObjectToolSelect = new ListView<>();
+    protected ListView<String> underObjectToolSelect = new ListView<>();
     @FXML
-    private ListView<Image> underCharacterToolSelect = new ListView<>();
+    protected ListView<Image> underCharacterToolSelect = new ListView<>();
     @FXML
-    private Label txtPoints;
+    protected Label txtPoints;
     @FXML
-    private Button btnExitGame;
+    protected Button btnExitGame;
     @FXML
-    private Label collisionTestText;
+    protected Label collisionTestText;
 
     private int characterMovementSpeed = 10;
 
-    Writer_Reader reader = new Writer_Reader();
-    Writer_Reader reader2 = new Writer_Reader();
+   // Writer_Reader reader = new Writer_Reader();
+    //Writer_Reader reader2 = new Writer_Reader();
 
     private ObservableList<String> toolList = FXCollections.observableArrayList("Pointer","Objects","PlayerCharacters","Enemies","Cars","Backgrounds");
     private ObservableList<String> underObjectToolList = FXCollections.observableArrayList("Square","Circle","Triangle");
-    private ObservableList<PlayerCharacter> playerCharacters = FXCollections.observableArrayList(reader.getPlayableCharacters());
+    private ObservableList<PlayerCharacter> playerCharacters = FXCollections.observableArrayList(Writer_Reader.getPlayableCharacters());
     private ObservableList<Image> playerCharacterList = FXCollections.observableArrayList();
     // private ObservableList<Enemy> enemies = FXCollections.observableArrayList(reader.getEnemyCharacters());
     //private ObservableList<String> playerCharacterList = FXCollections.observableArrayList();
-    private ObservableList<Enemy> enemyCharacters = FXCollections.observableArrayList(reader2.getEnemyCharacters());
-    private ObservableList<Car> carCharacters = FXCollections.observableArrayList(reader.getCarCharacters());
+    private ObservableList<Enemy> enemyCharacters = FXCollections.observableArrayList(Writer_Reader.getEnemyCharacters());
+    private ObservableList<Car> carCharacters = FXCollections.observableArrayList(Writer_Reader.getCarCharacters());
     // private ObservableList<String> enemyList = FXCollections.observableArrayList();
 
 
 
     //private ArrayList<Enemy> enemies = reader2.getEnemyCharacters();
     //private ArrayList<Car> cars = reader.getCarCharacters();
-    private double screenWidth = Screen.getPrimary().getBounds().getWidth();
-    private double screenHeigth =  Screen.getPrimary().getBounds().getHeight();
+    protected double screenWidth = Screen.getPrimary().getBounds().getWidth();
+    protected double screenHeigth =  Screen.getPrimary().getBounds().getHeight();
 
     private String currentOrientationOfToolBar = "";
+
+
+
+    public void initialize() {
+
+
+        //testkode - karakteren på skjermen
+
+
+        playableCharacterSprite.setFocusTraversable(true);
+        playableCharacterSprite.setImage(new Image(playerCharacters.get(0).getPhoto()));
+
+        // playableCharacterSprite.setImage(new Image("/Pictures/PlayableCharacters/aleksander.png"));
+        playableCharacterSprite.setFitHeight(playerCharacters.get(0).getSize()*10);
+        characterMovementSpeed = playerCharacters.get(0).getMovementSpeed();
+
+        enemySprite.setImage(new Image(enemyCharacters.get(0).getPhoto()));
+        enemySprite.setFitHeight(enemyCharacters.get(0).getSize()*10);
+
+        carSprite.setImage(new Image(carCharacters.get(0).getPhoto()));
+        carSprite.setFitHeight(carCharacters.get(0).getHeight()*10);
+
+        setUpButtons();
+
+
+        toolSelect.setItems(toolList);
+        for(int i = 0; i < playerCharacters.size(); i++) {
+            playerCharacterList.add(new Image(playerCharacters.get(i).getPhoto()));
+        }
+
+
+        /*
+        for(int i = 0; i < enemies.size(); i++) {
+            enemyList.add(enemies.get(i).getName());
+        }
+
+         */
+
+        toolSelect.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue ) {
+                toolSelectedLabel.setText(newValue);
+                if(newValue.equals("Objects")) {
+                    hideToolbars();
+                    underObjectToolSelect.setVisible(true);
+                    underObjectToolSelect.setItems(underObjectToolList);
+                    playableCharacterSprite.setImage(new Image("/Pictures/PlayableCharacters/Standard.png"));
+                }
+                else if(newValue.equals("PlayerCharacters")){
+                    hideToolbars();
+                    //addPlayerCharactersToToolbar();
+                    underCharacterToolSelect.setItems(playerCharacterList);
+                }
+                /*
+                else if(newValue.equals("Enemies")) {
+                    underObjectToolSelect.setItems(enemyList);
+                }
+
+                 */
+                else {
+                    underObjectToolSelect.setItems(null);
+                }
+            }
+
+        });
+
+    }
+
+
 
     @Override
     public void handle(KeyEvent keyEvent){
@@ -100,6 +168,7 @@ public class MainController implements EventHandler<KeyEvent> {
                 Scene scene = playableCharacterSprite.getScene();
                 switch (keyEvent.getCode()) {
                     case D:
+                        playableCharacterSprite.requestFocus();
                         if(playableCharacterSprite.getX() > scene.getWidth()){
                             playableCharacterSprite.setX(0);
                         }
@@ -169,66 +238,6 @@ public class MainController implements EventHandler<KeyEvent> {
 
     }
 
-    public void initialize() {
-        //testkode - karakteren på skjermen
-        playableCharacterSprite.setFocusTraversable(true);
-        playableCharacterSprite.setImage(new Image(playerCharacters.get(0).getPhoto()));
-
-       // playableCharacterSprite.setImage(new Image("/Pictures/PlayableCharacters/aleksander.png"));
-        playableCharacterSprite.setFitHeight(playerCharacters.get(0).getSize()*10);
-        characterMovementSpeed = playerCharacters.get(0).getMovementSpeed();
-
-        enemySprite.setImage(new Image(enemyCharacters.get(0).getPhoto()));
-        enemySprite.setFitHeight(enemyCharacters.get(0).getSize()*10);
-
-        carSprite.setImage(new Image(carCharacters.get(0).getPhoto()));
-        carSprite.setFitHeight(carCharacters.get(0).getHeight()*10);
-
-        setUpButtons();
-
-
-        toolSelect.setItems(toolList);
-        for(int i = 0; i < playerCharacters.size(); i++) {
-            playerCharacterList.add(new Image(playerCharacters.get(i).getPhoto()));
-        }
-
-
-        /*
-        for(int i = 0; i < enemies.size(); i++) {
-            enemyList.add(enemies.get(i).getName());
-        }
-
-         */
-
-        toolSelect.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue ) {
-                toolSelectedLabel.setText(newValue);
-                if(newValue.equals("Objects")) {
-                    hideToolbars();
-                    underObjectToolSelect.setVisible(true);
-                    underObjectToolSelect.setItems(underObjectToolList);
-                    playableCharacterSprite.setImage(new Image("/Pictures/PlayableCharacters/Standard.png"));
-                }
-                else if(newValue.equals("PlayerCharacters")){
-                    hideToolbars();
-                    //addPlayerCharactersToToolbar();
-                    underCharacterToolSelect.setItems(playerCharacterList);
-                }
-                /*
-                else if(newValue.equals("Enemies")) {
-                    underObjectToolSelect.setItems(enemyList);
-                }
-
-                 */
-                else {
-                    underObjectToolSelect.setItems(null);
-                }
-            }
-
-        });
-
-    }
 
     private void hideToolbars() {
         underObjectToolSelect.setVisible(false);
@@ -256,21 +265,24 @@ public class MainController implements EventHandler<KeyEvent> {
             btnExitGame.setLayoutY(30);
             btnExitGame.setLayoutX(screenWidth-50);
 
-            setOrientationOfToolBar("blæ");
+            // input left, right, top, bottom
+
+             setOrientationOfToolBar("left");
             toolSelectedLabel.setLayoutX(screenWidth*.05);
 
-            underObjectToolSelect.setLayoutX(screenWidth*.05);
-            underObjectToolSelect.setLayoutY(screenHeigth*.916);
-            underObjectToolSelect.setMinWidth(screenWidth*.95);
+            //input left, right, top, bottom
+            setOriontationOfSecondaryToolBar("left");
+
 
 
     }
+
 
     public void checkCollision(int direction){
 
         if (playableCharacterSprite.getBoundsInParent().intersects(enemySprite.getBoundsInParent())){
             if (direction == 1){
-                collisionTestText.setText("Collision From rigth");
+                collisionTestText.setText("Collision From right");
             }
             else if(direction == 2){
                 collisionTestText.setText("Collision from Left");
@@ -300,7 +312,8 @@ public class MainController implements EventHandler<KeyEvent> {
                 currentOrientationOfToolBar = "l";
                 trigger = true;
                 break;
-            case "rigth" :
+
+            case "right" :
                 toolSelect.setMinHeight(screenHeigth);
                 toolSelect.setMinWidth(screenWidth*.05);
                 toolSelect.setLayoutX(screenWidth-125);
@@ -318,7 +331,8 @@ public class MainController implements EventHandler<KeyEvent> {
                 currentOrientationOfToolBar = "t";
                 trigger = true;
                 break;
-            case "buttom" :
+
+            case "bottom" :
                 toolSelect.setMinWidth(screenWidth);
                 toolSelect.setMinHeight(screenHeigth*.05);
                 toolSelect.setMaxHeight(screenHeigth*.05);
@@ -330,13 +344,83 @@ public class MainController implements EventHandler<KeyEvent> {
 
         }
         if(!trigger){
-            System.out.println("funker");
+            System.out.println("Error in setOnOrientationOfToolbar!! String value needs to be top, bottom, left or right");
         }
 
     }
 
-    public void help(){
+    // skal flyttes til innstillinger
+    public void setOriontationOfSecondaryToolBar(String oriantation) {
 
+       boolean trigger = false;
+
+        switch (oriantation.toLowerCase()){
+            case "left" :
+                if (currentOrientationOfToolBar.toLowerCase().equals("l")){
+
+                    underObjectToolSelect.setLayoutX(toolSelect.getMinWidth());
+                    toolSelectedLabel.setLayoutX(toolSelect.getMinWidth()*2);
+                }
+                else{
+                    underObjectToolSelect.setLayoutX(0);
+
+                }
+                underObjectToolSelect.setLayoutY(0);
+                underObjectToolSelect.setMinHeight(screenHeigth);
+                underObjectToolSelect.setMaxWidth(screenWidth*0.05);
+                trigger = true;
+                break;
+
+            case "right" :
+                if (currentOrientationOfToolBar.toLowerCase().equals("r")){
+                    underObjectToolSelect.setLayoutX(screenWidth - screenWidth*.1);
+                }
+                else {
+                    underObjectToolSelect.setLayoutX(screenWidth-125);
+
+                }
+                underObjectToolSelect.setLayoutY(0);
+                underObjectToolSelect.setMinHeight(screenHeigth);
+                underObjectToolSelect.setMaxWidth(screenWidth*.05);
+                trigger = true;
+                break;
+
+            case "top" :
+                if (currentOrientationOfToolBar.toLowerCase().equals("t")){
+                    underObjectToolSelect.setLayoutY(toolSelect.getMaxHeight());
+                    System.out.println(toolSelect.getMaxHeight());
+                }
+                else {
+                    underObjectToolSelect.setLayoutY(0);
+                }
+                underObjectToolSelect.setLayoutX(0);
+                underObjectToolSelect.setMinWidth(screenWidth);
+                underObjectToolSelect.setMaxHeight(screenHeigth*.05);
+                trigger = true;
+                break;
+
+            case "bottom" :
+                if (currentOrientationOfToolBar.toLowerCase().equals("b")){
+                    underObjectToolSelect.setLayoutY(screenHeigth-125 - toolSelect.getMaxHeight());
+                }
+                else {
+                    underObjectToolSelect.setLayoutY(screenHeigth-125);
+                }
+                underObjectToolSelect.setLayoutX(0);
+                underObjectToolSelect.setMinWidth(screenWidth);
+                underObjectToolSelect.setMaxHeight(screenHeigth*.05);
+                trigger = true;
+                break;
+        }
+
+        if(!trigger){
+            System.out.println("Error in setOrientationOfSecondaryToolbar! String value needs to be left, right, top or bottom");
+        }
+    }
+
+
+    public void help(){
+        // method a user can call to get help with the class in question. Will be printed in console
 
     }
 }

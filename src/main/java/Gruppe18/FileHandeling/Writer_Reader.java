@@ -8,16 +8,20 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Writer_Reader {
+public abstract class Writer_Reader {
 
-    private ArrayList<PlayerCharacter> playableCharacters = new ArrayList<>();
-    private ArrayList<Enemy> enemyCharacters = new ArrayList<>();
-    private ArrayList<Car> carCharacters = new ArrayList<>();
+    private static ArrayList<PlayerCharacter> playableCharacters = new ArrayList<>();
+    private static ArrayList<Enemy> enemyCharacters = new ArrayList<>();
+    private static ArrayList<Car> carCharacters = new ArrayList<>();
 
 
     //This method will write a character to the correct file, if it does not already exist.
 
-    public void writeCharacterToFil(Object character) {
+    /**
+     * A method for writing a character to a json-file
+     * @param character takes a character object and converts it to the correct json-file
+     */
+    public static void writeCharacterToFile(Object character) {
 
         boolean characterExists = false;
         File file = null;
@@ -39,8 +43,6 @@ public class Writer_Reader {
             } else {
                 playableCharacters.add((PlayerCharacter) character);
             }
-
-
             // legg til character i Array.
             // skriv hele array.
 
@@ -112,8 +114,11 @@ public class Writer_Reader {
 
     }
 
-
-    public ArrayList<Car> getCarCharacters() {
+    /**
+     *  A method to get all Car object saved to a file
+     * @return returns an ArrayList of Car objects
+     */
+    public static ArrayList<Car> getCarCharacters() {
             File file = new File("src/main/resources/Files/Car.json");
 
             GsonBuilder gsonBuilder = new GsonBuilder().setPrettyPrinting();
@@ -143,7 +148,12 @@ public class Writer_Reader {
             }
         }
 
-        public ArrayList<Enemy> getEnemyCharacters() {
+
+    /**
+     *  A method to get all the enemy objects saved to file
+     * @return an ArrayList of Enemy objects
+     */
+    public static ArrayList<Enemy> getEnemyCharacters() {
 
             File file = new File("src/main/resources/Files/Enemy.json");
 
@@ -175,7 +185,11 @@ public class Writer_Reader {
         }
 
 
-        public ArrayList<PlayerCharacter> getPlayableCharacters() {
+    /**
+     * A method to get all PlayerCharacter objects saved to file
+     * @return an ArrayList of PlayerCharacter objects.
+     */
+    public static ArrayList<PlayerCharacter> getPlayableCharacters() {
 
 
             File file = new File("src/main/resources/Files/PlayableCharacter.json");
@@ -208,6 +222,21 @@ public class Writer_Reader {
             }
 
         }
+
+    /**
+     *  A method to print all the Classes method to console, with a short description.
+     */
+    public void help(){
+            // må implementeres
+        }
+
+    /**
+     *  A method to print the information of the method given.
+      * @param methodName The name of the method you want more information about.
+     */
+    public void help(String methodName){
+        // må implementeres
+    }
 
 }
 
