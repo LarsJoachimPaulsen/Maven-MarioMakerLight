@@ -10,8 +10,19 @@ import java.util.Arrays;
 
 public abstract class Writer_Reader {
 
+    /**
+     *  An ArrayList that contains all the saved PlayableCharacter objects
+     */
     private static ArrayList<PlayerCharacter> playableCharacters = new ArrayList<>();
+
+    /**
+     * An ArrayList that contains all the saved Enemy objects
+     */
     private static ArrayList<Enemy> enemyCharacters = new ArrayList<>();
+
+    /**
+     * An ArrayList that contains all the saved Car objects
+     */
     private static ArrayList<Car> carCharacters = new ArrayList<>();
 
 
