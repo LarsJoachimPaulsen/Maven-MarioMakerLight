@@ -16,10 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
 import javafx.stage.Screen;
-import javafx.stage.Window;
 
 public class MainController implements EventHandler<KeyEvent> {
 
@@ -100,6 +97,7 @@ public class MainController implements EventHandler<KeyEvent> {
                 Scene scene = playableCharacterSprite.getScene();
                 switch (keyEvent.getCode()) {
                     case D:
+                        playableCharacterSprite.requestFocus();
                         if(playableCharacterSprite.getX() > scene.getWidth()){
                             playableCharacterSprite.setX(0);
                         }
@@ -256,15 +254,14 @@ public class MainController implements EventHandler<KeyEvent> {
             btnExitGame.setLayoutY(30);
             btnExitGame.setLayoutX(screenWidth-50);
 
-            setOrientationOfToolBar("blæ");
+            setOrientationOfToolBar("left");
             toolSelectedLabel.setLayoutX(screenWidth*.05);
+            setOriontationOfSecondaryToolBar("left");
 
-            underObjectToolSelect.setLayoutX(screenWidth*.05);
-            underObjectToolSelect.setLayoutY(screenHeigth*.916);
-            underObjectToolSelect.setMinWidth(screenWidth*.95);
 
 
     }
+
 
     public void checkCollision(int direction){
 
@@ -300,6 +297,7 @@ public class MainController implements EventHandler<KeyEvent> {
                 currentOrientationOfToolBar = "l";
                 trigger = true;
                 break;
+
             case "rigth" :
                 toolSelect.setMinHeight(screenHeigth);
                 toolSelect.setMinWidth(screenWidth*.05);
@@ -318,7 +316,8 @@ public class MainController implements EventHandler<KeyEvent> {
                 currentOrientationOfToolBar = "t";
                 trigger = true;
                 break;
-            case "buttom" :
+
+            case "bottom" :
                 toolSelect.setMinWidth(screenWidth);
                 toolSelect.setMinHeight(screenHeigth*.05);
                 toolSelect.setMaxHeight(screenHeigth*.05);
@@ -330,10 +329,80 @@ public class MainController implements EventHandler<KeyEvent> {
 
         }
         if(!trigger){
-            System.out.println("funker");
+            System.out.println("Error in setOnOrientationOfToolbar!! String value needs to be top, bottom, left or rigth");
         }
 
     }
+
+    // skal flyttes til innstillinger
+    public void setOriontationOfSecondaryToolBar(String oriantation) {
+
+       boolean trigger = false;
+
+        switch (oriantation.toLowerCase()){
+            case "left" :
+                if (currentOrientationOfToolBar.toLowerCase().equals("l")){
+
+                    underObjectToolSelect.setLayoutX(toolSelect.getMinWidth());
+                    toolSelectedLabel.setLayoutX(toolSelect.getMinWidth()*2);
+                }
+                else{
+                    underObjectToolSelect.setLayoutX(0);
+
+                }
+                underObjectToolSelect.setLayoutY(0);
+                underObjectToolSelect.setMinHeight(screenHeigth);
+                underObjectToolSelect.setMinWidth(screenWidth*0.05);
+                trigger = true;
+                break;
+
+            case "rigth" :
+                if (currentOrientationOfToolBar.toLowerCase().equals("r")){
+                    underObjectToolSelect.setLayoutX(screenWidth - screenWidth*.1);
+                }
+                else {
+                    underObjectToolSelect.setLayoutX(screenWidth-125);
+
+                }
+                underObjectToolSelect.setLayoutY(0);
+                underObjectToolSelect.setMinHeight(screenHeigth);
+                underObjectToolSelect.setMaxWidth(screenWidth*.05);
+                trigger = true;
+                break;
+
+            case "top" :
+                if (currentOrientationOfToolBar.toLowerCase().equals("t")){
+                    underObjectToolSelect.setLayoutY(toolSelect.getMaxHeight());
+                    System.out.println(toolSelect.getMaxHeight());
+                }
+                else {
+                    underObjectToolSelect.setLayoutY(0);
+                }
+                underObjectToolSelect.setLayoutX(0);
+                underObjectToolSelect.setMinWidth(screenWidth);
+                underObjectToolSelect.setMaxHeight(screenHeigth*.05);
+                trigger = true;
+                break;
+
+            case "bottom" :
+                if (currentOrientationOfToolBar.toLowerCase().equals("b")){
+                    underObjectToolSelect.setLayoutY(screenHeigth-125 - toolSelect.getMaxHeight());
+                }
+                else {
+                    underObjectToolSelect.setLayoutY(screenHeigth-125);
+                }
+                underObjectToolSelect.setLayoutX(0);
+                underObjectToolSelect.setMinWidth(screenWidth);
+                underObjectToolSelect.setMaxHeight(screenHeigth*.05);
+                trigger = true;
+                break;
+        }
+
+        if(!trigger){
+            System.out.println("Error in setOrientationOfSecondaryToolbar! String value needs to be left, rigth, top or bottom");
+        }
+    }
+
 
     public void help(){
 

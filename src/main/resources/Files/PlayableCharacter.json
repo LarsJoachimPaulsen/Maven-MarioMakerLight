@@ -8,7 +8,7 @@
     "size": 10,
     "scoreEneabled": true,
     "points": 0,
-    "photo": "/Pictures/PlayableCharacters/playerCharacter.png"
+    "photo": "/Pictures/PlayableCharacters/Standard.png"
   },
   {
     "name": "lubigi",
@@ -19,7 +19,7 @@
     "size": 10,
     "scoreEneabled": false,
     "points": 0,
-    "photo": "/Pictures/PlayableCharacters/playerCharacter.png"
+    "photo": "/Pictures/PlayableCharacters/StandardAngry.png"
   },
   {
     "name": "mario",
@@ -30,6 +30,6 @@
     "size": 10,
     "scoreEneabled": false,
     "points": 0,
-    "photo": "/Pictures/PlayableCharacters/playerCharacter.png"
+    "photo": "/Pictures/PlayableCharacters/StandardGirl.png"
   }
 ]
