@@ -16,6 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Screen;
 import javafx.stage.Window;
@@ -71,6 +72,9 @@ public class MainController implements EventHandler<KeyEvent> {
     //private ArrayList<Car> cars = reader.getCarCharacters();
     private double screenWidth = Screen.getPrimary().getBounds().getWidth();
     private double screenHeigth =  Screen.getPrimary().getBounds().getHeight();
+
+    private String currentOrientationOfToolBar = "";
+
     @Override
     public void handle(KeyEvent keyEvent){
 
@@ -204,7 +208,7 @@ public class MainController implements EventHandler<KeyEvent> {
                     hideToolbars();
                     underObjectToolSelect.setVisible(true);
                     underObjectToolSelect.setItems(underObjectToolList);
-                    playableCharacterSprite.setImage(new Image("/Pictures/PlayableCharacters/Standard1.png"));
+                    playableCharacterSprite.setImage(new Image("/Pictures/PlayableCharacters/aleksander.png"));
                 }
                 else if(newValue.equals("PlayerCharacters")){
                     hideToolbars();
@@ -223,10 +227,6 @@ public class MainController implements EventHandler<KeyEvent> {
             }
 
         });
-
-
-
-
 
     }
 
@@ -256,8 +256,7 @@ public class MainController implements EventHandler<KeyEvent> {
             btnExitGame.setLayoutY(30);
             btnExitGame.setLayoutX(screenWidth-50);
 
-            toolSelect.setMinHeight(screenHeigth);
-            toolSelect.setMinWidth(screenWidth*.05);
+            setOrientationOfToolBar("blæ");
             toolSelectedLabel.setLayoutX(screenWidth*.05);
 
             underObjectToolSelect.setLayoutX(screenWidth*.05);
@@ -287,4 +286,57 @@ public class MainController implements EventHandler<KeyEvent> {
     }
 
 
+    // Må ha fixes for å få riktig orientation på tekst. Skal inn i settings!
+    public void setOrientationOfToolBar(String orientation){
+
+        boolean trigger = false;
+        switch (orientation.toLowerCase()){
+
+            case "left" :
+                toolSelect.setMinHeight(screenHeigth);
+                toolSelect.setMinWidth(screenWidth*.05);
+                toolSelect.setLayoutX(0);
+                toolSelect.setLayoutY(0);
+                currentOrientationOfToolBar = "l";
+                trigger = true;
+                break;
+            case "rigth" :
+                toolSelect.setMinHeight(screenHeigth);
+                toolSelect.setMinWidth(screenWidth*.05);
+                toolSelect.setLayoutX(screenWidth-125);
+                toolSelect.setLayoutY(0);
+                currentOrientationOfToolBar = "r";
+                trigger = true;
+                break;
+
+            case "top" :
+                toolSelect.setMinWidth(screenWidth);
+                toolSelect.setMinHeight(screenHeigth*.05);
+                toolSelect.setMaxHeight(screenHeigth*.05);
+                toolSelect.setLayoutX(0);
+                toolSelect.setLayoutY(0);
+                currentOrientationOfToolBar = "t";
+                trigger = true;
+                break;
+            case "buttom" :
+                toolSelect.setMinWidth(screenWidth);
+                toolSelect.setMinHeight(screenHeigth*.05);
+                toolSelect.setMaxHeight(screenHeigth*.05);
+                toolSelect.setLayoutX(0);
+                toolSelect.setLayoutY(screenHeigth-125);
+                currentOrientationOfToolBar = "b";
+                trigger = true;
+                break;
+
+        }
+        if(!trigger){
+            System.out.println("funker");
+        }
+
+    }
+
+    public void help(){
+
+
+    }
 }
