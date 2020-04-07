@@ -81,6 +81,8 @@ public class MainConsole {
 
 
 
+
+
 /*        for(PlayerCharacter player : playerList){
             player.getInformation();
         } */

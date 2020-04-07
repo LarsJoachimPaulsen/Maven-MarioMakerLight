@@ -5,6 +5,7 @@ public final class PlayerCharacter {
     String name;
     int maxHealth = 50;
     int currentHeath = 50;
+    // to do : legg inn jumpHight i pixels.
     int movementSpeed = 10;
     int damage = 5;
     int size = 10;

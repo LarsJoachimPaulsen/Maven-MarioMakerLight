@@ -6,16 +6,18 @@ import javafx.stage.Screen;
 
 public abstract class Settings {
 
-    public String currentOrientationOfToolBar = "";
-    private double screenHeigth = Screen.getPrimary().getBounds().getHeight();
-    private double screenWidth = Screen.getPrimary().getBounds().getWidth();
+    public static String currentOrientationOfToolBar = "";
+    private static double screenHeigth = Screen.getPrimary().getBounds().getHeight();
+    private static double screenWidth = Screen.getPrimary().getBounds().getWidth();
+    private static double mainToolbarWidth = 0;
+    private static double mainToolbarHeigth = 0;
 
     /**
      * A method to change the direction of the main toolbar
      * @param list the listview you want to change
      * @param orientation right, left, up or bottom.
      */
-    public void setOrientationOfToolBar(ListView list, String orientation){
+    public static void setOrientationOfToolBar(ListView list, String orientation){
 
         boolean trigger = false;
         switch (orientation.toLowerCase()){
@@ -26,6 +28,8 @@ public abstract class Settings {
                 list.setLayoutX(0);
                 list.setLayoutY(0);
                 currentOrientationOfToolBar = "l";
+                mainToolbarWidth = screenWidth*.5;
+
                 trigger = true;
                 break;
 
@@ -34,6 +38,7 @@ public abstract class Settings {
                 list.setMinWidth(screenWidth*.05);
                 list.setLayoutX(screenWidth-125);
                 list.setLayoutY(0);
+                mainToolbarWidth = screenWidth*.05;
                 currentOrientationOfToolBar = "r";
                 trigger = true;
                 break;
@@ -45,6 +50,7 @@ public abstract class Settings {
                 list.setLayoutX(0);
                 list.setLayoutY(0);
                 currentOrientationOfToolBar = "t";
+                mainToolbarHeigth = screenHeigth*.05;
                 trigger = true;
                 break;
 
@@ -54,6 +60,7 @@ public abstract class Settings {
                 list.setMaxHeight(screenHeigth*.05);
                 list.setLayoutX(0);
                 list.setLayoutY(screenHeigth-125);
+                mainToolbarHeigth = screenHeigth*.05;
                 currentOrientationOfToolBar = "b";
                 trigger = true;
                 break;
@@ -63,6 +70,75 @@ public abstract class Settings {
             System.out.println("Error in setOnOrientationOfToolbar!! String value needs to be top, bottom, left or right");
         }
 
+    }
+
+    // bugs
+    public static void setOriontationOfSecondaryToolBar(ListView list, String oriantation) {
+
+        boolean trigger = false;
+
+        switch (oriantation.toLowerCase()){
+            case "left" :
+                if (currentOrientationOfToolBar.toLowerCase().equals("l")){
+
+                    list.setLayoutX(mainToolbarWidth);
+                    //toolSelectedLabel.setLayoutX(toolSelect.getMinWidth()*2);
+                }
+                else{
+                    list.setLayoutX(0);
+
+                }
+                list.setLayoutY(0);
+                list.setMinHeight(screenHeigth);
+                list.setMaxWidth(screenWidth*0.05);
+                trigger = true;
+                break;
+
+            case "right" :
+                if (currentOrientationOfToolBar.toLowerCase().equals("r")){
+                    list.setLayoutX(screenWidth - screenWidth*.1);
+                }
+                else {
+                    list.setLayoutX(screenWidth-125);
+
+                }
+                list.setLayoutY(0);
+                list.setMinHeight(screenHeigth);
+                list.setMaxWidth(screenWidth*.05);
+                trigger = true;
+                break;
+
+            case "top" :
+                if (currentOrientationOfToolBar.toLowerCase().equals("t")){
+                    list.setLayoutY(screenHeigth);
+                    //System.out.println(toolSelect.getMaxHeight());
+                }
+                else {
+                    list.setLayoutY(0);
+                }
+                list.setLayoutX(0);
+                list.setMinWidth(screenWidth);
+                list.setMaxHeight(screenHeigth*.05);
+                trigger = true;
+                break;
+
+            case "bottom" :
+                if (currentOrientationOfToolBar.toLowerCase().equals("b")){
+                    list.setLayoutY(screenHeigth-125 - mainToolbarHeigth);
+                }
+                else {
+                    list.setLayoutY(screenHeigth-125);
+                }
+                list.setLayoutX(0);
+                list.setMinWidth(screenWidth);
+                list.setMaxHeight(screenHeigth*.05);
+                trigger = true;
+                break;
+        }
+
+        if(!trigger){
+            System.out.println("Error in setOrientationOfSecondaryToolbar! String value needs to be left, right, top or bottom");
+        }
     }
 
 /*

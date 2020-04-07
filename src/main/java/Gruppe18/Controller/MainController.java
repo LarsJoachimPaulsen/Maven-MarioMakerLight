@@ -266,12 +266,15 @@ public class MainController implements EventHandler<KeyEvent> {
             btnExitGame.setLayoutX(screenWidth-50);
 
             // input left, right, top, bottom
-
-             setOrientationOfToolBar("left");
+            Settings.setOrientationOfToolBar(toolSelect, "left");
+             //setOrientationOfToolBar("left");
             toolSelectedLabel.setLayoutX(screenWidth*.05);
 
             //input left, right, top, bottom
-            setOriontationOfSecondaryToolBar("left");
+            //setOriontationOfSecondaryToolBar("left");
+
+        // må fikses noe bugs
+            Settings.setOriontationOfSecondaryToolBar(underObjectToolSelect, "left");
 
 
 
