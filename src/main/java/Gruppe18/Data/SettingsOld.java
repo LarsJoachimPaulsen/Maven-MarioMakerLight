@@ -10,5 +10,10 @@ public class SettingsOld {
         // will change the orientation of the toolbar. (default will be to the left)
     }
 
+    public void setProrgramIcon(String pathToIcon){
+        // will set the programs icon
+    }
+
+
 
 }
