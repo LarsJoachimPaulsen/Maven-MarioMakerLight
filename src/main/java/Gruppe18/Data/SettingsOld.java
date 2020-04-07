@@ -1,6 +1,6 @@
 package Gruppe18.Data;
 
-public class Settings {
+public class SettingsOld {
 
     public void addNewBackground(String localFilepath) {
         //will add user defined pictures in the background folder

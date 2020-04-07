@@ -2,7 +2,7 @@ package Gruppe18;
 
 import Gruppe18.Data.*;
 import Gruppe18.FileHandeling.Writer_Reader;
-import javafx.stage.Stage;
+import Gruppe18.Settings.Settings;
 
 import java.util.ArrayList;
 
@@ -22,9 +22,9 @@ public class MainConsole {
         mario.getInformation();
         System.out.println(mario.toString());
 
-        Writer_Reader writer = new Writer_Reader();
+        //Writer_Reader writer = new Writer_Reader();
 
-       writer.writeCharacterToFil(mario);
+       Writer_Reader.writeCharacterToFile(mario);
 
 
         //System.out.println(mariu.isScoreEneabled());
@@ -37,7 +37,7 @@ public class MainConsole {
         Enemy goomber = enemy.createEnemy();
 
         System.out.println(goomber.getName());
-        writer.writeCharacterToFil(goomber);
+        Writer_Reader.writeCharacterToFile(goomber);
 
         EnemyBuilder enemy2 = new EnemyBuilder()
                 .name("kopra")
@@ -45,7 +45,7 @@ public class MainConsole {
                 .damage(20)
                 .pointValue(20);
         Enemy kopra = enemy2.createEnemy();
-        writer.writeCharacterToFil(kopra);
+        Writer_Reader.writeCharacterToFile(kopra);
 
         CarBuilder c = new CarBuilder()
                 .name("subaru")
@@ -56,29 +56,27 @@ public class MainConsole {
         System.out.println(subaru);
         System.out.println(subaru.getName());
         subaru.getInformation();
-        writer.writeCharacterToFil(subaru);
+        Writer_Reader.writeCharacterToFile(subaru);
 
-        Writer_Reader reader = new Writer_Reader();
-       ArrayList<PlayerCharacter> playerList = reader.getPlayableCharacters();
+
+       ArrayList<PlayerCharacter> playerList = Writer_Reader.getPlayableCharacters();
 
        for (int i = 0; i<playerList.size(); i++){
            playerList.get(i).getInformation();
        }
 
-       ArrayList<Enemy> enemyList = reader.getEnemyCharacters();
+        ArrayList<Enemy> enemyList = Writer_Reader.getEnemyCharacters();
 
        for(int i = 0; i<enemyList.size(); i++){
            enemyList.get(i).getInformation();
        }
 
-       ArrayList<Car> carList = reader.getCarCharacters();
+       ArrayList<Car> carList = Writer_Reader.getCarCharacters();
 
        for(int i = 0; i<carList.size(); i++){
            carList.get(i).getInformation();
        }
-
        MainJavaFX newGame = new MainJavaFX();
-
 
 
 
