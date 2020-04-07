@@ -254,11 +254,11 @@ public class MainController implements EventHandler<KeyEvent> {
             btnExitGame.setLayoutY(30);
             btnExitGame.setLayoutX(screenWidth-50);
 
-            // input left, rigth, top, bottom
+            // input left, right, top, bottom
             setOrientationOfToolBar("left");
             toolSelectedLabel.setLayoutX(screenWidth*.05);
 
-            //input left, rigth, top, bottom
+            //input left, right, top, bottom
             setOriontationOfSecondaryToolBar("left");
 
 
@@ -270,7 +270,7 @@ public class MainController implements EventHandler<KeyEvent> {
 
         if (playableCharacterSprite.getBoundsInParent().intersects(enemySprite.getBoundsInParent())){
             if (direction == 1){
-                collisionTestText.setText("Collision From rigth");
+                collisionTestText.setText("Collision From right");
             }
             else if(direction == 2){
                 collisionTestText.setText("Collision from Left");
@@ -301,7 +301,7 @@ public class MainController implements EventHandler<KeyEvent> {
                 trigger = true;
                 break;
 
-            case "rigth" :
+            case "right" :
                 toolSelect.setMinHeight(screenHeigth);
                 toolSelect.setMinWidth(screenWidth*.05);
                 toolSelect.setLayoutX(screenWidth-125);
@@ -332,7 +332,7 @@ public class MainController implements EventHandler<KeyEvent> {
 
         }
         if(!trigger){
-            System.out.println("Error in setOnOrientationOfToolbar!! String value needs to be top, bottom, left or rigth");
+            System.out.println("Error in setOnOrientationOfToolbar!! String value needs to be top, bottom, left or right");
         }
 
     }
@@ -355,11 +355,11 @@ public class MainController implements EventHandler<KeyEvent> {
                 }
                 underObjectToolSelect.setLayoutY(0);
                 underObjectToolSelect.setMinHeight(screenHeigth);
-                underObjectToolSelect.setMinWidth(screenWidth*0.05);
+                underObjectToolSelect.setMaxWidth(screenWidth*0.05);
                 trigger = true;
                 break;
 
-            case "rigth" :
+            case "right" :
                 if (currentOrientationOfToolBar.toLowerCase().equals("r")){
                     underObjectToolSelect.setLayoutX(screenWidth - screenWidth*.1);
                 }
@@ -402,13 +402,13 @@ public class MainController implements EventHandler<KeyEvent> {
         }
 
         if(!trigger){
-            System.out.println("Error in setOrientationOfSecondaryToolbar! String value needs to be left, rigth, top or bottom");
+            System.out.println("Error in setOrientationOfSecondaryToolbar! String value needs to be left, right, top or bottom");
         }
     }
 
 
     public void help(){
-
+        // method a user can call to get help with the class in question. Will be printed in console
 
     }
 }
