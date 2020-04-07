@@ -204,7 +204,7 @@ public class MainController implements EventHandler<KeyEvent> {
                     hideToolbars();
                     underObjectToolSelect.setVisible(true);
                     underObjectToolSelect.setItems(underObjectToolList);
-                    playableCharacterSprite.setImage(new Image("/Pictures/PlayableCharacters/aleksander.png"));
+                    playableCharacterSprite.setImage(new Image("/Pictures/PlayableCharacters/Standard1.png"));
                 }
                 else if(newValue.equals("PlayerCharacters")){
                     hideToolbars();
