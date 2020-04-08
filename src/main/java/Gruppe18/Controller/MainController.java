@@ -50,48 +50,40 @@ public class MainController implements EventHandler<KeyEvent> {
 
     private int characterMovementSpeed = 10;
 
-    //Writer_Reader reader = new Writer_Reader();
-    //Writer_Reader reader2 = new Writer_Reader();
 
     private ObservableList<String> toolList = FXCollections.observableArrayList("Pointer","Objects","PlayerCharacters","Enemies","Cars","Backgrounds");
     private ObservableList<String> underObjectToolList = FXCollections.observableArrayList("Square","Circle","Triangle");
 
     private ObservableList<PlayerCharacter> playerCharacters = FXCollections.observableArrayList(Writer_Reader.getPlayableCharacters());
     private ObservableList<Image> playerCharacterList = FXCollections.observableArrayList();
-    //private ObservableList<String> playerCharacterList = FXCollections.observableArrayList();
+    private ObservableList<String> playerCharacterListNames = FXCollections.observableArrayList();
 
-    // private ObservableList<Enemy> enemies = FXCollections.observableArrayList(reader.getEnemyCharacters());
-    private ObservableList<Enemy> enemyCharacters = FXCollections.observableArrayList(Writer_Reader.getEnemyCharacters());
-    private ObservableList<Car> carCharacters = FXCollections.observableArrayList(Writer_Reader.getCarCharacters());
-    // private ObservableList<String> enemyList = FXCollections.observableArrayList();
+    private ObservableList<Enemy> enemyList = FXCollections.observableArrayList(Writer_Reader.getEnemyCharacters());
+    private ObservableList<String> enemyListNames = FXCollections.observableArrayList();
 
+    private ObservableList<Car> carList = FXCollections.observableArrayList(Writer_Reader.getCarCharacters());
+    private ObservableList<String> carListNames = FXCollections.observableArrayList();
 
-
-    //private ArrayList<Enemy> enemies = reader2.getEnemyCharacters();
-    //private ArrayList<Car> cars = reader.getCarCharacters();
     protected double screenWidth = Screen.getPrimary().getBounds().getWidth();
     protected double screenHeigth =  Screen.getPrimary().getBounds().getHeight();
 
     private String currentOrientationOfToolBar = "";
 
-
-
     public void initialize() {
 
         //testkode - karakteren på skjermen
         playableCharacterSprite.setFocusTraversable(true);
-
         playableCharacterSprite.setImage(new Image(playerCharacters.get(0).getPhoto()));
 
         // playableCharacterSprite.setImage(new Image("/Pictures/PlayableCharacters/aleksander.png"));
         playableCharacterSprite.setFitHeight(playerCharacters.get(0).getSize()*10);
         characterMovementSpeed = playerCharacters.get(0).getMovementSpeed();
 
-        enemySprite.setImage(new Image(enemyCharacters.get(0).getPhoto()));
-        enemySprite.setFitHeight(enemyCharacters.get(0).getSize()*10);
+        enemySprite.setImage(new Image(enemyList.get(0).getPhoto()));
+        enemySprite.setFitHeight(enemyList.get(0).getSize()*10);
 
-        carSprite.setImage(new Image(carCharacters.get(0).getPhoto()));
-        carSprite.setFitHeight(carCharacters.get(0).getHeight()*10);
+        carSprite.setImage(new Image(carList.get(0).getPhoto()));
+        carSprite.setFitHeight(carList.get(0).getHeight()*10);
 
         setUpButtons();
 
@@ -99,15 +91,14 @@ public class MainController implements EventHandler<KeyEvent> {
         toolSelect.setItems(toolList);
         for(int i = 0; i < playerCharacters.size(); i++) {
             playerCharacterList.add(new Image(playerCharacters.get(i).getPhoto()));
+            playerCharacterListNames.add(playerCharacters.get(i).getName());
         }
-
-
-        /*
-        for(int i = 0; i < enemies.size(); i++) {
-            enemyList.add(enemies.get(i).getName());
+        for(int i = 0; i < enemyList.size(); i++) {
+            enemyListNames.add(enemyList.get(i).getName());
         }
-
-        */
+        for(int i = 0; i < carList.size(); i++) {
+            carListNames.add(carList.get(i).getName());
+        }
 
         //sjekker hvilken som har blitt valgt i toolSelect
         toolSelect.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
@@ -116,33 +107,34 @@ public class MainController implements EventHandler<KeyEvent> {
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue ) {
                 toolSelectedLabel.setText(newValue);
                 if(newValue.equals("Objects")) {
-                    hideToolbars();
                     underObjectToolSelect.setVisible(true);
                     underObjectToolSelect.setItems(underObjectToolList);
-
                 }
                 else if(newValue.equals("PlayerCharacters")){
+                    underObjectToolSelect.setVisible(true);
+                    underObjectToolSelect.setItems(playerCharacterListNames);
                     //addPlayerCharactersToToolbar();
-                    //underObjectToolSelect.setItems(playerCharacterList);
-                    underCharacterToolSelect.setItems(playerCharacterList);
-
-
+                    //underCharacterToolSelect.setItems(playerCharacterList);
                 }
-                /*
                 else if(newValue.equals("Enemies")) {
-                    underObjectToolSelect.setItems(enemyList);
+                    underObjectToolSelect.setVisible(true);
+                    underObjectToolSelect.setItems(enemyListNames);
                 }
-                */
+                else if(newValue.equals("Cars")) {
+                    underObjectToolSelect.setVisible(true);
+                    underObjectToolSelect.setItems(carListNames);
+                }
+                /*else if(newValue.equals("Backgrounds")) {
+                    underObjectToolSelect.setVisible(true);
+                    underObjectToolSelect.setItems(backgroundList);
+                }*/
                 else {
                     underObjectToolSelect.setVisible(false);
-                    //underObjectToolSelect.setItems(null);
+                    underObjectToolSelect.setItems(null);
                 }
             }
-
         });
-
     }
-
 
     @Override
     public void handle(KeyEvent keyEvent){
@@ -236,12 +228,6 @@ public class MainController implements EventHandler<KeyEvent> {
 
     }
 
-
-    private void hideToolbars() {
-        underObjectToolSelect.setVisible(false);
-    }
-
-
     // Adding new ImageViews containing player sprites, based on how many exists. Currently not working
     private void addPlayerCharactersToToolbar() {
 
@@ -277,7 +263,6 @@ public class MainController implements EventHandler<KeyEvent> {
 
     }
 
-
     // test for collision
     public void checkCollision(int direction){
 
@@ -297,7 +282,6 @@ public class MainController implements EventHandler<KeyEvent> {
 
         }
     }
-
 
     // Må ha fixes for å få riktig orientation på tekst. Skal inn i settings!
     /*
@@ -419,12 +403,8 @@ public class MainController implements EventHandler<KeyEvent> {
             System.out.println("Error in setOrientationOfSecondaryToolbar! String value needs to be left, right, top or bottom");
         }
     }
-
-*/
-
-
+    */
     public void help(){
         // method a user can call to get help with the class in question. Will be printed in console
-
     }
 }
