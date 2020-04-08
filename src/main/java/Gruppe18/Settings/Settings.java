@@ -1,6 +1,7 @@
 package Gruppe18.Settings;
 
 import Gruppe18.Controller.MainController;
+import javafx.geometry.Orientation;
 import javafx.scene.control.ListView;
 import javafx.stage.Screen;
 
@@ -38,6 +39,7 @@ public abstract class Settings {
                 list.setMinWidth(screenWidth*.05);
                 list.setLayoutX(0);
                 list.setLayoutY(0);
+                list.setOrientation(Orientation.VERTICAL);
                 currentOrientationOfToolBar = "l";
                 mainToolbarWidth = screenWidth*.5;
 
@@ -49,6 +51,7 @@ public abstract class Settings {
                 list.setMinWidth(screenWidth*.05);
                 list.setLayoutX(screenWidth-125);
                 list.setLayoutY(0);
+                list.setOrientation(Orientation.VERTICAL);
                 mainToolbarWidth = screenWidth*.05;
                 currentOrientationOfToolBar = "r";
                 trigger = true;
@@ -60,6 +63,7 @@ public abstract class Settings {
                 list.setMaxHeight(screenHeigth*.05);
                 list.setLayoutX(0);
                 list.setLayoutY(0);
+                list.setOrientation(Orientation.HORIZONTAL);
                 currentOrientationOfToolBar = "t";
                 mainToolbarHeigth = screenHeigth*.05;
                 trigger = true;
@@ -71,6 +75,7 @@ public abstract class Settings {
                 list.setMaxHeight(screenHeigth*.05);
                 list.setLayoutX(0);
                 list.setLayoutY(screenHeigth-125);
+                list.setOrientation(Orientation.HORIZONTAL);
                 mainToolbarHeigth = screenHeigth*.05;
                 currentOrientationOfToolBar = "b";
                 trigger = true;
@@ -110,6 +115,7 @@ public abstract class Settings {
                 list.setLayoutY(0);
                 list.setMinHeight(screenHeigth);
                 list.setMaxWidth(screenWidth*0.05);
+                list.setOrientation(Orientation.VERTICAL);
                 trigger = true;
                 break;
 
@@ -124,6 +130,7 @@ public abstract class Settings {
                 list.setLayoutY(0);
                 list.setMinHeight(screenHeigth);
                 list.setMaxWidth(screenWidth*.05);
+                list.setOrientation(Orientation.VERTICAL);
                 trigger = true;
                 break;
 
@@ -138,6 +145,7 @@ public abstract class Settings {
                 list.setLayoutX(0);
                 list.setMinWidth(screenWidth);
                 list.setMaxHeight(screenHeigth*.05);
+                list.setOrientation(Orientation.HORIZONTAL);
                 trigger = true;
                 break;
 
@@ -151,6 +159,7 @@ public abstract class Settings {
                 list.setLayoutX(0);
                 list.setMinWidth(screenWidth);
                 list.setMaxHeight(screenHeigth*.05);
+                list.setOrientation(Orientation.HORIZONTAL);
                 trigger = true;
                 break;
         }

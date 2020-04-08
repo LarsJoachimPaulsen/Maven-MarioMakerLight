@@ -36,8 +36,6 @@ public class MainController implements EventHandler<KeyEvent> {
     @FXML
     protected ListView<String> toolSelect = new ListView<>();
     @FXML
-    protected Label toolSelectedLabel;
-    @FXML
     protected ListView<String> underCharacterToolSelect = new ListView<>();
     @FXML
     protected ListView<ImageView> underObjectToolSelect = new ListView<>();
@@ -108,7 +106,6 @@ public class MainController implements EventHandler<KeyEvent> {
             ImageView imageView = new ImageView();
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue ) {
-                toolSelectedLabel.setText(newValue);
                 if(newValue.equals("Objects")) {
                     underObjectToolSelect.setVisible(true);
                     //underObjectToolSelect.setItems(underObjectToolList);
@@ -150,7 +147,7 @@ public class MainController implements EventHandler<KeyEvent> {
       btnConfirm.setVisible(false);
       btnExitGame.setVisible(true);
       toolSelect.setVisible(false);
-      toolSelectedLabel.setVisible(false);
+
       underObjectToolSelect.setVisible(false);
       txtPoints.setVisible(true);
       txtPoints.setText("");
@@ -229,7 +226,7 @@ public class MainController implements EventHandler<KeyEvent> {
         btnConfirm.setVisible(true);
         btnExitGame.setVisible(false);
         toolSelect.setVisible(true);
-        toolSelectedLabel.setVisible(true);
+
         underObjectToolSelect.setVisible(true);
         txtPoints.setVisible(false);
         removeWalking();
@@ -265,15 +262,15 @@ public class MainController implements EventHandler<KeyEvent> {
         btnExitGame.setLayoutX(screenWidth-50);
 
         // input left, right, top, bottom
-        Settings.setOrientationOfToolBar(toolSelect, "right");
+        Settings.setOrientationOfToolBar(toolSelect, "top");
          //setOrientationOfToolBar("left");
-        toolSelectedLabel.setLayoutX(screenWidth*.05);
+
 
         //input left, right, top, bottom
         //setOriontationOfSecondaryToolBar("left");
 
         // må fikses noe bugs
-        Settings.setOriontationOfSecondaryToolBar(underObjectToolSelect, "bottom");
+        Settings.setOriontationOfSecondaryToolBar(underObjectToolSelect, "right");
     }
 
     // test for collision
@@ -364,7 +361,8 @@ public class MainController implements EventHandler<KeyEvent> {
                 if (currentOrientationOfToolBar.toLowerCase().equals("l")){
 
                     underObjectToolSelect.setLayoutX(toolSelect.getMinWidth());
-                    toolSelectedLabel.setLayoutX(toolSelect.getMinWidth()*2);
+
+
                 }
                 else{
                     underObjectToolSelect.setLayoutX(0);
