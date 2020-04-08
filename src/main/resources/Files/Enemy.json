@@ -6,7 +6,7 @@
     "damage": 10,
     "pointValue": 30,
     "size": 10,
-    "photo": "/Pictures/EnemyCharacters/enemy.png"
+    "photo": "/Pictures/EnemyCharacters/enemy1.png"
   },
   {
     "name": "kopra",
@@ -15,6 +15,6 @@
     "damage": 20,
     "pointValue": 20,
     "size": 3,
-    "photo": "/Pictures/EnemyCharacters/enemy.png"
+    "photo": "/Pictures/EnemyCharacters/enemy2.png"
   }
 ]
