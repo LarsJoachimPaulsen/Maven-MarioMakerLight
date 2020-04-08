@@ -38,9 +38,7 @@ public class MainController implements EventHandler<KeyEvent> {
     @FXML
     protected Label toolSelectedLabel;
     @FXML
-    protected ListView<String> underCharacterToolSelect = new ListView<>();
-    @FXML
-    protected ListView<ImageView> underObjectToolSelect = new ListView<>();
+    protected ListView<ImageView> underToolSelect = new ListView<>();
     @FXML
     protected Label txtPoints;
     @FXML
@@ -110,29 +108,29 @@ public class MainController implements EventHandler<KeyEvent> {
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue ) {
                 toolSelectedLabel.setText(newValue);
                 if(newValue.equals("Objects")) {
-                    underObjectToolSelect.setVisible(true);
+                    underToolSelect.setVisible(true);
                     //underObjectToolSelect.setItems(underObjectToolList);
                 }
                 else if(newValue.equals("PlayerCharacters")){
-                    underObjectToolSelect.setVisible(true);
-                    underObjectToolSelect.setItems(playerCharacterListPhoto);
+                    underToolSelect.setVisible(true);
+                    underToolSelect.setItems(playerCharacterListPhoto);
                     //addPlayerCharactersToToolbar();0
                 }
                 else if(newValue.equals("Enemies")) {
-                    underObjectToolSelect.setVisible(true);
-                    underObjectToolSelect.setItems(enemyListPhoto);
+                    underToolSelect.setVisible(true);
+                    underToolSelect.setItems(enemyListPhoto);
                 }
                 else if(newValue.equals("Cars")) {
-                    underObjectToolSelect.setVisible(true);
-                    underObjectToolSelect.setItems(carListPhoto);
+                    underToolSelect.setVisible(true);
+                    underToolSelect.setItems(carListPhoto);
                 }
                 /*else if(newValue.equals("Backgrounds")) {
                     underObjectToolSelect.setVisible(true);
                     underObjectToolSelect.setItems(backgroundList);
                 }*/
                 else {
-                    underObjectToolSelect.setVisible(false);
-                    underObjectToolSelect.setItems(null);
+                    underToolSelect.setVisible(false);
+                    underToolSelect.setItems(null);
                 }
             }
         });
@@ -151,7 +149,7 @@ public class MainController implements EventHandler<KeyEvent> {
       btnExitGame.setVisible(true);
       toolSelect.setVisible(false);
       toolSelectedLabel.setVisible(false);
-      underObjectToolSelect.setVisible(false);
+      underToolSelect.setVisible(false);
       txtPoints.setVisible(true);
       txtPoints.setText("");
       playableCharacterSprite.requestFocus();
@@ -225,12 +223,12 @@ public class MainController implements EventHandler<KeyEvent> {
     /**
      * @author Lars
      */
-      public void exitGame(){
+    public void exitGame(){
         btnConfirm.setVisible(true);
         btnExitGame.setVisible(false);
         toolSelect.setVisible(true);
         toolSelectedLabel.setVisible(true);
-        underObjectToolSelect.setVisible(true);
+        underToolSelect.setVisible(true);
         txtPoints.setVisible(false);
         removeWalking();
     }
@@ -241,7 +239,6 @@ public class MainController implements EventHandler<KeyEvent> {
 
     // Adding new ImageViews containing player sprites, based on how many exists. Currently not working
     private void addPlayerCharactersToToolbar() {
-
         for (int i = 0; i<playerCharactersList.size(); i++){
            // String name = String.valueOf(i);
             ImageView name  = new ImageView();
@@ -265,7 +262,7 @@ public class MainController implements EventHandler<KeyEvent> {
         btnExitGame.setLayoutX(screenWidth-50);
 
         // input left, right, top, bottom
-        Settings.setOrientationOfToolBar(toolSelect, "right");
+        Settings.setOrientationOfToolBar(toolSelect, "left");
          //setOrientationOfToolBar("left");
         toolSelectedLabel.setLayoutX(screenWidth*.05);
 
@@ -273,36 +270,30 @@ public class MainController implements EventHandler<KeyEvent> {
         //setOriontationOfSecondaryToolBar("left");
 
         // må fikses noe bugs
-        Settings.setOriontationOfSecondaryToolBar(underObjectToolSelect, "bottom");
+        Settings.setOriontationOfSecondaryToolBar(underToolSelect, "right");
     }
-
-    // test for collision
 
     /**
      *
      * @param direction a test for checking the direction of the collision
      * @author Lars
      */
-    private void checkCollision(int direction){
+    private void checkCollision (int direction){
 
-        if (playableCharacterSprite.getBoundsInParent().intersects(enemySprite.getBoundsInParent())){
-            if (direction == 1){
+        if (playableCharacterSprite.getBoundsInParent().intersects(enemySprite.getBoundsInParent())) {
+            if (direction == 1) {
                 collisionTestText.setText("Collision From right");
-            }
-            else if(direction == 2){
+            } else if (direction == 2) {
                 collisionTestText.setText("Collision from Left");
-            }
-            else if (direction == 3){
+            } else if (direction == 3) {
                 collisionTestText.setText("Collision from top");
-            }
-            else if(direction == 4){
+            } else if (direction == 4) {
                 collisionTestText.setText("Collision from bottom");
             }
-
         }
     }
 
-    // Må ha fixes for å få riktig orientation på tekst. Skal inn i settings!
+        // Må ha fixes for å få riktig orientation på tekst. Skal inn i settings!
     /*
     public void setOrientationOfToolBar(String orientation){
 
@@ -423,7 +414,7 @@ public class MainController implements EventHandler<KeyEvent> {
         }
     }
     */
-    public void help(){
-        // method a user can call to get help with the class in question. Will be printed in console
-    }
+        public void help () {
+            // method a user can call to get help with the class in question. Will be printed in console
+        }
 }
