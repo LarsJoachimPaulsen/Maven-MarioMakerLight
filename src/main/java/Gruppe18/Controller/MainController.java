@@ -57,15 +57,15 @@ public class MainController implements EventHandler<KeyEvent> {
 
     private ObservableList<PlayerCharacter> playerCharactersList = FXCollections.observableArrayList(Writer_Reader.getPlayableCharacters());
     private ObservableList<ImageView> playerCharacterListPhoto = FXCollections.observableArrayList();
-    private ObservableList<String> playerCharacterListNames = FXCollections.observableArrayList();
+    //private ObservableList<String> playerCharacterListNames = FXCollections.observableArrayList();
 
     private ObservableList<Enemy> enemyList = FXCollections.observableArrayList(Writer_Reader.getEnemyCharacters());
     private ObservableList<ImageView> enemyListPhoto = FXCollections.observableArrayList();
-    private ObservableList<String> enemyListNames = FXCollections.observableArrayList();
+    //private ObservableList<String> enemyListNames = FXCollections.observableArrayList();
 
     private ObservableList<Car> carList = FXCollections.observableArrayList(Writer_Reader.getCarCharacters());
     private ObservableList<ImageView> carListPhoto = FXCollections.observableArrayList();
-    private ObservableList<String> carListNames = FXCollections.observableArrayList();
+    //private ObservableList<String> carListNames = FXCollections.observableArrayList();
 
     protected double screenWidth = Screen.getPrimary().getBounds().getWidth();
     protected double screenHeight =  Screen.getPrimary().getBounds().getHeight();
@@ -93,13 +93,12 @@ public class MainController implements EventHandler<KeyEvent> {
         toolSelect.setItems(toolList);
         for(int i = 0; i < playerCharactersList.size(); i++) {
             playerCharacterListPhoto.add(new ImageView(playerCharactersList.get(i).getPhoto()));
-            playerCharacterListNames.add(playerCharactersList.get(i).getName());
         }
-        for(int i = 0; i < enemyList.size(); i++) {
-            enemyListNames.add(enemyList.get(i).getName());
+        for(int j = 0; j < enemyList.size(); j++) {
+            enemyListPhoto.add(new ImageView(enemyList.get(j).getPhoto()));
         }
-        for(int i = 0; i < carList.size(); i++) {
-            carListNames.add(carList.get(i).getName());
+        for(int k = 0; k < carList.size(); k++) {
+            carListPhoto.add(new ImageView(carList.get(k).getPhoto()));
         }
 
         //sjekker hvilken som har blitt valgt i toolSelect
