@@ -106,8 +106,9 @@ public class MainController implements EventHandler<KeyEvent> {
             enemyList.add(enemies.get(i).getName());
         }
 
-         */
+        */
 
+        //sjekker hvilken som har blitt valgt i toolSelect
         toolSelect.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             ImageView imageView = new ImageView();
             @Override
@@ -139,7 +140,6 @@ public class MainController implements EventHandler<KeyEvent> {
         });
 
     }
-
 
 
     @Override
@@ -237,7 +237,6 @@ public class MainController implements EventHandler<KeyEvent> {
 
     private void hideToolbars() {
         underObjectToolSelect.setVisible(false);
-
     }
 
 
