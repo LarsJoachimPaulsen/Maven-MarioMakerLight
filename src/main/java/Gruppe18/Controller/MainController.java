@@ -38,9 +38,9 @@ public class MainController implements EventHandler<KeyEvent> {
     @FXML
     protected Label toolSelectedLabel;
     @FXML
-    protected ListView<String> underObjectToolSelect = new ListView<>();
+    protected ListView<String> underCharacterToolSelect = new ListView<>();
     @FXML
-    protected ListView<Image> underCharacterToolSelect = new ListView<>();
+    protected ListView<ImageView> underObjectToolSelect = new ListView<>();
     @FXML
     protected Label txtPoints;
     @FXML
@@ -53,19 +53,22 @@ public class MainController implements EventHandler<KeyEvent> {
 
     private ObservableList<String> toolList = FXCollections.observableArrayList("Pointer","Objects","PlayerCharacters","Enemies","Cars","Backgrounds");
     private ObservableList<String> underObjectToolList = FXCollections.observableArrayList("Square","Circle","Triangle");
+    //private ObservableList<ImageView> objectListPhoto = FXCollections.observableArrayList();
 
-    private ObservableList<PlayerCharacter> playerCharacters = FXCollections.observableArrayList(Writer_Reader.getPlayableCharacters());
-    private ObservableList<Image> playerCharacterList = FXCollections.observableArrayList();
+    private ObservableList<PlayerCharacter> playerCharactersList = FXCollections.observableArrayList(Writer_Reader.getPlayableCharacters());
+    private ObservableList<ImageView> playerCharacterListPhoto = FXCollections.observableArrayList();
     private ObservableList<String> playerCharacterListNames = FXCollections.observableArrayList();
 
     private ObservableList<Enemy> enemyList = FXCollections.observableArrayList(Writer_Reader.getEnemyCharacters());
+    private ObservableList<ImageView> enemyListPhoto = FXCollections.observableArrayList();
     private ObservableList<String> enemyListNames = FXCollections.observableArrayList();
 
     private ObservableList<Car> carList = FXCollections.observableArrayList(Writer_Reader.getCarCharacters());
+    private ObservableList<ImageView> carListPhoto = FXCollections.observableArrayList();
     private ObservableList<String> carListNames = FXCollections.observableArrayList();
 
     protected double screenWidth = Screen.getPrimary().getBounds().getWidth();
-    protected double screenHeigth =  Screen.getPrimary().getBounds().getHeight();
+    protected double screenHeight =  Screen.getPrimary().getBounds().getHeight();
 
     private String currentOrientationOfToolBar = "";
 
@@ -73,11 +76,11 @@ public class MainController implements EventHandler<KeyEvent> {
 
         //testkode - karakteren på skjermen
         playableCharacterSprite.setFocusTraversable(true);
-        playableCharacterSprite.setImage(new Image(playerCharacters.get(0).getPhoto()));
+        playableCharacterSprite.setImage(new Image(playerCharactersList.get(0).getPhoto()));
 
         // playableCharacterSprite.setImage(new Image("/Pictures/PlayableCharacters/aleksander.png"));
-        playableCharacterSprite.setFitHeight(playerCharacters.get(0).getSize()*10);
-        characterMovementSpeed = playerCharacters.get(0).getMovementSpeed();
+        playableCharacterSprite.setFitHeight(playerCharactersList.get(0).getSize()*10);
+        characterMovementSpeed = playerCharactersList.get(0).getMovementSpeed();
 
         enemySprite.setImage(new Image(enemyList.get(0).getPhoto()));
         enemySprite.setFitHeight(enemyList.get(0).getSize()*10);
@@ -87,11 +90,10 @@ public class MainController implements EventHandler<KeyEvent> {
 
         setUpButtons();
 
-
         toolSelect.setItems(toolList);
-        for(int i = 0; i < playerCharacters.size(); i++) {
-            playerCharacterList.add(new Image(playerCharacters.get(i).getPhoto()));
-            playerCharacterListNames.add(playerCharacters.get(i).getName());
+        for(int i = 0; i < playerCharactersList.size(); i++) {
+            playerCharacterListPhoto.add(new ImageView(playerCharactersList.get(i).getPhoto()));
+            playerCharacterListNames.add(playerCharactersList.get(i).getName());
         }
         for(int i = 0; i < enemyList.size(); i++) {
             enemyListNames.add(enemyList.get(i).getName());
@@ -108,21 +110,20 @@ public class MainController implements EventHandler<KeyEvent> {
                 toolSelectedLabel.setText(newValue);
                 if(newValue.equals("Objects")) {
                     underObjectToolSelect.setVisible(true);
-                    underObjectToolSelect.setItems(underObjectToolList);
+                    //underObjectToolSelect.setItems(underObjectToolList);
                 }
                 else if(newValue.equals("PlayerCharacters")){
                     underObjectToolSelect.setVisible(true);
-                    underObjectToolSelect.setItems(playerCharacterListNames);
+                    underObjectToolSelect.setItems(playerCharacterListPhoto);
                     //addPlayerCharactersToToolbar();
-                    //underCharacterToolSelect.setItems(playerCharacterList);
                 }
                 else if(newValue.equals("Enemies")) {
                     underObjectToolSelect.setVisible(true);
-                    underObjectToolSelect.setItems(enemyListNames);
+                    underObjectToolSelect.setItems(enemyListPhoto);
                 }
                 else if(newValue.equals("Cars")) {
                     underObjectToolSelect.setVisible(true);
-                    underObjectToolSelect.setItems(carListNames);
+                    underObjectToolSelect.setItems(carListPhoto);
                 }
                 /*else if(newValue.equals("Backgrounds")) {
                     underObjectToolSelect.setVisible(true);
@@ -231,12 +232,12 @@ public class MainController implements EventHandler<KeyEvent> {
     // Adding new ImageViews containing player sprites, based on how many exists. Currently not working
     private void addPlayerCharactersToToolbar() {
 
-        for (int i = 0; i<playerCharacters.size(); i++){
+        for (int i = 0; i<playerCharactersList.size(); i++){
            // String name = String.valueOf(i);
             ImageView name  = new ImageView();
-            name.setImage(new Image(playerCharacters.get(i).getPhoto()));
+            name.setImage(new Image(playerCharactersList.get(i).getPhoto()));
            // name.setX((screenWidth/2)/(double)playerCharacters.size());
-            name.setLayoutY(screenHeigth/2);
+            name.setLayoutY(screenHeight/2);
             name.setLayoutX(screenWidth/2);
            // name.setLayoutX(screenWidth*.05 + screenWidth/(double)playerCharacters.size());
         }
@@ -244,7 +245,7 @@ public class MainController implements EventHandler<KeyEvent> {
     }
 
     private void setUpButtons() {
-            btnConfirm.setLayoutY(screenHeigth/2);
+            btnConfirm.setLayoutY(screenHeight/2);
             btnConfirm.setLayoutX(screenWidth/2);
 
             btnExitGame.setLayoutY(30);
