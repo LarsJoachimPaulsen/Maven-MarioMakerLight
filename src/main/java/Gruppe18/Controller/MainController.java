@@ -50,15 +50,17 @@ public class MainController implements EventHandler<KeyEvent> {
 
     private int characterMovementSpeed = 10;
 
-   // Writer_Reader reader = new Writer_Reader();
+    //Writer_Reader reader = new Writer_Reader();
     //Writer_Reader reader2 = new Writer_Reader();
 
     private ObservableList<String> toolList = FXCollections.observableArrayList("Pointer","Objects","PlayerCharacters","Enemies","Cars","Backgrounds");
     private ObservableList<String> underObjectToolList = FXCollections.observableArrayList("Square","Circle","Triangle");
+
     private ObservableList<PlayerCharacter> playerCharacters = FXCollections.observableArrayList(Writer_Reader.getPlayableCharacters());
     private ObservableList<Image> playerCharacterList = FXCollections.observableArrayList();
-    // private ObservableList<Enemy> enemies = FXCollections.observableArrayList(reader.getEnemyCharacters());
     //private ObservableList<String> playerCharacterList = FXCollections.observableArrayList();
+
+    // private ObservableList<Enemy> enemies = FXCollections.observableArrayList(reader.getEnemyCharacters());
     private ObservableList<Enemy> enemyCharacters = FXCollections.observableArrayList(Writer_Reader.getEnemyCharacters());
     private ObservableList<Car> carCharacters = FXCollections.observableArrayList(Writer_Reader.getCarCharacters());
     // private ObservableList<String> enemyList = FXCollections.observableArrayList();
@@ -117,10 +119,11 @@ public class MainController implements EventHandler<KeyEvent> {
                     hideToolbars();
                     underObjectToolSelect.setVisible(true);
                     underObjectToolSelect.setItems(underObjectToolList);
-                    playableCharacterSprite.setImage(new Image("/Pictures/PlayableCharacters/Standard.png"));
+
                 }
                 else if(newValue.equals("PlayerCharacters")){
                     //addPlayerCharactersToToolbar();
+                    //underObjectToolSelect.setItems(playerCharacterList);
                     underCharacterToolSelect.setItems(playerCharacterList);
 
 
@@ -129,10 +132,10 @@ public class MainController implements EventHandler<KeyEvent> {
                 else if(newValue.equals("Enemies")) {
                     underObjectToolSelect.setItems(enemyList);
                 }
-
-                 */
+                */
                 else {
-                    underObjectToolSelect.setItems(null);
+                    underObjectToolSelect.setVisible(false);
+                    //underObjectToolSelect.setItems(null);
                 }
             }
 
