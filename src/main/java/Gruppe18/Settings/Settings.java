@@ -6,7 +6,7 @@ import javafx.stage.Screen;
 
 public abstract class Settings {
 
-    public static String currentOrientationOfToolBar = "";
+    private static String currentOrientationOfToolBar = "";
     private static double screenHeigth = Screen.getPrimary().getBounds().getHeight();
     private static double screenWidth = Screen.getPrimary().getBounds().getWidth();
     private static double mainToolbarWidth = 0;

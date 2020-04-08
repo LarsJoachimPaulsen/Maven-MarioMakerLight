@@ -20,17 +20,15 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Screen;
 
 
+import java.nio.file.Path;
+
+
 public class MainController implements EventHandler<KeyEvent> {
 
     @FXML
-    public Button btnTest;
-    @FXML
     private Button btnConfirm;
     @FXML
-    public TextField txtField;
-    @FXML
     public ImageView playableCharacterSprite;
-
    @FXML
     protected ImageView enemySprite;
     @FXML
@@ -80,9 +78,8 @@ public class MainController implements EventHandler<KeyEvent> {
 
 
         //testkode - karakteren på skjermen
-
-
         playableCharacterSprite.setFocusTraversable(true);
+
         playableCharacterSprite.setImage(new Image(playerCharacters.get(0).getPhoto()));
 
         // playableCharacterSprite.setImage(new Image("/Pictures/PlayableCharacters/aleksander.png"));
@@ -112,6 +109,7 @@ public class MainController implements EventHandler<KeyEvent> {
          */
 
         toolSelect.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            ImageView imageView = new ImageView();
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue ) {
                 toolSelectedLabel.setText(newValue);
@@ -122,9 +120,10 @@ public class MainController implements EventHandler<KeyEvent> {
                     playableCharacterSprite.setImage(new Image("/Pictures/PlayableCharacters/Standard.png"));
                 }
                 else if(newValue.equals("PlayerCharacters")){
-                    hideToolbars();
                     //addPlayerCharactersToToolbar();
                     underCharacterToolSelect.setItems(playerCharacterList);
+
+
                 }
                 /*
                 else if(newValue.equals("Enemies")) {
@@ -168,7 +167,6 @@ public class MainController implements EventHandler<KeyEvent> {
                 Scene scene = playableCharacterSprite.getScene();
                 switch (keyEvent.getCode()) {
                     case D:
-                        playableCharacterSprite.requestFocus();
                         if(playableCharacterSprite.getX() > scene.getWidth()){
                             playableCharacterSprite.setX(0);
                         }
@@ -193,7 +191,7 @@ public class MainController implements EventHandler<KeyEvent> {
                             playableCharacterSprite.setY(scene.getHeight());
                         }
                         else if (playableCharacterSprite.getY() < -260) {
-                            playableCharacterSprite.setY(-260);
+                            return;
                         }
                         else {
                             playableCharacterSprite.setY(playableCharacterSprite.getY() - characterMovementSpeed);
@@ -207,7 +205,7 @@ public class MainController implements EventHandler<KeyEvent> {
                             playableCharacterSprite.setY(0);
                         }
                         else if (playableCharacterSprite.getY() > 665) {
-                            playableCharacterSprite.setY(665);
+                            return;
                         }
                         else {
                         playableCharacterSprite.setY(playableCharacterSprite.getY() + characterMovementSpeed);
@@ -234,8 +232,6 @@ public class MainController implements EventHandler<KeyEvent> {
 
     private void removeWalking() {
 
-
-
     }
 
 
@@ -244,6 +240,8 @@ public class MainController implements EventHandler<KeyEvent> {
 
     }
 
+
+    // Adding new ImageViews containing player sprites, based on how many exists. Currently not working
     private void addPlayerCharactersToToolbar() {
 
         for (int i = 0; i<playerCharacters.size(); i++){
@@ -266,7 +264,7 @@ public class MainController implements EventHandler<KeyEvent> {
             btnExitGame.setLayoutX(screenWidth-50);
 
             // input left, right, top, bottom
-            Settings.setOrientationOfToolBar(toolSelect, "left");
+            Settings.setOrientationOfToolBar(toolSelect, "right");
              //setOrientationOfToolBar("left");
             toolSelectedLabel.setLayoutX(screenWidth*.05);
 
@@ -276,11 +274,10 @@ public class MainController implements EventHandler<KeyEvent> {
         // må fikses noe bugs
             Settings.setOriontationOfSecondaryToolBar(underObjectToolSelect, "bottom");
 
-
-
     }
 
 
+    // test for collision
     public void checkCollision(int direction){
 
         if (playableCharacterSprite.getBoundsInParent().intersects(enemySprite.getBoundsInParent())){
@@ -302,6 +299,7 @@ public class MainController implements EventHandler<KeyEvent> {
 
 
     // Må ha fixes for å få riktig orientation på tekst. Skal inn i settings!
+    /*
     public void setOrientationOfToolBar(String orientation){
 
         boolean trigger = false;
@@ -420,6 +418,8 @@ public class MainController implements EventHandler<KeyEvent> {
             System.out.println("Error in setOrientationOfSecondaryToolbar! String value needs to be left, right, top or bottom");
         }
     }
+
+*/
 
 
     public void help(){

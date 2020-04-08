@@ -21,8 +21,8 @@ public class CarBuilder {
         return this;
     }
 
-    public CarBuilder heigth(int heigth){
-        car.height = heigth;
+    public CarBuilder height(int height){
+        car.height = height;
         return this;
     }
 

@@ -20,8 +20,8 @@ public class MainJavaFX extends Application {
                 primaryStage.getIcons().add(new Image("Pictures/Icons/logo.png"));
                 primaryStage.setTitle("Mario Maker Light");
 
-                double maxX = Screen.getPrimary().getVisualBounds().getMaxX();
-                double maxY = Screen.getPrimary().getVisualBounds().getMaxY()-10;
+                double maxX = Screen.getPrimary().getBounds().getMaxX();
+                double maxY = Screen.getPrimary().getBounds().getMaxY()-10;
 
                 Scene scene = new Scene(root, maxX , maxY);
 
