@@ -26,6 +26,10 @@ public final class PlayerCharacter {
         return currentHeath;
     }
 
+    public int getjumpHeight() {
+        return jumpHeight;
+    }
+
     public int getDamage() {
         return damage;
     }
@@ -59,9 +63,7 @@ public final class PlayerCharacter {
         return photo;
     }
 
-    public int getjumpHeight() {
-        return jumpHeight;
-    }
+
 
 
     public void getInformation(){
