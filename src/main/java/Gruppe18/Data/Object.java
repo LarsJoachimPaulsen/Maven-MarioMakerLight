@@ -1,5 +1,8 @@
 package Gruppe18.Data;
 
+/**
+ * @author Christine
+ */
 public class Object {
 
     //3 objects: square, circle and triangle

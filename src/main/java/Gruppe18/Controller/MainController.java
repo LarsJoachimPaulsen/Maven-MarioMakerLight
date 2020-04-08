@@ -141,6 +141,9 @@ public class MainController implements EventHandler<KeyEvent> {
 
     }
 
+    /**
+     * @author Lars
+     */
     public void confirm(){
       btnConfirm.setVisible(false);
       btnExitGame.setVisible(true);
@@ -154,6 +157,9 @@ public class MainController implements EventHandler<KeyEvent> {
 
     }
 
+    /**
+     * @author Lars
+     */
     private void enableWalking() {
         playableCharacterSprite.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
@@ -214,7 +220,10 @@ public class MainController implements EventHandler<KeyEvent> {
 
     }
 
-    public void exitGame(){
+    /**
+     * @author Lars
+     */
+    private void exitGame(){
         btnConfirm.setVisible(true);
         btnExitGame.setVisible(false);
         toolSelect.setVisible(true);
@@ -243,6 +252,9 @@ public class MainController implements EventHandler<KeyEvent> {
 
     }
 
+    /**
+     * @author Lars
+     */
     private void setUpButtons() {
         btnConfirm.setLayoutY(screenHeight/2);
         btnConfirm.setLayoutX(screenWidth/2);
@@ -263,7 +275,13 @@ public class MainController implements EventHandler<KeyEvent> {
     }
 
     // test for collision
-    public void checkCollision(int direction){
+
+    /**
+     *
+     * @param direction a test for checking the direction of the collision
+     * @author Lars
+     */
+    private void checkCollision(int direction){
 
         if (playableCharacterSprite.getBoundsInParent().intersects(enemySprite.getBoundsInParent())){
             if (direction == 1){

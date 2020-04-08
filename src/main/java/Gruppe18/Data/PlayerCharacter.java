@@ -1,5 +1,8 @@
 package Gruppe18.Data;
 
+/**
+ * @author Lars, Christine
+ */
 public final class PlayerCharacter {
 
     String name;

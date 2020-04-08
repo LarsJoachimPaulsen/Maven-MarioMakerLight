@@ -34,7 +34,6 @@ public class MainJavaFX extends Application {
 
 
 
-
             primaryStage.show();
         }
         catch (Exception e){

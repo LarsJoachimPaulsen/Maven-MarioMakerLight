@@ -1,5 +1,8 @@
 package Gruppe18.Data;
 
+/**
+ * @author Vegard
+ */
 public class StageBuilder {
 
     StageCreator stageCreator = new StageCreator();

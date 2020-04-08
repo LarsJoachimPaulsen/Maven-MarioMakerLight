@@ -26,6 +26,7 @@ public abstract class Settings {
      * this method should be called first!
      * @param list the listview you want to change
      * @param orientation right, left, up or bottom.
+     * @author Lars
      */
     public static void setOrientationOfToolBar(ListView list, String orientation){
 
@@ -88,7 +89,8 @@ public abstract class Settings {
      * A method that sets the orientation of the secondary toolbar. The position of the toolbar will change based on
      * the position of the secondary toolbar. Are both toolbars to be changed, this method should be called last!
      * @param list The toolbar to
-     * @param oriantation
+     * @param oriantation the orientation of the toolbar, accepts right, left, up, or bottom.
+     * @author Lars
      */
     public static void setOriontationOfSecondaryToolBar(ListView list, String oriantation) {
 

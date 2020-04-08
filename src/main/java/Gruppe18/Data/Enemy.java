@@ -2,6 +2,9 @@ package Gruppe18.Data;
 
 import javafx.scene.image.Image;
 
+/**
+ * @author Lars
+ */
 public final class Enemy {
 
     String name;

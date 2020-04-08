@@ -1,5 +1,9 @@
 package Gruppe18.Data;
 
+/**
+ * @author Vegard
+ */
+
 public final class StageCreator {
 
     int stageWidth;

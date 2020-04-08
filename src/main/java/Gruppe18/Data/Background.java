@@ -2,6 +2,9 @@ package Gruppe18.Data;
 
 import java.util.ArrayList;
 
+/**
+ * @author Christine
+ */
 public class Background {
 
     private String backgroundFilePath = "Pictures/Backgrounds/defaultBackgrond.png";

@@ -31,6 +31,7 @@ public abstract class Writer_Reader {
     /**
      * A method for writing a character to a json-file
      * @param character takes a character object and converts it to the correct json-file
+     * @author Lars
      */
     public static void writeCharacterToFile(Object character) {
 
@@ -128,6 +129,7 @@ public abstract class Writer_Reader {
     /**
      *  A method to get all Car object saved to a file
      * @return returns an ArrayList of Car objects
+     * @author Lars
      */
     public static ArrayList<Car> getCarCharacters() {
             File file = new File("src/main/resources/Files/Car.json");
@@ -163,6 +165,7 @@ public abstract class Writer_Reader {
     /**
      *  A method to get all the enemy objects saved to file
      * @return an ArrayList of Enemy objects
+     * @author Lars
      */
     public static ArrayList<Enemy> getEnemyCharacters() {
 
@@ -199,6 +202,7 @@ public abstract class Writer_Reader {
     /**
      * A method to get all PlayerCharacter objects saved to file
      * @return an ArrayList of PlayerCharacter objects.
+     * @author Lars
      */
     public static ArrayList<PlayerCharacter> getPlayableCharacters() {
 

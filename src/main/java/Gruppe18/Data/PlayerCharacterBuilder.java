@@ -1,5 +1,8 @@
 package Gruppe18.Data;
 
+/**
+ * @author Lars. Christine
+ */
 public class PlayerCharacterBuilder {
 
     PlayerCharacter pc = new PlayerCharacter();
