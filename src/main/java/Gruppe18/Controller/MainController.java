@@ -28,23 +28,21 @@ public class MainController implements EventHandler<KeyEvent> {
     @FXML
     private Button btnConfirm;
     @FXML
-    public ImageView playableCharacterSprite;
+    private ImageView playableCharacterSprite;
    @FXML
-    protected ImageView enemySprite;
+    private ImageView enemySprite;
     @FXML
-    protected ImageView carSprite;
+    private ImageView carSprite;
     @FXML
-    protected ListView<String> toolSelect = new ListView<>();
+    private ListView<String> toolSelect = new ListView<>();
     @FXML
-    protected Label toolSelectedLabel;
+    private ListView<ImageView> underToolSelect = new ListView<>();
     @FXML
-    protected ListView<ImageView> underToolSelect = new ListView<>();
+    private Label txtPoints;
     @FXML
-    protected Label txtPoints;
+    private Button btnExitGame;
     @FXML
-    protected Button btnExitGame;
-    @FXML
-    protected Label collisionTestText;
+    private Label collisionTestText;
 
     private int characterMovementSpeed = 10;
 
@@ -106,7 +104,6 @@ public class MainController implements EventHandler<KeyEvent> {
             ImageView imageView = new ImageView();
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue ) {
-                toolSelectedLabel.setText(newValue);
                 if(newValue.equals("Objects")) {
                     underToolSelect.setVisible(true);
                     //underObjectToolSelect.setItems(underObjectToolList);
@@ -148,7 +145,6 @@ public class MainController implements EventHandler<KeyEvent> {
       btnConfirm.setVisible(false);
       btnExitGame.setVisible(true);
       toolSelect.setVisible(false);
-      toolSelectedLabel.setVisible(false);
       underToolSelect.setVisible(false);
       txtPoints.setVisible(true);
       txtPoints.setText("");
@@ -227,7 +223,7 @@ public class MainController implements EventHandler<KeyEvent> {
         btnConfirm.setVisible(true);
         btnExitGame.setVisible(false);
         toolSelect.setVisible(true);
-        toolSelectedLabel.setVisible(true);
+
         underToolSelect.setVisible(true);
         txtPoints.setVisible(false);
         removeWalking();
