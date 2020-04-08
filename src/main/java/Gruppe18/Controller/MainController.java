@@ -114,7 +114,7 @@ public class MainController implements EventHandler<KeyEvent> {
                 else if(newValue.equals("PlayerCharacters")){
                     underObjectToolSelect.setVisible(true);
                     underObjectToolSelect.setItems(playerCharacterListPhoto);
-                    //addPlayerCharactersToToolbar();
+                    //addPlayerCharactersToToolbar();0
                 }
                 else if(newValue.equals("Enemies")) {
                     underObjectToolSelect.setVisible(true);

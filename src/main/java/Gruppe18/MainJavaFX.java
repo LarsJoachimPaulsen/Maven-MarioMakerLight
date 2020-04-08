@@ -15,6 +15,8 @@ import javafx.fxml.FXMLLoader;
 
 public class MainJavaFX extends Application {
 
+    Background defaultBackground = new Background();
+
     @Override
     public void start(Stage primaryStage) {
         try {
