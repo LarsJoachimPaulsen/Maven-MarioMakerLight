@@ -6,7 +6,7 @@ public final class PlayerCharacter {
     int maxHealth = 50;
     int currentHeath = 50;
     int jumpHeight; // = hoppe like høyt som egen height eller sin egen height ganger 2?
-    // to do : legg inn jumpHight i pixels.
+    // to do : legg inn jumpHight i pixels. //legge til på fiender også??
     int movementSpeed = 10;
     int damage = 5;
     int size = 10;
