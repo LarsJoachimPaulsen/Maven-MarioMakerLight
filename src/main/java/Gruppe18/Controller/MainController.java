@@ -225,7 +225,7 @@ public class MainController implements EventHandler<KeyEvent> {
     /**
      * @author Lars
      */
-    private void exitGame(){
+      public void exitGame(){
         btnConfirm.setVisible(true);
         btnExitGame.setVisible(false);
         toolSelect.setVisible(true);
