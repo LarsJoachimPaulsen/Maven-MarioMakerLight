@@ -244,23 +244,22 @@ public class MainController implements EventHandler<KeyEvent> {
     }
 
     private void setUpButtons() {
-            btnConfirm.setLayoutY(screenHeight/2);
-            btnConfirm.setLayoutX(screenWidth/2);
+        btnConfirm.setLayoutY(screenHeight/2);
+        btnConfirm.setLayoutX(screenWidth/2);
 
-            btnExitGame.setLayoutY(30);
-            btnExitGame.setLayoutX(screenWidth-50);
+        btnExitGame.setLayoutY(30);
+        btnExitGame.setLayoutX(screenWidth-50);
 
-            // input left, right, top, bottom
-            Settings.setOrientationOfToolBar(toolSelect, "right");
-             //setOrientationOfToolBar("left");
-            toolSelectedLabel.setLayoutX(screenWidth*.05);
+        // input left, right, top, bottom
+        Settings.setOrientationOfToolBar(toolSelect, "right");
+         //setOrientationOfToolBar("left");
+        toolSelectedLabel.setLayoutX(screenWidth*.05);
 
-            //input left, right, top, bottom
-            //setOriontationOfSecondaryToolBar("left");
+        //input left, right, top, bottom
+        //setOriontationOfSecondaryToolBar("left");
 
         // må fikses noe bugs
-            Settings.setOriontationOfSecondaryToolBar(underObjectToolSelect, "bottom");
-
+        Settings.setOriontationOfSecondaryToolBar(underObjectToolSelect, "bottom");
     }
 
     // test for collision
