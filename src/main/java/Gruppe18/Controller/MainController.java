@@ -100,7 +100,9 @@ public class MainController implements EventHandler<KeyEvent> {
         for(int k = 0; k < carList.size(); k++) {
             carListPhoto.add(new ImageView(carList.get(k).getPhoto()));
         }
-
+        /**
+         * @author Christine
+         */
         //sjekker hvilken som har blitt valgt i toolSelect
         toolSelect.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             ImageView imageView = new ImageView();
