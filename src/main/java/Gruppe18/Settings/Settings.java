@@ -11,8 +11,6 @@ public abstract class Settings {
     private static double screenWidth = Screen.getPrimary().getBounds().getWidth();
     private static double mainToolbarWidth = 0;
     private static double mainToolbarHeigth = 0;
-    private static String backgroundFilePath = "Pictures/Backgrounds/defaultBackgrond.png";
-
 
     public void addNewBackground(String localFilepath) {
         //will add user defined pictures in the background folder

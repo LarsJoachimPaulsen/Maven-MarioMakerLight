@@ -76,7 +76,6 @@ public class MainController implements EventHandler<KeyEvent> {
 
     public void initialize() {
 
-
         //testkode - karakteren på skjermen
         playableCharacterSprite.setFocusTraversable(true);
 

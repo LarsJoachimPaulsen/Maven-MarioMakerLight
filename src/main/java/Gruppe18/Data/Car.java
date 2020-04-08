@@ -4,7 +4,6 @@ import javafx.scene.image.Image;
 
 public class Car {
 
-
     String name;
     int health = 100;
     int damage = 25;
