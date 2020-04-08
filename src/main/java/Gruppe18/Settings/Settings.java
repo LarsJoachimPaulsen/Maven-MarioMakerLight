@@ -12,6 +12,13 @@ public abstract class Settings {
     private static double mainToolbarWidth = 0;
     private static double mainToolbarHeigth = 0;
 
+    public void addNewBackground(String localFilepath) {
+        //will add user defined pictures in the background folder
+    }
+
+    public void setProrgramIcon(String pathToIcon){
+        // will set the programs icon
+    }
 
     // disse metodene bør endres, så det ikke har noe å si hvilken som blir kalt først.
     /**
