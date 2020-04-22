@@ -6,6 +6,8 @@ import Gruppe18.Settings.Settings;
 
 import java.util.ArrayList;
 
+import static javafx.application.Application.launch;
+
 public class MainConsole {
 
     public static void main(String[] args){
@@ -76,7 +78,16 @@ public class MainConsole {
        for(int i = 0; i<carList.size(); i++){
            carList.get(i).getInformation();
        }
-       MainJavaFX newGame = new MainJavaFX();
+
+       MainJavaFX nyttSpill = new MainJavaFX();
+
+       GameLauncher.launchGame(nyttSpill);
+
+
+
+       Settings.help("setOrientationOfToolBar");
+
+
 
 
 

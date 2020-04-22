@@ -5,6 +5,8 @@ import javafx.geometry.Orientation;
 import javafx.scene.control.ListView;
 import javafx.stage.Screen;
 
+import java.sql.SQLOutput;
+
 public abstract class Settings {
 
     private static String currentOrientationOfToolBar = "";
@@ -31,8 +33,9 @@ public abstract class Settings {
      */
     public static void setOrientationOfToolBar(ListView list, String orientation){
 
-        boolean trigger = false;
         switch (orientation.toLowerCase()){
+
+
 
             case "left" :
                 list.setMinHeight(screenHeigth);
@@ -42,8 +45,6 @@ public abstract class Settings {
                 list.setOrientation(Orientation.VERTICAL);
                 currentOrientationOfToolBar = "l";
                 mainToolbarWidth = screenWidth*.5;
-
-                trigger = true;
                 break;
 
             case "right" :
@@ -54,7 +55,6 @@ public abstract class Settings {
                 list.setOrientation(Orientation.VERTICAL);
                 mainToolbarWidth = screenWidth*.05;
                 currentOrientationOfToolBar = "r";
-                trigger = true;
                 break;
 
             case "top" :
@@ -66,7 +66,6 @@ public abstract class Settings {
                 list.setOrientation(Orientation.HORIZONTAL);
                 currentOrientationOfToolBar = "t";
                 mainToolbarHeigth = screenHeigth*.05;
-                trigger = true;
                 break;
 
             case "bottom" :
@@ -78,12 +77,11 @@ public abstract class Settings {
                 list.setOrientation(Orientation.HORIZONTAL);
                 mainToolbarHeigth = screenHeigth*.05;
                 currentOrientationOfToolBar = "b";
-                trigger = true;
                 break;
 
-        }
-        if(!trigger){
-            System.out.println("Error in setOnOrientationOfToolbar!! String value needs to be top, bottom, left or right");
+            default :
+                System.out.println("Error in setOnOrientationOfToolbar!! String value needs to be top, bottom, left or right");
+                break;
         }
 
     }
@@ -97,9 +95,8 @@ public abstract class Settings {
      * @param oriantation the orientation of the toolbar, accepts right, left, up, or bottom.
      * @author Lars
      */
-    public static void setOriontationOfSecondaryToolBar(ListView list, String oriantation) {
+    public static void setOrientationOfSecondaryToolBar(ListView list, String oriantation) {
 
-        boolean trigger = false;
 
         switch (oriantation.toLowerCase()){
             case "left" :
@@ -116,7 +113,6 @@ public abstract class Settings {
                 list.setMinHeight(screenHeigth);
                 list.setMaxWidth(screenWidth*0.05);
                 list.setOrientation(Orientation.VERTICAL);
-                trigger = true;
                 break;
 
             case "right" :
@@ -131,7 +127,6 @@ public abstract class Settings {
                 list.setMinHeight(screenHeigth);
                 list.setMaxWidth(screenWidth*.05);
                 list.setOrientation(Orientation.VERTICAL);
-                trigger = true;
                 break;
 
             case "top" :
@@ -146,7 +141,6 @@ public abstract class Settings {
                 list.setMinWidth(screenWidth);
                 list.setMaxHeight(screenHeigth*.05);
                 list.setOrientation(Orientation.HORIZONTAL);
-                trigger = true;
                 break;
 
             case "bottom" :
@@ -160,12 +154,11 @@ public abstract class Settings {
                 list.setMinWidth(screenWidth);
                 list.setMaxHeight(screenHeigth*.05);
                 list.setOrientation(Orientation.HORIZONTAL);
-                trigger = true;
                 break;
-        }
 
-        if(!trigger){
-            System.out.println("Error in setOrientationOfSecondaryToolbar! String value needs to be left, right, top or bottom");
+            default :
+                System.out.println("Error in setOrientationOfSecondaryToolbar! String value needs to be left, right, top or bottom");
+                break;
         }
     }
 
@@ -175,8 +168,25 @@ public abstract class Settings {
      * The information will be printed to console
      */
     public static void help(){
+
+        System.out.println();
+        System.out.println("Add new Background");
+        System.out.println("This method allows for adding new backgrounds to the background file of the framewordk");
+        System.out.println("\n");
+
+        System.out.println("Set programIcon");
+        System.out.println("This method allows for adding new program icons for the JavaFX program");
+        System.out.println("\n");
+
+        System.out.println("Set orientation orientation of toolbar");
+        System.out.println("This method allows the user to change the layout of the main toolbar \n" +
+                "It can be moved by using \"top\", \"buttom\", \"left\" or \"right\" ");
+        System.out.println("\n");
         // method a user can call to get help with the class in question. Will be printed in console
 
+        System.out.println("Set orientation of of secondary toolbar");
+        System.out.println("This method allows the user to change the layout of the secondary toolbar \n" +
+                "It can be moved by using \"top\", \"buttom\", \"left\" or \"right\" ");
     }
 
     /**
@@ -185,6 +195,52 @@ public abstract class Settings {
      * @param nameOfMethod The name of the method the user needs information on
      */
     public static void help(String nameOfMethod){
+
+
+        switch (nameOfMethod.toLowerCase()){
+
+            default :
+                System.out.println();
+                System.out.println("This method does not exist");
+                System.out.println();
+                break;
+
+            case "addNewBackground" :
+                System.out.println();
+                System.out.println("Add new Background");
+                System.out.println("This method allows for adding new backgrounds to the background file of the framewordk");
+                System.out.println();
+                break;
+
+            case "setProgramIcon" :
+                System.out.println();
+                System.out.println("Set programIcon");
+                System.out.println("This method allows for adding new program icons for the JavaFX program");
+                System.out.println();
+                break;
+
+            case "setOrientationOfToolBar" :
+                System.out.println();
+                System.out.println("Set orientation orientation of toolbar");
+                System.out.println("This method allows the user to change the layout of the main toolbar \n" +
+                        "It can be moved by using \"top\", \"buttom\", \"left\" or \"right\" ");
+                System.out.println();
+                break;
+
+            case "setOrientationOfSecondaryToolBar" :
+                System.out.println();
+                System.out.println("Set orientation of of secondary toolbar");
+                System.out.println("This method allows the user to change the layout of the secondary toolbar \n" +
+                        "It can be moved by using \"top\", \"buttom\", \"left\" or \"right\" ");
+                break;
+
+            case "help" :
+                System.out.println();
+                System.out.println("Help");
+                System.out.println("This method will print information about all, or the selected, method");
+                System.out.println();
+                break;
+        }
 
     }
 

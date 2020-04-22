@@ -13,14 +13,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Screen;
-
-
-import java.nio.file.Path;
 
 
 public class MainController implements EventHandler<KeyEvent> {
@@ -266,7 +262,7 @@ public class MainController implements EventHandler<KeyEvent> {
         //setOriontationOfSecondaryToolBar("left");
 
         // må fikses noe bugs
-        Settings.setOriontationOfSecondaryToolBar(underToolSelect, "right");
+        Settings.setOrientationOfSecondaryToolBar(underToolSelect, "right");
     }
 
     // test for collision
