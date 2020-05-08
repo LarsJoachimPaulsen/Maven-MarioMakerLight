@@ -5,7 +5,7 @@ import javafx.scene.image.Image;
 /**
  * @author Lars
  */
-public class CarBuilder {
+public final class CarBuilder {
 
     Car car = new Car();
 

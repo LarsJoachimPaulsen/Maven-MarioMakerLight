@@ -8,7 +8,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public abstract class Writer_Reader {
+public abstract class Serializable {
 
     /**
      *  An ArrayList that contains all the saved PlayableCharacter objects
@@ -34,7 +34,6 @@ public abstract class Writer_Reader {
      * @author Lars
      */
     public static void writeCharacterToFile(Object character) {
-
         boolean characterExists = false;
         File file = null;
         if (character instanceof PlayerCharacter) {
@@ -42,15 +41,16 @@ public abstract class Writer_Reader {
             file = new File("src/main/resources/Files/PlayableCharacter.json");
             if (file.length() != 0) {
                 playableCharacters = getPlayableCharacters();
-            }
-            for (int i = 0; i < playableCharacters.size(); i++) {
-                if (playableCharacters.get(i).getName().equals(((PlayerCharacter) character).getName())) {
-                    characterExists = true;
-                    break;
+                for (int i = 0; i < playableCharacters.size(); i++) {
+                    // compares the name of the character name residing in index i with the character name we are trying to add
+                    if (playableCharacters.get(i).getName().equals(((PlayerCharacter) character).getName())) {
+                        characterExists = true;
+                        break;
+                    }
                 }
             }
             if (characterExists) {
-                System.out.println("Character exist");
+                System.err.println("Character exist");
                 return;
             } else {
                 playableCharacters.add((PlayerCharacter) character);
@@ -72,7 +72,8 @@ public abstract class Writer_Reader {
             }
 
             if (characterExists) {
-                System.out.println("Character already exists");
+                System.err.println("Character already exists");
+                //System.out.println("Character already exists");
                 return;
             } else {
                 enemyCharacters.add((Enemy) character);
@@ -93,7 +94,7 @@ public abstract class Writer_Reader {
             }
 
             if (characterExists) {
-                System.out.println("The Character already exist");
+                System.err.println("The Character already exist");
                 return;
             } else {
                 carCharacters.add((Car) character);

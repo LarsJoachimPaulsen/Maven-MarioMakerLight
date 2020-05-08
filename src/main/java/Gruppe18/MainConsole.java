@@ -1,7 +1,7 @@
 package Gruppe18;
 
 import Gruppe18.Data.*;
-import Gruppe18.FileHandeling.Writer_Reader;
+import Gruppe18.FileHandeling.Serializable;
 import Gruppe18.Settings.Settings;
 
 import java.util.ArrayList;
@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import static javafx.application.Application.launch;
 
 public class MainConsole {
+
+
+
 
     public static void main(String[] args){
 
@@ -26,7 +29,7 @@ public class MainConsole {
 
         //Writer_Reader writer = new Writer_Reader();
 
-       Writer_Reader.writeCharacterToFile(mario);
+       Serializable.writeCharacterToFile(mario);
 
 
         //System.out.println(mariu.isScoreEneabled());
@@ -39,7 +42,7 @@ public class MainConsole {
         Enemy goomber = enemy.createEnemy();
 
         System.out.println(goomber.getName());
-        Writer_Reader.writeCharacterToFile(goomber);
+        Serializable.writeCharacterToFile(goomber);
 
         EnemyBuilder enemy2 = new EnemyBuilder()
                 .name("kopra")
@@ -47,7 +50,7 @@ public class MainConsole {
                 .damage(20)
                 .pointValue(20);
         Enemy kopra = enemy2.createEnemy();
-        Writer_Reader.writeCharacterToFile(kopra);
+        Serializable.writeCharacterToFile(kopra);
 
         CarBuilder c = new CarBuilder()
                 .name("subaru")
@@ -58,37 +61,33 @@ public class MainConsole {
         System.out.println(subaru);
         System.out.println(subaru.getName());
         subaru.getInformation();
-        Writer_Reader.writeCharacterToFile(subaru);
+        Serializable.writeCharacterToFile(subaru);
 
 
-       ArrayList<PlayerCharacter> playerList = Writer_Reader.getPlayableCharacters();
+       ArrayList<PlayerCharacter> playerList = Serializable.getPlayableCharacters();
 
-       for (int i = 0; i<playerList.size(); i++){
-           playerList.get(i).getInformation();
+       for(PlayerCharacter list : playerList){
+           list.getInformation();
        }
 
-        ArrayList<Enemy> enemyList = Writer_Reader.getEnemyCharacters();
+        ArrayList<Enemy> enemyList = Serializable.getEnemyCharacters();
 
-       for(int i = 0; i<enemyList.size(); i++){
-           enemyList.get(i).getInformation();
+       for(Enemy list : enemyList){
+           list.getInformation();
        }
 
-       ArrayList<Car> carList = Writer_Reader.getCarCharacters();
+       ArrayList<Car> carList = Serializable.getCarCharacters();
 
-       for(int i = 0; i<carList.size(); i++){
-           carList.get(i).getInformation();
+       for(Car list : carList){
+           list.getInformation();
        }
 
-       MainJavaFX nyttSpill = new MainJavaFX();
 
-       GameLauncher.launchGame(nyttSpill);
+       GameScreen newGameScreen = new GameScreen();
 
-
+       GameLauncher.launchGame(newGameScreen);
 
        Settings.help("setOrientationOfToolBar");
-
-
-
 
 
 

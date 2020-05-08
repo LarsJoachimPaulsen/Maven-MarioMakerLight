@@ -5,7 +5,9 @@ import javafx.geometry.Orientation;
 import javafx.scene.control.ListView;
 import javafx.stage.Screen;
 
-import java.sql.SQLOutput;
+
+
+// MÅ SKRIVES OM OG FLYTTES UT TIL CONTROLLER.
 
 public abstract class Settings {
 
@@ -199,27 +201,21 @@ public abstract class Settings {
 
         switch (nameOfMethod.toLowerCase()){
 
-            default :
-                System.out.println();
-                System.out.println("This method does not exist");
-                System.out.println();
-                break;
-
-            case "addNewBackground" :
+            case "addnewbackground" :
                 System.out.println();
                 System.out.println("Add new Background");
                 System.out.println("This method allows for adding new backgrounds to the background file of the framewordk");
                 System.out.println();
                 break;
 
-            case "setProgramIcon" :
+            case "setprogramicon" :
                 System.out.println();
                 System.out.println("Set programIcon");
                 System.out.println("This method allows for adding new program icons for the JavaFX program");
                 System.out.println();
                 break;
 
-            case "setOrientationOfToolBar" :
+            case "setorientationoftoolbar" :
                 System.out.println();
                 System.out.println("Set orientation orientation of toolbar");
                 System.out.println("This method allows the user to change the layout of the main toolbar \n" +
@@ -227,7 +223,7 @@ public abstract class Settings {
                 System.out.println();
                 break;
 
-            case "setOrientationOfSecondaryToolBar" :
+            case "setorientationofsecondarytoolbar" :
                 System.out.println();
                 System.out.println("Set orientation of of secondary toolbar");
                 System.out.println("This method allows the user to change the layout of the secondary toolbar \n" +
@@ -238,6 +234,12 @@ public abstract class Settings {
                 System.out.println();
                 System.out.println("Help");
                 System.out.println("This method will print information about all, or the selected, method");
+                System.out.println();
+                break;
+
+            default :
+                System.out.println();
+                System.out.println("This method does not exist");
                 System.out.println();
                 break;
         }

@@ -3,7 +3,7 @@ package Gruppe18.Data;
 /**
  * @author Lars. Christine
  */
-public class PlayerCharacterBuilder {
+public final class PlayerCharacterBuilder {
 
     PlayerCharacter pc = new PlayerCharacter();
 

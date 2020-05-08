@@ -1,7 +1,7 @@
 package Gruppe18.Controller;
 
 import Gruppe18.Data.*;
-import Gruppe18.FileHandeling.Writer_Reader;
+import Gruppe18.FileHandeling.Serializable;
 import Gruppe18.Settings.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -17,6 +17,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Screen;
+import javafx.stage.Stage;
 
 
 public class MainController implements EventHandler<KeyEvent> {
@@ -40,27 +41,37 @@ public class MainController implements EventHandler<KeyEvent> {
     @FXML
     private Label collisionTestText;
 
+    private Stage scene;
+
+
+
     private int characterMovementSpeed = 10;
 
+    private PlayerCharacter selectedPlayer;
 
-    private ObservableList<String> toolList = FXCollections.observableArrayList("Pointer","Objects","PlayerCharacters","Enemies","Cars","Backgrounds");
+
+    public ObservableList<String> toolList = FXCollections.observableArrayList("Pointer","Objects","PlayerCharacters","Enemies","Cars","Backgrounds");
     private ObservableList<String> underObjectToolList = FXCollections.observableArrayList("Square","Circle","Triangle");
     //private ObservableList<ImageView> objectListPhoto = FXCollections.observableArrayList();
 
-    private ObservableList<PlayerCharacter> playerCharactersList = FXCollections.observableArrayList(Writer_Reader.getPlayableCharacters());
+    private ObservableList<PlayerCharacter> playerCharactersList = FXCollections.observableArrayList(Serializable.getPlayableCharacters());
     private ObservableList<ImageView> playerCharacterListPhoto = FXCollections.observableArrayList();
     //private ObservableList<String> playerCharacterListNames = FXCollections.observableArrayList();
 
-    private ObservableList<Enemy> enemyList = FXCollections.observableArrayList(Writer_Reader.getEnemyCharacters());
+    private ObservableList<Enemy> enemyList = FXCollections.observableArrayList(Serializable.getEnemyCharacters());
     private ObservableList<ImageView> enemyListPhoto = FXCollections.observableArrayList();
     //private ObservableList<String> enemyListNames = FXCollections.observableArrayList();
 
-    private ObservableList<Car> carList = FXCollections.observableArrayList(Writer_Reader.getCarCharacters());
+    private ObservableList<Car> carList = FXCollections.observableArrayList(Serializable.getCarCharacters());
     private ObservableList<ImageView> carListPhoto = FXCollections.observableArrayList();
     //private ObservableList<String> carListNames = FXCollections.observableArrayList();
 
     protected double screenWidth = Screen.getPrimary().getBounds().getWidth();
     protected double screenHeight =  Screen.getPrimary().getBounds().getHeight();
+
+
+
+
 
     private String currentOrientationOfToolBar = "";
 
@@ -68,52 +79,54 @@ public class MainController implements EventHandler<KeyEvent> {
 
         //testkode - karakteren på skjermen
         playableCharacterSprite.setFocusTraversable(true);
-        playableCharacterSprite.setImage(new Image(playerCharactersList.get(0).getPhoto()));
+
+        selectedPlayer = playerCharactersList.get(0);
+
+        playableCharacterSprite.setImage(new Image(selectedPlayer.getPhoto()));
 
         // playableCharacterSprite.setImage(new Image("/Pictures/PlayableCharacters/aleksander.png"));
-        playableCharacterSprite.setFitHeight(playerCharactersList.get(0).getSize()*10);
+        playableCharacterSprite.setFitHeight(playerCharactersList.get(0).getSize() * 10);
         characterMovementSpeed = playerCharactersList.get(0).getMovementSpeed();
 
         enemySprite.setImage(new Image(enemyList.get(0).getPhoto()));
-        enemySprite.setFitHeight(enemyList.get(0).getSize()*10);
+        enemySprite.setFitHeight(enemyList.get(0).getSize() * 10);
 
-        carSprite.setImage(new Image(carList.get(0).getPhoto()));
-        carSprite.setFitHeight(carList.get(0).getHeight()*10);
+        carSprite.setImage(new Image(carList.get(0).getPhoto()));https://docs.google.com/document/d/1miwdYU7oCBmW-830-DPWFEhSidcJ92Tr7RZcf-CKvgU/edit?usp=sharing
+        carSprite.setFitHeight(carList.get(0).getHeight() * 10);
 
         setUpButtons();
 
         toolSelect.setItems(toolList);
-        for(int i = 0; i < playerCharactersList.size(); i++) {
+        for (int i = 0; i < playerCharactersList.size(); i++) {
             playerCharacterListPhoto.add(new ImageView(playerCharactersList.get(i).getPhoto()));
         }
-        for(int j = 0; j < enemyList.size(); j++) {
+        for (int j = 0; j < enemyList.size(); j++) {
             enemyListPhoto.add(new ImageView(enemyList.get(j).getPhoto()));
         }
-        for(int k = 0; k < carList.size(); k++) {
+        for (int k = 0; k < carList.size(); k++) {
             carListPhoto.add(new ImageView(carList.get(k).getPhoto()));
         }
+
         /**
          * @author Christine
          */
         //sjekker hvilken som har blitt valgt i toolSelect
         toolSelect.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             ImageView imageView = new ImageView();
+
             @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue ) {
-                if(newValue.equals("Objects")) {
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (newValue.equals("Objects")) {
                     underToolSelect.setVisible(true);
                     //underObjectToolSelect.setItems(underObjectToolList);
-                }
-                else if(newValue.equals("PlayerCharacters")){
+                } else if (newValue.equals("PlayerCharacters")) {
                     underToolSelect.setVisible(true);
                     underToolSelect.setItems(playerCharacterListPhoto);
                     //addPlayerCharactersToToolbar();0
-                }
-                else if(newValue.equals("Enemies")) {
+                } else if (newValue.equals("Enemies")) {
                     underToolSelect.setVisible(true);
                     underToolSelect.setItems(enemyListPhoto);
-                }
-                else if(newValue.equals("Cars")) {
+                } else if (newValue.equals("Cars")) {
                     underToolSelect.setVisible(true);
                     underToolSelect.setItems(carListPhoto);
                 }
@@ -127,6 +140,13 @@ public class MainController implements EventHandler<KeyEvent> {
                 }
             }
         });
+
+//        scene.widthProperty().addListener(stageSizeListener);
+  //      scene.heightProperty().addListener(stageSizeListener);
+    }
+
+    private void getScene() {
+        scene = (Stage)btnConfirm.getScene().getWindow();
     }
 
     @Override
@@ -148,6 +168,11 @@ public class MainController implements EventHandler<KeyEvent> {
       enableWalking();
 
     }
+
+    ChangeListener<Number> stageSizeListener = ((observableValue, number, t1) ->
+                System.out.println("height " + scene.getHeight() + "Width " + scene.getWidth())
+    );
+
 
     /**
      * @author Lars
@@ -247,8 +272,8 @@ public class MainController implements EventHandler<KeyEvent> {
      * @author Lars
      */
     private void setUpButtons() {
-        btnConfirm.setLayoutY(screenHeight/2);
-        btnConfirm.setLayoutX(screenWidth/2);
+        btnConfirm.setLayoutY(screenWidth/2);
+        btnConfirm.setLayoutX(screenHeight/2);
 
         btnExitGame.setLayoutY(30);
         btnExitGame.setLayoutX(screenWidth-50);
@@ -284,6 +309,7 @@ public class MainController implements EventHandler<KeyEvent> {
             } else if (direction == 4) {
                 collisionTestText.setText("Collision from bottom");
             }
+
 
         }
     }
@@ -413,4 +439,11 @@ public class MainController implements EventHandler<KeyEvent> {
     public void help(){
         // method a user can call to get help with the class in question. Will be printed in console
     }
+
+
+
+    public void setStage(Stage stage){
+        this.scene = stage;
+    }
+
 }

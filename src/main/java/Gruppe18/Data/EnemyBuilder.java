@@ -5,7 +5,7 @@ import javafx.scene.image.Image;
 /**
  * @author Lars
  */
-public class EnemyBuilder {
+public final class EnemyBuilder {
 
     Enemy enemy = new Enemy();
 

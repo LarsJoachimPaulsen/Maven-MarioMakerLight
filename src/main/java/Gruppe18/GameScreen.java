@@ -1,5 +1,6 @@
 package Gruppe18;
 
+import Gruppe18.Controller.MainController;
 import Gruppe18.Data.Background;
 import javafx.application.Application;
 import javafx.scene.Parent;
@@ -13,26 +14,33 @@ import javafx.stage.Screen;
 import javafx.fxml.FXMLLoader;
 
 
-public class MainJavaFX extends Application {
+public final class GameScreen extends Application {
+
+
 
     Background defaultBackground = new Background();
+
+
+    private Scene scene;
 
     @Override
     public void start(Stage primaryStage) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/Main.fxml"));
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Main.fxml"));
+            Parent root = fxmlLoader.load();
+           MainController controller = fxmlLoader.getController();
+
+           controller.setStage(primaryStage);
             primaryStage.getIcons().add(new Image("Pictures/Icons/logo.png"));
             primaryStage.setTitle("Mario Maker Light");
 
             double maxX = Screen.getPrimary().getBounds().getMaxX();
             double maxY = Screen.getPrimary().getBounds().getMaxY()-10;
 
-            Scene scene = new Scene(root, maxX , maxY);
+            scene = new Scene(root, maxX , maxY);
 
             primaryStage.setScene(scene);
-
-
-
 
             primaryStage.show();
         }
@@ -40,12 +48,16 @@ public class MainJavaFX extends Application {
             e.printStackTrace();
         }
 
+    }
 
+    public void setScene(Scene scene){
+        this.scene = scene;
     }
 
     public static void main(String[] args) {
         launch(args);
     }
+
 }
 
 

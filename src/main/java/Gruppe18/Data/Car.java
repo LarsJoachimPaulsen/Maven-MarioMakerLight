@@ -5,7 +5,7 @@ import javafx.scene.image.Image;
 /**
  * @author Lars
  */
-public class Car {
+public final class Car {
 
     String name;
     int health = 100;
