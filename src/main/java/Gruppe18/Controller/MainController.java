@@ -259,7 +259,7 @@ public class MainController implements EventHandler<KeyEvent> {
     public void gameOver(){
 
         //sort highscores
-        sortHighscores();
+        sortHighscores(300);
         //set the view to visible
         highscoreView.setVisible(true);
         //add highscores to view
@@ -337,7 +337,7 @@ public class MainController implements EventHandler<KeyEvent> {
      *
      * @author Lars
      */
-    private void sortHighscores() {
+    private void sortHighscores(int playerScore) {
 
         Integer[] highscoreArray = new Integer[10];
 
@@ -345,9 +345,13 @@ public class MainController implements EventHandler<KeyEvent> {
             highscoreArray[i] = highscoreList.get(i);
         }
 
-        for(Integer in : highscoreArray){
-            System.out.println(in);
-        }
+      for(int i = 0; i < highscoreArray.length; i++){
+          if(playerScore > highscoreArray[i]){
+              int temp = highscoreArray[i];
+              highscoreArray[i] = playerScore;
+              playerScore = temp;
+          }
+      }
        for(int i = 0; i < highscoreArray.length; i++){
             for(int j = 0; j<highscoreArray.length; j++){
                 if (highscoreArray[i] > highscoreArray[j]){
