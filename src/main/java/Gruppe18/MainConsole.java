@@ -104,7 +104,7 @@ public class MainConsole {
 
          */
 
-        Integer[] highscore = new Integer[10];
+        /*Integer[] highscore = new Integer[10];
 
 
         for(int i = 0; i < 10; i++){
@@ -120,6 +120,8 @@ public class MainConsole {
         for (int high: higscoreOut) {
             System.out.println(high);
         }
+
+         */
 
 
 
