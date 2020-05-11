@@ -15,6 +15,7 @@ public class MainConsole {
 
     public static void main(String[] args){
 
+        /*
         PlayerCharacterBuilder p = new PlayerCharacterBuilder()
                 .name("mario")
                 .damage(30)
@@ -92,14 +93,35 @@ public class MainConsole {
 
 
 
-
-/*        for(PlayerCharacter player : playerList){
+/      for(PlayerCharacter player : playerList){
             player.getInformation();
-        } */
+        }
 
 
 
-       // System.out.println(writer.lesFraFil());
+       System.out.println(writer.lesFraFil());
+
+
+         */
+
+        int[] highscore = new int[10];
+
+
+        for(int i = 0; i < 10; i++){
+            double t = Math.random()*1000;
+            highscore[i] = (int)t;
+
+        }
+
+        Serializable.writeHighScore(highscore);
+
+        int[] higscoreOut = Serializable.getHighscoreList();
+
+        for (int high: higscoreOut) {
+            System.out.println(high);
+        }
+
+
 
     }
 }

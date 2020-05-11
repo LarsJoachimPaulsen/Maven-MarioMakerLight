@@ -127,6 +127,52 @@ public abstract class Serializable {
 
     }
 
+
+    public static void writeHighScore(int[] highscoreList){
+        File file = new File("src/main/resources/Files/HighScore.json");
+
+        GsonBuilder gsonBuilder = new GsonBuilder().setPrettyPrinting();
+
+        Gson gson = gsonBuilder.create();
+
+        String jsonWriter = "";
+
+        jsonWriter = gson.toJson(highscoreList);
+
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter(file))){
+            bw.write(jsonWriter);
+        }catch (IOException IOE){
+            IOE.printStackTrace();
+        }
+    }
+
+    public static int[] getHighscoreList(){
+        File file = new File("src/main/resources/Files/HighScore.json");
+
+        GsonBuilder gsonBuilder = new GsonBuilder().setPrettyPrinting();
+
+        Gson gson = gsonBuilder.create();
+
+        int[] highscoreList;
+
+        String line = "";
+
+        StringBuilder jsonTextFromFile = new StringBuilder();
+
+        try(BufferedReader br = new BufferedReader(new FileReader(file))) {
+            while((line = br.readLine()) != null){
+                jsonTextFromFile.append(line);
+            }
+
+            highscoreList = gson.fromJson(jsonTextFromFile.toString(), int[].class);
+
+            return highscoreList;
+        }catch (IOException IOE){
+            IOE.printStackTrace();
+            return null;
+        }
+    }
+
     /**
      *  A method to get all Car object saved to a file
      * @return returns an ArrayList of Car objects
@@ -238,6 +284,7 @@ public abstract class Serializable {
             }
 
         }
+
 
     /**
      *  A method to print all the Classes method to console, with a short description.

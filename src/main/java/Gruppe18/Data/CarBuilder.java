@@ -29,13 +29,18 @@ public final class CarBuilder {
         return this;
     }
 
+    public CarBuilder speed(int speed){
+        car.speed = speed;
+        return this;
+    }
+
     public CarBuilder width(int width){
         car.width = width;
         return this;
     }
 
-    public CarBuilder photo(String photo){
-        car.photo = photo;
+    public CarBuilder photo(String filepath){
+        car.photo = filepath;
         return this;
     }
 

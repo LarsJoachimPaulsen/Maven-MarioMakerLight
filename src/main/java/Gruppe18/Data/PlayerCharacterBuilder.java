@@ -5,7 +5,7 @@ package Gruppe18.Data;
  */
 public final class PlayerCharacterBuilder {
 
-    PlayerCharacter pc = new PlayerCharacter();
+    private PlayerCharacter pc = new PlayerCharacter();
 
     public PlayerCharacterBuilder name(String name){
         pc.name = name;
@@ -48,8 +48,8 @@ public final class PlayerCharacterBuilder {
         return this;
     }
 
-    public PlayerCharacterBuilder photo(String photo){
-        pc.photo = photo;
+    public PlayerCharacterBuilder photo(String filepath){
+        pc.photo = filepath;
         return this;
     }
 
