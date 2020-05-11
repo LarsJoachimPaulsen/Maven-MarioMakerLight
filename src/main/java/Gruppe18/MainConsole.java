@@ -104,18 +104,18 @@ public class MainConsole {
 
          */
 
-        int[] highscore = new int[10];
+        Integer[] highscore = new Integer[10];
 
 
         for(int i = 0; i < 10; i++){
-            double t = Math.random()*1000;
-            highscore[i] = (int)t;
+            Double t = Math.random()*1000;
+            highscore[i] = Integer.parseInt(String.valueOf(t));
 
         }
 
         Serializable.writeHighScore(highscore);
 
-        int[] higscoreOut = Serializable.getHighscoreList();
+        Integer[] higscoreOut = Serializable.getHighscoreList();
 
         for (int high: higscoreOut) {
             System.out.println(high);

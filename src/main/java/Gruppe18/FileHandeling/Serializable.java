@@ -128,7 +128,12 @@ public abstract class Serializable {
     }
 
 
-    public static void writeHighScore(int[] highscoreList){
+    /**
+     * A method for writing an array of highscores to a json-file
+     * @param highscoreList a list of Integer values
+     * @author Lars
+     */
+    public static void writeHighScore(Integer[] highscoreList){
         File file = new File("src/main/resources/Files/HighScore.json");
 
         GsonBuilder gsonBuilder = new GsonBuilder().setPrettyPrinting();
@@ -146,14 +151,18 @@ public abstract class Serializable {
         }
     }
 
-    public static int[] getHighscoreList(){
+    /**
+     * A method to get all highscores from file.
+     * @return an array of Integers
+     */
+    public static Integer[] getHighscoreList(){
         File file = new File("src/main/resources/Files/HighScore.json");
 
         GsonBuilder gsonBuilder = new GsonBuilder().setPrettyPrinting();
 
         Gson gson = gsonBuilder.create();
 
-        int[] highscoreList;
+        Integer[] highscoreList;
 
         String line = "";
 
@@ -164,7 +173,7 @@ public abstract class Serializable {
                 jsonTextFromFile.append(line);
             }
 
-            highscoreList = gson.fromJson(jsonTextFromFile.toString(), int[].class);
+            highscoreList = gson.fromJson(jsonTextFromFile.toString(), Integer[].class);
 
             return highscoreList;
         }catch (IOException IOE){

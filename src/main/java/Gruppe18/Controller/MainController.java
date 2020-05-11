@@ -40,6 +40,8 @@ public class MainController implements EventHandler<KeyEvent> {
     private Button btnExitGame;
     @FXML
     private Label collisionTestText;
+    @FXML
+    private ListView<Integer> highscoreView = new ListView<>();
 
     private Stage scene;
 
@@ -66,6 +68,8 @@ public class MainController implements EventHandler<KeyEvent> {
     private ObservableList<ImageView> carListPhoto = FXCollections.observableArrayList();
     //private ObservableList<String> carListNames = FXCollections.observableArrayList();
 
+    private ObservableList<Integer> highscoreList = FXCollections.observableArrayList(Serializable.getHighscoreList());
+
     protected double screenWidth = Screen.getPrimary().getBounds().getWidth();
     protected double screenHeight =  Screen.getPrimary().getBounds().getHeight();
 
@@ -91,7 +95,7 @@ public class MainController implements EventHandler<KeyEvent> {
         enemySprite.setImage(new Image(enemyList.get(0).getPhoto()));
         enemySprite.setFitHeight(enemyList.get(0).getSize() * 10);
 
-        carSprite.setImage(new Image(carList.get(0).getPhoto()));https://docs.google.com/document/d/1miwdYU7oCBmW-830-DPWFEhSidcJ92Tr7RZcf-CKvgU/edit?usp=sharing
+        carSprite.setImage(new Image(carList.get(0).getPhoto()));https:
         carSprite.setFitHeight(carList.get(0).getHeight() * 10);
 
         setUpButtons();
@@ -163,6 +167,7 @@ public class MainController implements EventHandler<KeyEvent> {
       toolSelect.setVisible(false);
       underToolSelect.setVisible(false);
       txtPoints.setVisible(true);
+      highscoreView.setVisible(false);
       txtPoints.setText("");
       playableCharacterSprite.requestFocus();
       enableWalking();
@@ -248,7 +253,21 @@ public class MainController implements EventHandler<KeyEvent> {
         underToolSelect.setVisible(true);
         txtPoints.setVisible(false);
         removeWalking();
+        gameOver();
     }
+
+    public void gameOver(){
+
+        //sort highscores
+        sortHighscores();
+        //set the view to visible
+        highscoreView.setVisible(true);
+        //add highscores to view
+        highscoreView.setItems(highscoreList);
+
+    }
+
+
 
     private void removeWalking() {
 
@@ -312,6 +331,37 @@ public class MainController implements EventHandler<KeyEvent> {
 
 
         }
+    }
+
+    /**
+     *
+     * @author Lars
+     */
+    private void sortHighscores() {
+
+        Integer[] highscoreArray = new Integer[10];
+
+        for(int i = 0; i<highscoreList.size(); i++){
+            highscoreArray[i] = highscoreList.get(i);
+        }
+
+        for(Integer in : highscoreArray){
+            System.out.println(in);
+        }
+       for(int i = 0; i < highscoreArray.length; i++){
+            for(int j = 0; j<highscoreArray.length; j++){
+                if (highscoreArray[i] > highscoreArray[j]){
+                    int temp = highscoreArray[i];
+                    highscoreArray[i] = highscoreArray[j];
+                    highscoreArray[j] = temp;
+                }
+            }
+        }
+
+       highscoreList = FXCollections.observableArrayList(highscoreArray);
+
+       Serializable.writeHighScore(highscoreArray);
+
     }
 
         // Må ha fixes for å få riktig orientation på tekst. Skal inn i settings!
