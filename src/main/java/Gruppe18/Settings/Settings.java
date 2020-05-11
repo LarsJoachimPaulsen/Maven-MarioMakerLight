@@ -9,6 +9,7 @@ import javafx.stage.Screen;
 
 // MÅ SKRIVES OM OG FLYTTES UT TIL CONTROLLER.
 
+@Deprecated
 public abstract class Settings {
 
     private static String currentOrientationOfToolBar = "";
