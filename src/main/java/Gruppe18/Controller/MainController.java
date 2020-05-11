@@ -239,7 +239,6 @@ public class MainController implements EventHandler<KeyEvent> {
 
             }
         });
-
     }
 
     /**
@@ -368,15 +367,13 @@ public class MainController implements EventHandler<KeyEvent> {
 
     }
 
-        // Må ha fixes for å få riktig orientation på tekst. Skal inn i settings!
-    /*
     public void setOrientationOfToolBar(String orientation){
 
         boolean trigger = false;
         switch (orientation.toLowerCase()){
 
             case "left" :
-                toolSelect.setMinHeight(screenHeigth);
+                toolSelect.setMinHeight(screenHeight);
                 toolSelect.setMinWidth(screenWidth*.05);
                 toolSelect.setLayoutX(0);
                 toolSelect.setLayoutY(0);
@@ -385,7 +382,7 @@ public class MainController implements EventHandler<KeyEvent> {
                 break;
 
             case "right" :
-                toolSelect.setMinHeight(screenHeigth);
+                toolSelect.setMinHeight(screenHeight);
                 toolSelect.setMinWidth(screenWidth*.05);
                 toolSelect.setLayoutX(screenWidth-125);
                 toolSelect.setLayoutY(0);
@@ -395,8 +392,8 @@ public class MainController implements EventHandler<KeyEvent> {
 
             case "top" :
                 toolSelect.setMinWidth(screenWidth);
-                toolSelect.setMinHeight(screenHeigth*.05);
-                toolSelect.setMaxHeight(screenHeigth*.05);
+                toolSelect.setMinHeight(screenHeight*.05);
+                toolSelect.setMaxHeight(screenHeight*.05);
                 toolSelect.setLayoutX(0);
                 toolSelect.setLayoutY(0);
                 currentOrientationOfToolBar = "t";
@@ -405,10 +402,10 @@ public class MainController implements EventHandler<KeyEvent> {
 
             case "bottom" :
                 toolSelect.setMinWidth(screenWidth);
-                toolSelect.setMinHeight(screenHeigth*.05);
-                toolSelect.setMaxHeight(screenHeigth*.05);
+                toolSelect.setMinHeight(screenHeight*.05);
+                toolSelect.setMaxHeight(screenHeight*.05);
                 toolSelect.setLayoutX(0);
-                toolSelect.setLayoutY(screenHeigth-125);
+                toolSelect.setLayoutY(screenHeight-125);
                 currentOrientationOfToolBar = "b";
                 trigger = true;
                 break;
@@ -429,58 +426,58 @@ public class MainController implements EventHandler<KeyEvent> {
             case "left" :
                 if (currentOrientationOfToolBar.toLowerCase().equals("l")){
 
-                    underObjectToolSelect.setLayoutX(toolSelect.getMinWidth());
+                    underToolSelect.setLayoutX(toolSelect.getMinWidth());
 
 
                 }
                 else{
-                    underObjectToolSelect.setLayoutX(0);
+                    underToolSelect.setLayoutX(0);
 
                 }
-                underObjectToolSelect.setLayoutY(0);
-                underObjectToolSelect.setMinHeight(screenHeigth);
-                underObjectToolSelect.setMaxWidth(screenWidth*0.05);
+                underToolSelect.setLayoutY(0);
+                underToolSelect.setMinHeight(screenHeight);
+                underToolSelect.setMaxWidth(screenWidth*0.05);
                 trigger = true;
                 break;
 
             case "right" :
                 if (currentOrientationOfToolBar.toLowerCase().equals("r")){
-                    underObjectToolSelect.setLayoutX(screenWidth - screenWidth*.1);
+                    underToolSelect.setLayoutX(screenWidth - screenWidth*.1);
                 }
                 else {
-                    underObjectToolSelect.setLayoutX(screenWidth-125);
+                    underToolSelect.setLayoutX(screenWidth-125);
 
                 }
-                underObjectToolSelect.setLayoutY(0);
-                underObjectToolSelect.setMinHeight(screenHeigth);
-                underObjectToolSelect.setMaxWidth(screenWidth*.05);
+                underToolSelect.setLayoutY(0);
+                underToolSelect.setMinHeight(screenHeight);
+                underToolSelect.setMaxWidth(screenWidth*.05);
                 trigger = true;
                 break;
 
             case "top" :
                 if (currentOrientationOfToolBar.toLowerCase().equals("t")){
-                    underObjectToolSelect.setLayoutY(toolSelect.getMaxHeight());
+                    underToolSelect.setLayoutY(toolSelect.getMaxHeight());
                     System.out.println(toolSelect.getMaxHeight());
                 }
                 else {
-                    underObjectToolSelect.setLayoutY(0);
+                    underToolSelect.setLayoutY(0);
                 }
-                underObjectToolSelect.setLayoutX(0);
-                underObjectToolSelect.setMinWidth(screenWidth);
-                underObjectToolSelect.setMaxHeight(screenHeigth*.05);
+                underToolSelect.setLayoutX(0);
+                underToolSelect.setMinWidth(screenWidth);
+                underToolSelect.setMaxHeight(screenHeight*.05);
                 trigger = true;
                 break;
 
             case "bottom" :
                 if (currentOrientationOfToolBar.toLowerCase().equals("b")){
-                    underObjectToolSelect.setLayoutY(screenHeigth-125 - toolSelect.getMaxHeight());
+                    underToolSelect.setLayoutY(screenHeight-125 - toolSelect.getMaxHeight());
                 }
                 else {
-                    underObjectToolSelect.setLayoutY(screenHeigth-125);
+                    underToolSelect.setLayoutY(screenHeight-125);
                 }
-                underObjectToolSelect.setLayoutX(0);
-                underObjectToolSelect.setMinWidth(screenWidth);
-                underObjectToolSelect.setMaxHeight(screenHeigth*.05);
+                underToolSelect.setLayoutX(0);
+                underToolSelect.setMinWidth(screenWidth);
+                underToolSelect.setMaxHeight(screenHeight*.05);
                 trigger = true;
                 break;
         }
@@ -489,7 +486,7 @@ public class MainController implements EventHandler<KeyEvent> {
             System.out.println("Error in setOrientationOfSecondaryToolbar! String value needs to be left, right, top or bottom");
         }
     }
-    */
+
     public void help(){
         // method a user can call to get help with the class in question. Will be printed in console
     }
