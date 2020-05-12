@@ -130,10 +130,10 @@ public abstract class Serializable {
 
     /**
      * A method for writing an array of highscores to a json-file
-     * @param highscoreList a list of Integer values
+     * @param listOfHigscores a list of Integer values
      * @author Lars
      */
-    public static void writeHighScore(Integer[] highscoreList){
+    public static void writeHighScore(Integer[] listOfHigscores){
         File file = new File("src/main/resources/Files/HighScore.json");
 
         GsonBuilder gsonBuilder = new GsonBuilder().setPrettyPrinting();
@@ -142,7 +142,7 @@ public abstract class Serializable {
 
         String jsonWriter = "";
 
-        jsonWriter = gson.toJson(highscoreList);
+        jsonWriter = gson.toJson(listOfHigscores);
 
         try(BufferedWriter bw = new BufferedWriter(new FileWriter(file))){
             bw.write(jsonWriter);
@@ -299,7 +299,7 @@ public abstract class Serializable {
      *  A method to print all the Classes method to console, with a short description.
      */
     public void help(){
-            // må implementeres
+        System.out.println("her kommer hjelp");
         }
 
     /**
@@ -307,7 +307,7 @@ public abstract class Serializable {
       * @param methodName The name of the method you want more information about.
      */
     public void help(String methodName){
-        // må implementeres
+        System.out.println("her kommer mer hjelo");
     }
 
 }

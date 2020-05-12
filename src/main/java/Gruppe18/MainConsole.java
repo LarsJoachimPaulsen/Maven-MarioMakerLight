@@ -2,7 +2,9 @@ package Gruppe18;
 
 import Gruppe18.Data.*;
 import Gruppe18.FileHandeling.Serializable;
-import Gruppe18.Settings.Settings;
+//import Gruppe18.Settings.Settings;
+import Gruppe18.Controller.Settings;
+
 
 import java.util.ArrayList;
 
@@ -123,6 +125,13 @@ public class MainConsole {
 
          */
 
+        GameScreen gameScreen = new GameScreen();
+
+        Settings settings = new Settings();
+      //  settings.
+
+
+        //Settings.setOrientationOfToolBar("top");
 
 
     }

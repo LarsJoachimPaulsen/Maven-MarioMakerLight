@@ -1,16 +1,36 @@
 package Gruppe18.Settings;
 
-import Gruppe18.Controller.MainController;
+import Gruppe18.Data.Car;
+import Gruppe18.Data.Enemy;
+import Gruppe18.Data.PlayerCharacter;
+import Gruppe18.FileHandeling.Serializable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Orientation;
 import javafx.scene.control.ListView;
+import javafx.scene.image.ImageView;
 import javafx.stage.Screen;
 
 
 
-// MÅ SKRIVES OM OG FLYTTES UT TIL CONTROLLER.
-
 @Deprecated
 public abstract class Settings {
+
+
+
+    protected static ObservableList<String> toolList = FXCollections.observableArrayList("Pointer","Objects","PlayerCharacters","Enemies","Cars","Backgrounds");
+    protected static ObservableList<String> underObjectToolList = FXCollections.observableArrayList("Square","Circle","Triangle");
+
+    protected static ObservableList<PlayerCharacter> playerCharactersList = FXCollections.observableArrayList(Serializable.getPlayableCharacters());
+    protected static ObservableList<ImageView> playerCharacterListPhoto = FXCollections.observableArrayList();
+
+    protected static ObservableList<Enemy> enemyList = FXCollections.observableArrayList(Serializable.getEnemyCharacters());
+    protected static ObservableList<ImageView> enemyListPhoto = FXCollections.observableArrayList();
+
+    protected static ObservableList<Car> carList = FXCollections.observableArrayList(Serializable.getCarCharacters());
+    protected static ObservableList<ImageView> carListPhoto = FXCollections.observableArrayList();
+
+    protected static ObservableList<Integer> highscoreList = FXCollections.observableArrayList(Serializable.getHighscoreList());
 
     private static String currentOrientationOfToolBar = "";
     private static double screenHeigth = Screen.getPrimary().getBounds().getHeight();
@@ -46,6 +66,7 @@ public abstract class Settings {
                 list.setLayoutX(0);
                 list.setLayoutY(0);
                 list.setOrientation(Orientation.VERTICAL);
+
                 currentOrientationOfToolBar = "l";
                 mainToolbarWidth = screenWidth*.5;
                 break;
@@ -78,6 +99,7 @@ public abstract class Settings {
                 list.setLayoutX(0);
                 list.setLayoutY(screenHeigth-125);
                 list.setOrientation(Orientation.HORIZONTAL);
+
                 mainToolbarHeigth = screenHeigth*.05;
                 currentOrientationOfToolBar = "b";
                 break;
