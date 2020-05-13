@@ -1,9 +1,9 @@
-package Gruppe18.Settings;
+package MyFIrstGameEngine.Settings;
 
-import Gruppe18.Data.Car;
-import Gruppe18.Data.Enemy;
-import Gruppe18.Data.PlayerCharacter;
-import Gruppe18.FileHandeling.Serializable;
+import MyFIrstGameEngine.Data.Car;
+import MyFIrstGameEngine.Data.Enemy;
+import MyFIrstGameEngine.Data.PlayerCharacter;
+import MyFIrstGameEngine.FileHandeling.Serializable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Orientation;

@@ -1,7 +1,7 @@
-package Gruppe18;
+package MyFIrstGameEngine;
 
-import Gruppe18.Controller.Settings;
-import Gruppe18.Data.Background;
+import MyFIrstGameEngine.Controller.Settings;
+import MyFIrstGameEngine.Data.Background;
 import javafx.application.Application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;

@@ -1,4 +1,4 @@
-package Gruppe18.Data;
+package MyFIrstGameEngine.Data;
 
 import java.util.ArrayList;
 

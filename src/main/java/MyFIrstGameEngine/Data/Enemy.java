@@ -1,6 +1,4 @@
-package Gruppe18.Data;
-
-import javafx.scene.image.Image;
+package MyFIrstGameEngine.Data;
 
 /**
  * @author Lars

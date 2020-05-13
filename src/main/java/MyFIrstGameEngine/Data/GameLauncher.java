@@ -1,6 +1,6 @@
-package Gruppe18.Data;
+package MyFIrstGameEngine.Data;
 
-import Gruppe18.GameScreen;
+import MyFIrstGameEngine.GameScreen;
 
 import static javafx.application.Application.launch;
 

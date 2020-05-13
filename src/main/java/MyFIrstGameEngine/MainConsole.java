@@ -1,12 +1,8 @@
-package Gruppe18;
+package MyFIrstGameEngine;
 
-import Gruppe18.Data.*;
-import Gruppe18.FileHandeling.Serializable;
+import MyFIrstGameEngine.Data.*;
 //import Gruppe18.Settings.Settings;
-import Gruppe18.Controller.Settings;
 
-
-import java.util.ArrayList;
 
 import static javafx.application.Application.launch;
 
@@ -125,11 +121,12 @@ public class MainConsole {
 
          */
 
-        GameScreen gameScreen = new GameScreen();
-
-        Settings settings = new Settings();
-      //  settings.
-
+      PlayerCharacterBuilder builder = new PlayerCharacterBuilder()
+              .damage(50)
+              .enableScore()
+              .name("TestPlayer")
+              .maxHealth(100);
+      PlayerCharacter player = builder.createPlayerCharacter();
 
         //Settings.setOrientationOfToolBar("top");
 

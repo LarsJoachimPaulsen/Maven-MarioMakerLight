@@ -1,7 +1,8 @@
-package Gruppe18.Controller;
+package MyFIrstGameEngine.Controller;
 
-import Gruppe18.Data.*;
-import Gruppe18.FileHandeling.Serializable;
+import MyFIrstGameEngine.Data.*;
+import MyFIrstGameEngine.FileHandeling.Serializable;
+import MyFIrstGameEngine.Settings.Orientation;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -305,7 +306,7 @@ public class Settings implements EventHandler<KeyEvent> {
         //setOriontationOfSecondaryToolBar("left");
 
         // må fikses noe bugs
-        setOriontationOfSecondaryToolBar(Orientation.LEFT);
+        setOriontationOfSecondaryToolBar(Orientation.);
     }
 
     // test for collision

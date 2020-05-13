@@ -1,4 +1,4 @@
-package Gruppe18.Controller;
+package MyFIrstGameEngine.Settings;
 
 public enum Orientation {
     LEFT,

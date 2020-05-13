@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="MainConsole" type="Application" factoryName="Application" nameIsGenerated="true">
-    <option name="MAIN_CLASS_NAME" value="Gruppe18.MainConsole" />
+    <option name="MAIN_CLASS_NAME" value="MyFIrstGameEngine.MainConsole" />
     <module name="MarioMakerLight" />
     <method v="2">
       <option name="Make" enabled="true" />
