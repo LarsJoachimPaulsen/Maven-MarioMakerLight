@@ -14,3 +14,10 @@ For å starte builds og dependencies i Maven:
 
 
 Dokumentasjon for dyn4j: http://www.dyn4j.org/documentation/getting-started/#Maven
+
+# Initial start up of the framework
+ 
+The framework is built in the dependency management system Maven. 
+To use the frameworks existing dependencies, as well as expanding it with new dependencies is as easy as adding them to the pom.xml-file.
+New dependencies can be found on https://mvnrepository.com/. The easiest way to get the framework to start, is to open the pom.xml-file, 
+located in the main folder, and allowing for auto-importing. 
