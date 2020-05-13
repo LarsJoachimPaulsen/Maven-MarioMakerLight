@@ -1,8 +1,8 @@
 package MyFIrstGameEngine.FileHandeling;
 
-import MyFIrstGameEngine.Data.Car;
-import MyFIrstGameEngine.Data.Enemy;
-import MyFIrstGameEngine.Data.PlayerCharacter;
+import MyFIrstGameEngine.CharacterCreation.Car;
+import MyFIrstGameEngine.CharacterCreation.Enemy;
+import MyFIrstGameEngine.CharacterCreation.PlayerCharacter;
 import com.google.gson.*;
 import java.io.*;
 import java.util.ArrayList;
@@ -99,8 +99,6 @@ public abstract class Serializable {
             } else {
                 carCharacters.add((Car) character);
             }
-
-
         }
 
         GsonBuilder gsonBuilder = new GsonBuilder().setPrettyPrinting();

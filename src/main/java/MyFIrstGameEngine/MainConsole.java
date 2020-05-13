@@ -1,6 +1,7 @@
 package MyFIrstGameEngine;
 
-import MyFIrstGameEngine.Data.*;
+import MyFIrstGameEngine.CharacterCreation.PlayerCharacter;
+import MyFIrstGameEngine.CharacterCreation.PlayerCharacterBuilder;
 //import Gruppe18.Settings.Settings;
 
 
@@ -12,6 +13,16 @@ public class MainConsole {
 
 
     public static void main(String[] args){
+
+
+        PlayerCharacterBuilder pc = new PlayerCharacterBuilder()
+                .name("kai")
+                .damage(30)
+                .enableScore()
+                .movementSpeed(30);
+        PlayerCharacter kai = pc.createPlayerCharacter();
+
+        kai.getInformation();
 
         /*
         PlayerCharacterBuilder p = new PlayerCharacterBuilder()

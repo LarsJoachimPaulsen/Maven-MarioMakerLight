@@ -1,7 +1,10 @@
 package MyFIrstGameEngine.Controller;
 
-import MyFIrstGameEngine.Data.*;
+import MyFIrstGameEngine.CharacterCreation.Car;
+import MyFIrstGameEngine.CharacterCreation.Enemy;
+import MyFIrstGameEngine.CharacterCreation.PlayerCharacter;
 import MyFIrstGameEngine.FileHandeling.Serializable;
+import MyFIrstGameEngine.Data.Movement;
 import MyFIrstGameEngine.Settings.Orientation;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -9,7 +12,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -184,62 +186,8 @@ public class Settings implements EventHandler<KeyEvent> {
      * @author Lars
      */
     private void enableWalking() {
-        playableCharacterSprite.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent keyEvent) {
-                Scene scene = playableCharacterSprite.getScene();
-                switch (keyEvent.getCode()) {
-                    case D:
-                        if(playableCharacterSprite.getX() > scene.getWidth()){
-                            playableCharacterSprite.setX(0);
-                        }
-                        else {
-                        playableCharacterSprite.setX(playableCharacterSprite.getX() + characterMovementSpeed);
-                        }
-                        checkCollision(1);
-                        keyEvent.consume();
-                        break;
-                    case A:
-                        if (playableCharacterSprite.getX() < 0){
-                            playableCharacterSprite.setX(scene.getWidth());
-                        }
-                        else {
-                            playableCharacterSprite.setX(playableCharacterSprite.getX() - characterMovementSpeed);
-                        }
-                        keyEvent.consume();
-                        checkCollision(2);
-                        break;
-                    case W:
-                        if (playableCharacterSprite.getY() < -(toolSelect.getHeight())){
-                            playableCharacterSprite.setY(scene.getHeight());
-                        }
-                        else if (playableCharacterSprite.getY() < -260) {
-                            return;
-                        }
-                        else {
-                            playableCharacterSprite.setY(playableCharacterSprite.getY() - characterMovementSpeed);
-                        }
+       Movement.addMovement(playableCharacterSprite);
 
-                        keyEvent.consume();
-                        checkCollision(3);
-                        break;
-                    case S:
-                        if (playableCharacterSprite.getY() > scene.getHeight()){
-                            playableCharacterSprite.setY(0);
-                        }
-                        else if (playableCharacterSprite.getY() > 665) {
-                            return;
-                        }
-                        else {
-                        playableCharacterSprite.setY(playableCharacterSprite.getY() + characterMovementSpeed);
-                        }
-                        keyEvent.consume();
-                        checkCollision(4);
-                        break;
-                }
-
-            }
-        });
     }
 
     /**
@@ -306,7 +254,7 @@ public class Settings implements EventHandler<KeyEvent> {
         //setOriontationOfSecondaryToolBar("left");
 
         // må fikses noe bugs
-        setOriontationOfSecondaryToolBar(Orientation.);
+        setOriontationOfSecondaryToolBar(Orientation.LEFT);
     }
 
     // test for collision
@@ -318,7 +266,13 @@ public class Settings implements EventHandler<KeyEvent> {
      */
     private void checkCollision (int direction){
 
+
+
         if (playableCharacterSprite.getBoundsInParent().intersects(enemySprite.getBoundsInParent())) {
+
+            collisionTestText.setText("Collision");
+
+            /*
             if (direction == 1) {
                 collisionTestText.setText("Collision From right");
             } else if (direction == 2) {
@@ -328,6 +282,8 @@ public class Settings implements EventHandler<KeyEvent> {
             } else if (direction == 4) {
                 collisionTestText.setText("Collision from bottom");
             }
+
+             */
 
 
         }
