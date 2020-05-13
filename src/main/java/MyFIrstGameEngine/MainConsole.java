@@ -2,6 +2,7 @@ package MyFIrstGameEngine;
 
 import MyFIrstGameEngine.CharacterCreation.PlayerCharacter;
 import MyFIrstGameEngine.CharacterCreation.PlayerCharacterBuilder;
+import MyFIrstGameEngine.Data.GameLauncher;
 //import Gruppe18.Settings.Settings;
 
 
@@ -13,6 +14,8 @@ public class MainConsole {
 
 
     public static void main(String[] args){
+
+        GameLauncher.launchGame(new GameScreen());
 
 
         PlayerCharacterBuilder pc = new PlayerCharacterBuilder()

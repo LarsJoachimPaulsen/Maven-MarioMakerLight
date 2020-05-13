@@ -1,10 +1,10 @@
 package MyFIrstGameEngine.Settings;
 
-public enum Orientation {
+public enum ToolbarOrientation {
     LEFT,
     RIGHT,
     TOP,
     BOTTOM;
 
-    private Orientation(){}
+    private ToolbarOrientation(){}
 }

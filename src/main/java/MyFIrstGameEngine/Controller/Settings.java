@@ -5,13 +5,14 @@ import MyFIrstGameEngine.CharacterCreation.Enemy;
 import MyFIrstGameEngine.CharacterCreation.PlayerCharacter;
 import MyFIrstGameEngine.FileHandeling.Serializable;
 import MyFIrstGameEngine.Data.Movement;
-import MyFIrstGameEngine.Settings.Orientation;
+import MyFIrstGameEngine.Settings.ToolbarOrientation;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Orientation;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -246,7 +247,7 @@ public class Settings implements EventHandler<KeyEvent> {
         btnExitGame.setLayoutX(screenWidth-50);
 
         // input left, right, top, bottom
-        setOrientationOfToolBar(Orientation.TOP);
+        setOrientationOfToolBar(ToolbarOrientation.LEFT);
          //setOrientationOfToolBar("left");
 
 
@@ -254,7 +255,7 @@ public class Settings implements EventHandler<KeyEvent> {
         //setOriontationOfSecondaryToolBar("left");
 
         // må fikses noe bugs
-        setOriontationOfSecondaryToolBar(Orientation.LEFT);
+        setOriontationOfSecondaryToolBar(ToolbarOrientation.BOTTOM);
     }
 
     // test for collision
@@ -324,9 +325,9 @@ public class Settings implements EventHandler<KeyEvent> {
 
     }
 
-    public void setOrientationOfToolBar(Orientation orientation){
+    public void setOrientationOfToolBar(ToolbarOrientation toolbarOrientation){
 
-        switch (orientation){
+        switch (toolbarOrientation){
 
             case LEFT:
                 toolSelect.setMinHeight(screenHeight);
@@ -334,7 +335,7 @@ public class Settings implements EventHandler<KeyEvent> {
                 toolSelect.setLayoutX(0);
                 toolSelect.setLayoutY(0);
                 currentOrientationOfToolBar = "l";
-
+                toolSelect.setOrientation(Orientation.VERTICAL);
                 break;
 
             case RIGHT:
@@ -343,6 +344,7 @@ public class Settings implements EventHandler<KeyEvent> {
                 toolSelect.setLayoutX(screenWidth-125);
                 toolSelect.setLayoutY(0);
                 currentOrientationOfToolBar = "r";
+                toolSelect.setOrientation(Orientation.VERTICAL);
                 break;
 
             case TOP :
@@ -352,6 +354,7 @@ public class Settings implements EventHandler<KeyEvent> {
                 toolSelect.setLayoutX(0);
                 toolSelect.setLayoutY(0);
                 currentOrientationOfToolBar = "t";
+                toolSelect.setOrientation(Orientation.HORIZONTAL);
                 break;
 
             case BOTTOM :
@@ -361,21 +364,20 @@ public class Settings implements EventHandler<KeyEvent> {
                 toolSelect.setLayoutX(0);
                 toolSelect.setLayoutY(screenHeight-125);
                 currentOrientationOfToolBar = "b";
+                toolSelect.setOrientation(Orientation.HORIZONTAL);
                 break;
 
             default:
-                System.out.println("Error in setOnOrientationOfToolbar!! Orientation value needs to be TOP, BOTTOM, LEFT or RIGHT");
+                System.out.println("Error in setOnOrientationOfToolbar!! ToolbarOrientation value needs to be TOP, BOTTOM, LEFT or RIGHT");
                 break;
 
         }
     }
 
     // skal flyttes til innstillinger
-    public void setOriontationOfSecondaryToolBar(Orientation orientation) {
+    public void setOriontationOfSecondaryToolBar(ToolbarOrientation toolbarOrientation) {
 
-
-
-        switch (orientation){
+        switch (toolbarOrientation){
             case LEFT :
                 if (currentOrientationOfToolBar.toLowerCase().equals("l")){
 
@@ -390,7 +392,7 @@ public class Settings implements EventHandler<KeyEvent> {
                 underToolSelect.setLayoutY(0);
                 underToolSelect.setMinHeight(screenHeight);
                 underToolSelect.setMaxWidth(screenWidth*0.05);
-
+                underToolSelect.setOrientation(Orientation.VERTICAL);
                 break;
 
             case RIGHT :
@@ -404,7 +406,7 @@ public class Settings implements EventHandler<KeyEvent> {
                 underToolSelect.setLayoutY(0);
                 underToolSelect.setMinHeight(screenHeight);
                 underToolSelect.setMaxWidth(screenWidth*.05);
-
+                underToolSelect.setOrientation(Orientation.VERTICAL);
                 break;
 
             case TOP :
@@ -418,7 +420,7 @@ public class Settings implements EventHandler<KeyEvent> {
                 underToolSelect.setLayoutX(0);
                 underToolSelect.setMinWidth(screenWidth);
                 underToolSelect.setMaxHeight(screenHeight*.05);
-
+                underToolSelect.setOrientation(Orientation.HORIZONTAL);
                 break;
 
             case BOTTOM :
@@ -431,6 +433,7 @@ public class Settings implements EventHandler<KeyEvent> {
                 underToolSelect.setLayoutX(0);
                 underToolSelect.setMinWidth(screenWidth);
                 underToolSelect.setMaxHeight(screenHeight*.05);
+                underToolSelect.setOrientation(Orientation.HORIZONTAL);
                 break;
 
             default:
