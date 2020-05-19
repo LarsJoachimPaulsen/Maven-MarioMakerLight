@@ -3,6 +3,7 @@ package Testing;
 import MyFirstGameEngine.CharacterCreation.*;
 import MyFirstGameEngine.FileHandeling.Serializable;
 import MyFirstGameEngine.GameControlls.GameLauncher;
+import MyFirstGameEngine.GamescreenController.GameScreenController;
 import MyFirstGameEngine.Settings.Settings;
 import MyFirstGameEngine.Settings.ToolbarOrientation;
 import MyFirstGameEngine.UI.GameScreen;
@@ -19,6 +20,7 @@ public class TestConsole {
 
 
     public static void main(String[] args){
+
 
         PlayerCharacterBuilder pc = new PlayerCharacterBuilder()
                 .name("TestPlayer")
@@ -57,8 +59,8 @@ public class TestConsole {
         testCar.getInformation();
 
         Serializable.writeCharacterToFile(playerCharacter);
-        //Serializable.writeCharacterToFile(testEnemy);
-        //Serializable.writeCharacterToFile(testCar);
+        Serializable.writeCharacterToFile(testEnemy);
+        Serializable.writeCharacterToFile(testCar);
 
         ArrayList<PlayerCharacter> playerList = Serializable.getPlayableCharacters();
 

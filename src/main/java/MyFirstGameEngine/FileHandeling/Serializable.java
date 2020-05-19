@@ -29,134 +29,90 @@ public abstract class Serializable {
 
     //This method will write a character to the correct file, if it does not already exist.
 
+
     /**
      * A method for writing a character to a json-file
      * @param character takes a character object and converts it to the correct json-file
      * @author Lars
      */
-    public static void writeCharacterToFile(Object character) {
-        boolean characterExists = false;
+
+    public static void writeCharacterToFile(Object character){
+
         File file = null;
-        if (character instanceof PlayerCharacter) {
+
+        if(character instanceof PlayerCharacter){
 
             file = new File("src/main/resources/Files/PlayableCharacter.json");
-            if (file.length() != 0) {
+            if (file.length() != 0){
+
                 playableCharacters = getPlayableCharacters();
 
                 for(PlayerCharacter playerList : playableCharacters){
-                    if(playerList.getName().equals(((PlayerCharacter) character).getName())){
-                        characterExists = true;
-                        break;
+
+                    if (playerList.getName().equals(((PlayerCharacter) character).getName())){
+                        System.err.println("character already exits");
+                        return;
                     }
                 }
-              /* for (int i = 0; i < playableCharacters.size(); i++) {
-                    // compares the name of the character name residing in index i with the character name we are trying to add
-                    if (playableCharacters.get(i).getName().equals(((PlayerCharacter) character).getName())) {
-                        characterExists = true;
-                        break;
-                    }
-                }
-
-               */
-
             }
-            if (characterExists) {
-                System.err.println("Character exist");
-                return;
-            } else {
-                playableCharacters.add((PlayerCharacter) character);
-            }
-        } else if (character instanceof Enemy) {
-
+            playableCharacters.add((PlayerCharacter) character);
+        } else if(character instanceof Enemy){
             file = new File("src/main/resources/Files/Enemy.json");
-            if(file.length() != 0) {
+
+            if (file.length() != 0){
                 enemyCharacters = getEnemyCharacters();
 
-                for(Enemy enemies : enemyCharacters){
-                    if(enemies.getName().equals(((Enemy) character).getName())){
-                        characterExists = true;
-                        break;
+                for(Enemy enemiesList : enemyCharacters){
+                    if (enemiesList.getName().equals(((Enemy) character).getName())){
+                        System.err.println("character already exists");
+                        return;
                     }
-                }
-                /*
-                for (int i = 0; i < enemyCharacters.size(); i++) {
-                    if (enemyCharacters.get(i).getName().equals(((Enemy) character).getName())) {
-                        characterExists = true;
-                        break;
-                    }
-                }
-
-                 */
-
-                if (characterExists) {
-                    System.err.println("Character already exists");
-                    //System.out.println("Character already exists");
-                    return;
-                } else {
-                    enemyCharacters.add((Enemy) character);
                 }
             }
-
-        } else if (character instanceof Car) {
+            enemyCharacters.add((Enemy) character);
+        } else if (character instanceof Car){
 
             file = new File("src/main/resources/Files/Car.json");
 
-            if(file.length() != 0) {
+            if (file.length() != 0){
                 carCharacters = getCarCharacters();
-            }
 
-            for(Car carlist: carCharacters){
-                if(carlist.getName().equals(((Car) character).getName())){
-                    characterExists = true;
-                    break;
+                for (Car carsList: carCharacters){
+                    if (carsList.getName().equals(((Car) character).getName())){
+                        System.err.println("character already exists");
+                        return;
+                    }
                 }
             }
+            carCharacters.add((Car) character);
 
-            /*
-            for (int i = 0; i < carCharacters.size(); i++) {
-                if (carCharacters.get(i).getName().equals(((Car) character).getName())) {
-                    characterExists = true;
-                    break;
-                }
-            }
-
-             */
-
-            if (characterExists) {
-                System.err.println("The Character already exist");
-                return;
-            } else {
-                carCharacters.add((Car) character);
-            }
-        }
-        if(file == null){
-            System.err.println("The file does not exist");
         }
 
-        GsonBuilder gsonBuilder = new GsonBuilder().setPrettyPrinting();
+        GsonBuilder gsonBuilder = new GsonBuilder();
 
         Gson gson = gsonBuilder.create();
 
         String jsonWriter = "";
 
-        // sends the correct array to the jsonWriter
-        if (character instanceof PlayerCharacter) {
+        if (character instanceof PlayerCharacter){
             jsonWriter = gson.toJson(playableCharacters);
-        } else if (character instanceof Enemy) {
+        } else if(character instanceof  Enemy){
             jsonWriter = gson.toJson(enemyCharacters);
-        } else if (character instanceof Car) {
+        } else if(character instanceof Car){
             jsonWriter = gson.toJson(carCharacters);
         }
 
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
-            bw.write(jsonWriter);
-        } catch (IOException IOE) {
+        try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file))) {
+            bufferedWriter.write(jsonWriter);
+        }catch (IOException IOE){
             IOE.printStackTrace();
-        } catch (NullPointerException e) {
-            System.out.println("A path to the file containing this object does not exist");
+        }catch (NullPointerException NPE){
+            System.out.println("File error");
         }
 
     }
+
+
 
 
     /**
