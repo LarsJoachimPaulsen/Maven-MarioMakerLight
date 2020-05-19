@@ -104,12 +104,23 @@ public abstract class Serializable {
             if(file.length() != 0) {
                 carCharacters = getCarCharacters();
             }
+
+            for(Car carlist: carCharacters){
+                if(carlist.getName().equals(((Car) character).getName())){
+                    characterExists = true;
+                    break;
+                }
+            }
+
+            /*
             for (int i = 0; i < carCharacters.size(); i++) {
                 if (carCharacters.get(i).getName().equals(((Car) character).getName())) {
                     characterExists = true;
                     break;
                 }
             }
+
+             */
 
             if (characterExists) {
                 System.err.println("The Character already exist");

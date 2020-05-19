@@ -57,7 +57,7 @@ public class TestConsole {
         testCar.getInformation();
 
         Serializable.writeCharacterToFile(playerCharacter);
-        Serializable.writeCharacterToFile(testEnemy);
+        //Serializable.writeCharacterToFile(testEnemy);
         //Serializable.writeCharacterToFile(testCar);
 
         ArrayList<PlayerCharacter> playerList = Serializable.getPlayableCharacters();

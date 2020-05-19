@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 
 
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.stage.Screen;
@@ -31,7 +32,6 @@ public final class GameScreen extends Application {
 
             BackgroundImage background = new BackgroundImage(new Image("Pictures/Backgrounds/defaultBackground.png",32,32,false,true),
                     BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
-
 
 
            controller.setStage(primaryStage);
