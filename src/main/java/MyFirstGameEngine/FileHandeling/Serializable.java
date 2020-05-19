@@ -1,8 +1,8 @@
-package MyFIrstGameEngine.FileHandeling;
+package MyFirstGameEngine.FileHandeling;
 
-import MyFIrstGameEngine.CharacterCreation.Car;
-import MyFIrstGameEngine.CharacterCreation.Enemy;
-import MyFIrstGameEngine.CharacterCreation.PlayerCharacter;
+import MyFirstGameEngine.CharacterCreation.Car;
+import MyFirstGameEngine.CharacterCreation.Enemy;
+import MyFirstGameEngine.CharacterCreation.PlayerCharacter;
 import com.google.gson.*;
 import java.io.*;
 import java.util.ArrayList;
@@ -25,6 +25,7 @@ public abstract class Serializable {
      */
     private static ArrayList<Car> carCharacters = new ArrayList<>();
 
+    private static Integer sizeOfHigscoreList = 10;
 
     //This method will write a character to the correct file, if it does not already exist.
 
@@ -41,13 +42,23 @@ public abstract class Serializable {
             file = new File("src/main/resources/Files/PlayableCharacter.json");
             if (file.length() != 0) {
                 playableCharacters = getPlayableCharacters();
-                for (int i = 0; i < playableCharacters.size(); i++) {
+
+                for(PlayerCharacter playerList : playableCharacters){
+                    if(playerList.getName().equals(((PlayerCharacter) character).getName())){
+                        characterExists = true;
+                        break;
+                    }
+                }
+              /* for (int i = 0; i < playableCharacters.size(); i++) {
                     // compares the name of the character name residing in index i with the character name we are trying to add
                     if (playableCharacters.get(i).getName().equals(((PlayerCharacter) character).getName())) {
                         characterExists = true;
                         break;
                     }
                 }
+
+               */
+
             }
             if (characterExists) {
                 System.err.println("Character exist");
@@ -55,28 +66,35 @@ public abstract class Serializable {
             } else {
                 playableCharacters.add((PlayerCharacter) character);
             }
-            // legg til character i Array.
-            // skriv hele array.
-
         } else if (character instanceof Enemy) {
 
             file = new File("src/main/resources/Files/Enemy.json");
             if(file.length() != 0) {
                 enemyCharacters = getEnemyCharacters();
-            }
-            for (int i = 0; i < enemyCharacters.size(); i++) {
-                if (enemyCharacters.get(i).getName().equals(((Enemy) character).getName())) {
-                    characterExists = true;
-                    break;
-                }
-            }
 
-            if (characterExists) {
-                System.err.println("Character already exists");
-                //System.out.println("Character already exists");
-                return;
-            } else {
-                enemyCharacters.add((Enemy) character);
+                for(Enemy enemies : enemyCharacters){
+                    if(enemies.getName().equals(((Enemy) character).getName())){
+                        characterExists = true;
+                        break;
+                    }
+                }
+                /*
+                for (int i = 0; i < enemyCharacters.size(); i++) {
+                    if (enemyCharacters.get(i).getName().equals(((Enemy) character).getName())) {
+                        characterExists = true;
+                        break;
+                    }
+                }
+
+                 */
+
+                if (characterExists) {
+                    System.err.println("Character already exists");
+                    //System.out.println("Character already exists");
+                    return;
+                } else {
+                    enemyCharacters.add((Enemy) character);
+                }
             }
 
         } else if (character instanceof Car) {
@@ -100,6 +118,9 @@ public abstract class Serializable {
                 carCharacters.add((Car) character);
             }
         }
+        if(file == null){
+            System.err.println("The file does not exist");
+        }
 
         GsonBuilder gsonBuilder = new GsonBuilder().setPrettyPrinting();
 
@@ -107,6 +128,7 @@ public abstract class Serializable {
 
         String jsonWriter = "";
 
+        // sends the correct array to the jsonWriter
         if (character instanceof PlayerCharacter) {
             jsonWriter = gson.toJson(playableCharacters);
         } else if (character instanceof Enemy) {
@@ -260,9 +282,7 @@ public abstract class Serializable {
      */
     public static ArrayList<PlayerCharacter> getPlayableCharacters() {
 
-
             File file = new File("src/main/resources/Files/PlayableCharacter.json");
-
 
             GsonBuilder gsonBuilder = new GsonBuilder().setPrettyPrinting();
             Gson gson = gsonBuilder.create();
@@ -306,6 +326,10 @@ public abstract class Serializable {
      */
     public void help(String methodName){
         System.out.println("her kommer mer hjelo");
+    }
+
+    public static Integer getSizeOfHigscoreList(){
+        return sizeOfHigscoreList;
     }
 
 }

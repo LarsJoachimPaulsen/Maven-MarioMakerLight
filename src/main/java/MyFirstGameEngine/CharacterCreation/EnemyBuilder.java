@@ -1,4 +1,4 @@
-package MyFIrstGameEngine.CharacterCreation;
+package MyFirstGameEngine.CharacterCreation;
 
 /**
  * @author Lars

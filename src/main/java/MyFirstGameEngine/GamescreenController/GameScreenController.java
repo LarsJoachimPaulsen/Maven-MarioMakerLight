@@ -1,11 +1,12 @@
-package MyFIrstGameEngine.Controller;
+package MyFirstGameEngine.GamescreenController;
 
-import MyFIrstGameEngine.CharacterCreation.Car;
-import MyFIrstGameEngine.CharacterCreation.Enemy;
-import MyFIrstGameEngine.CharacterCreation.PlayerCharacter;
-import MyFIrstGameEngine.FileHandeling.Serializable;
-import MyFIrstGameEngine.Data.Movement;
-import MyFIrstGameEngine.Settings.ToolbarOrientation;
+import MyFirstGameEngine.CharacterCreation.Car;
+import MyFirstGameEngine.CharacterCreation.Enemy;
+import MyFirstGameEngine.CharacterCreation.PlayerCharacter;
+import MyFirstGameEngine.Settings.Settings;
+import MyFirstGameEngine.FileHandeling.Serializable;
+import MyFirstGameEngine.GameControlls.Movement;
+import MyFirstGameEngine.Settings.ToolbarOrientation;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -23,7 +24,7 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 
-public class Settings implements EventHandler<KeyEvent> {
+public class GameScreenController implements EventHandler<KeyEvent> {
 
     @FXML
     private Button btnConfirm;
@@ -45,6 +46,8 @@ public class Settings implements EventHandler<KeyEvent> {
     private Label collisionTestText;
     @FXML
     private ListView<Integer> highscoreView = new ListView<>();
+    @FXML
+    private Button btnCloseHighScore;
 
     private Stage scene;
 
@@ -55,8 +58,8 @@ public class Settings implements EventHandler<KeyEvent> {
     private PlayerCharacter selectedPlayer;
 
 
-    public ObservableList<String> toolList = FXCollections.observableArrayList("Pointer","Objects","PlayerCharacters","Enemies","Cars","Backgrounds");
-    private ObservableList<String> underObjectToolList = FXCollections.observableArrayList("Square","Circle","Triangle");
+    private ObservableList<String> toolList = FXCollections.observableArrayList("Pointer","Objects","PlayerCharacters","Enemies","Cars","Backgrounds");
+    //private ObservableList<String> underObjectToolList = FXCollections.observableArrayList("Square","Circle","Triangle");
     //private ObservableList<ImageView> objectListPhoto = FXCollections.observableArrayList();
 
     private ObservableList<PlayerCharacter> playerCharactersList = FXCollections.observableArrayList(Serializable.getPlayableCharacters());
@@ -178,13 +181,9 @@ public class Settings implements EventHandler<KeyEvent> {
 
     }
 
-    ChangeListener<Number> stageSizeListener = ((observableValue, number, t1) ->
-                System.out.println("height " + scene.getHeight() + "Width " + scene.getWidth())
-    );
-
-
     /**
      * @author Lars
+     *
      */
     private void enableWalking() {
        Movement.addMovement(playableCharacterSprite);
@@ -213,7 +212,13 @@ public class Settings implements EventHandler<KeyEvent> {
         highscoreView.setVisible(true);
         //add highscores to view
         highscoreView.setItems(highscoreList);
+        btnCloseHighScore.setVisible(true);
 
+    }
+
+    public void closeHighScore(){
+        highscoreView.setVisible(false);
+        btnCloseHighScore.setVisible(false);
     }
 
 
@@ -222,40 +227,37 @@ public class Settings implements EventHandler<KeyEvent> {
 
     }
 
-    // Adding new ImageViews containing player sprites, based on how many exists. Currently not working
-    private void addPlayerCharactersToToolbar() {
-        for (int i = 0; i<playerCharactersList.size(); i++){
-           // String name = String.valueOf(i);
-            ImageView name  = new ImageView();
-            name.setImage(new Image(playerCharactersList.get(i).getPhoto()));
-           // name.setX((screenWidth/2)/(double)playerCharacters.size());
-            name.setLayoutY(screenHeight/2);
-            name.setLayoutX(screenWidth/2);
-           // name.setLayoutX(screenWidth*.05 + screenWidth/(double)playerCharacters.size());
-        }
-
-    }
 
     /**
      * @author Lars
      */
     private void setUpButtons() {
-        btnConfirm.setLayoutY(screenWidth/2);
-        btnConfirm.setLayoutX(screenHeight/2);
+
+        btnConfirm.setLayoutY(screenHeight/2);
+        btnConfirm.setLayoutX(screenWidth/2);
 
         btnExitGame.setLayoutY(30);
         btnExitGame.setLayoutX(screenWidth-50);
 
         // input left, right, top, bottom
-        setOrientationOfToolBar(ToolbarOrientation.LEFT);
+        setOrientationOfToolBar(Settings.getOrientationOfMainToolbar());
          //setOrientationOfToolBar("left");
+
 
 
         //input left, right, top, bottom
         //setOriontationOfSecondaryToolBar("left");
 
         // må fikses noe bugs
-        setOriontationOfSecondaryToolBar(ToolbarOrientation.BOTTOM);
+        setOriontationOfSecondaryToolBar(Settings.getOrientationOfSecondaryToolbar());
+
+        highscoreView.setLayoutY(screenHeight/2);
+        highscoreView.setLayoutX(screenWidth/2);
+        btnCloseHighScore.setLayoutY(screenHeight/2+highscoreView.getHeight());
+        btnCloseHighScore.setLayoutX(screenWidth/2+screenWidth*.172);
+
+        System.out.println(highscoreView.getWidth());
+
     }
 
     // test for collision
@@ -325,9 +327,9 @@ public class Settings implements EventHandler<KeyEvent> {
 
     }
 
-    public void setOrientationOfToolBar(ToolbarOrientation toolbarOrientation){
+    private void setOrientationOfToolBar(ToolbarOrientation orientation){
 
-        switch (toolbarOrientation){
+        switch (orientation){
 
             case LEFT:
                 toolSelect.setMinHeight(screenHeight);
@@ -375,7 +377,7 @@ public class Settings implements EventHandler<KeyEvent> {
     }
 
     // skal flyttes til innstillinger
-    public void setOriontationOfSecondaryToolBar(ToolbarOrientation toolbarOrientation) {
+    private void setOriontationOfSecondaryToolBar(ToolbarOrientation toolbarOrientation) {
 
         switch (toolbarOrientation){
             case LEFT :

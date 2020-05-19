@@ -1,4 +1,4 @@
-package MyFIrstGameEngine.Data;
+package MyFirstGameEngine.GameControlls;
 
 /**
  * @author Christine

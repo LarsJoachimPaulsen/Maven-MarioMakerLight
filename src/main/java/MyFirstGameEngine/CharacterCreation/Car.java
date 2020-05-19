@@ -1,17 +1,17 @@
-package MyFIrstGameEngine.CharacterCreation;
+package MyFirstGameEngine.CharacterCreation;
 
 /**
  * @author Lars
  */
 public final class Car {
 
-    String name;
+    String name = "car";
     int health = 100;
     int damage = 25;
     int height = 10;
     int width = 10;
     int speed = 5;
-    String photo = "/Pictures/CarCharacters/test.jpg";
+    String photo = "/Pictures/CarCharacters/placeholder.png";
 
 
     public String getName() {
@@ -48,6 +48,7 @@ public final class Car {
         return  "Car name " + name + " Car health " + health + " Car's damage " + damage + " Car's heigth "
                 + height + " Car's width " + width + " Car's speed " + speed;
     }
+
 
     public void getInformation(){
 

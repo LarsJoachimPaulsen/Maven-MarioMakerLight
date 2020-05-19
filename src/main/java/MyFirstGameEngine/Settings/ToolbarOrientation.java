@@ -1,4 +1,4 @@
-package MyFIrstGameEngine.Settings;
+package MyFirstGameEngine.Settings;
 
 public enum ToolbarOrientation {
     LEFT,

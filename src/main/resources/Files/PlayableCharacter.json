@@ -3,10 +3,11 @@
     "name": "mariu",
     "maxHealth": 30,
     "currentHeath": 30,
+    "jumpHeight": 0,
     "movementSpeed": 10,
     "damage": 20,
     "size": 10,
-    "scoreEneabled": true,
+    "scoreEnabled": true,
     "points": 0,
     "photo": "/Pictures/PlayableCharacters/Standard.png"
   },
@@ -14,10 +15,11 @@
     "name": "lubigi",
     "maxHealth": 100,
     "currentHeath": 100,
+    "jumpHeight": 0,
     "movementSpeed": 10,
     "damage": 30,
     "size": 10,
-    "scoreEneabled": false,
+    "scoreEnabled": true,
     "points": 0,
     "photo": "/Pictures/PlayableCharacters/StandardAngry.png"
   },
@@ -25,11 +27,24 @@
     "name": "mario",
     "maxHealth": 100,
     "currentHeath": 100,
+    "jumpHeight": 0,
     "movementSpeed": 10,
     "damage": 30,
     "size": 10,
-    "scoreEneabled": false,
+    "scoreEnabled": true,
     "points": 0,
     "photo": "/Pictures/PlayableCharacters/StandardGirl.png"
+  },
+  {
+    "name": "TestPlayer",
+    "maxHealth": 100,
+    "currentHeath": 100,
+    "jumpHeight": 20,
+    "movementSpeed": 10,
+    "damage": 50,
+    "size": 10,
+    "scoreEnabled": true,
+    "points": 0,
+    "photo": "/Pictures/PlayableCharacters/Standard.png"
   }
 ]

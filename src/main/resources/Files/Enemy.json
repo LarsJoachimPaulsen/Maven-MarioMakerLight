@@ -16,5 +16,13 @@
     "pointValue": 20,
     "size": 3,
     "photo": "/Pictures/EnemyCharacters/enemy2.png"
+  },
+  {
+    "maxHealth": 100,
+    "currentHealth": 100,
+    "damage": 30,
+    "pointValue": 50,
+    "size": 3,
+    "photo": "/Pictures/EnemyCharacters/enemy.png"
   }
 ]

@@ -1,4 +1,4 @@
-package MyFIrstGameEngine.Data;
+package MyFirstGameEngine.GameControlls;
 
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -7,9 +7,7 @@ import javafx.scene.input.KeyEvent;
 
 public abstract class Movement {
 
-    static int characterMovementSpeed = 10;
-
-    static KeyEvent Rigth;
+    private static int characterMovementSpeed = 10;
 
     public static void addMovement(ImageView playableCharacterSprite){
 
@@ -69,4 +67,5 @@ public abstract class Movement {
             }
         });
     }
+
 }

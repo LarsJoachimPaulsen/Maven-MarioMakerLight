@@ -1,4 +1,4 @@
-package MyFIrstGameEngine.CharacterCreation;
+package MyFirstGameEngine.CharacterCreation;
 
 /**
  * @author Lars. Christine
@@ -63,7 +63,4 @@ public final class PlayerCharacterBuilder {
         this.reset();
         return p;
     }
-
-
-
 }
